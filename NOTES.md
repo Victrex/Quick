@@ -7,7 +7,7 @@ HTML >>
     </div>
     <div class="topnav" id="myTopnav">
         
-        <a href="#news">Inicio</a>
+        <a href="landing.html">Inicio</a>
         <a href="#contact">Terminos y Condiciones</a>
         <a href="#about">¿Quienes Somos?</a>
         <a href="#FAQ">FAQ</a>
