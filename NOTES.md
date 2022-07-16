@@ -20,9 +20,8 @@ HTML >>
 <<
 CSS>>
 <!-- 
-.logo-navbar{
+  .logo-navbar{
     height: 30px;
-    
   }
   
   .nav{
@@ -30,6 +29,7 @@ CSS>>
     width: 100%;
     display: flex;
     justify-content: space-between;
+    background-color: #fff;
     box-shadow: 0px 4px 19px rgba(235, 148, 134, 0.39);
     align-items: center;
     padding-left: 20px;
@@ -52,7 +52,7 @@ CSS>>
     font-size: 17px;
     flex-direction: column;
     flex-wrap: wrap;
-    
+    font-size: 0.9em;
   }
   
   .topnav a:hover {
@@ -65,12 +65,11 @@ CSS>>
     display: none;
     color: rgb(235, 147, 134);
     font-size: 1.5em;
-    z-index: 999;
   }
   .colorActive i{
     color: #fff;
   }
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 700px) {
     
     .topnav a {display: none;}
     .nav a.icon {
@@ -87,7 +86,7 @@ CSS>>
       }
   }
   
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 700px) {
     
     .topnav.responsive {
     position: absolute;
@@ -100,7 +99,6 @@ CSS>>
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    z-index: -30;
     }
     .topnav.responsive .icon {
       position: absolute;
