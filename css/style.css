@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -9,7 +14,7 @@ body {
   }
   
   .nav{
-    position: relative;
+    position: relative; 
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -68,6 +73,10 @@ body {
         display: flex;
         justify-content: center;
       }
+      .img_descr .scooter{
+        width: 40rem;
+        
+        }
   }
   
   @media screen and (max-width: 700px) {
@@ -97,4 +106,64 @@ body {
       display: block;
       text-align: left;
     }
+
+    .descr h1{
+        text-align: center;
+    }
+    .descr p {
+        font-size: 0.7em;
+        text-align: center;
+      }
+      .presentation{
+        flex-wrap: wrap;
+      }
+      .prsnt{
+        flex-wrap: wrap;
+      }
   }
+
+
+  /* CONTENIDO LANDING PAGE */
+  .container{
+    margin: 0;
+  }
+  .prsnt{
+    display: flex;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+    align-items: center;
+    gap: 0;
+    justify-content: center;
+}
+  .descr{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    padding: 10px 40px;
+  }
+  .descr h1{
+        font-size: 1.5em;
+        font-weight: bolder;
+  }
+  .descr p {
+    font-size: 0.9em;
+    
+  }
+  .img_descr{
+    overflow: hidden;
+}
+
+  .scooter{
+    width: 50rem;
+    
+    position: relative;
+    }
+.img_descr .quickInScooter{
+    width: 100px;
+    position: absolute;
+    top: 205px;
+    right: 280px;
+}
