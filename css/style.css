@@ -54,12 +54,29 @@ body {
     display: none;
     color: rgb(235, 147, 134);
     font-size: 1.5em;
+    text-align: center;
   }
   .colorActive i{
     color: #fff;
   }
+  
+  .active{
+    display: none;
+  }
   @media screen and (max-width: 700px) {
-    
+    .footer_Nav{
+        
+        position: absolute;
+        bottom: 15px;
+        
+      }
+
+      div.footer_Nav a{
+        text-align: center;
+        font-size: 1em;
+        margin: 0;
+        padding: 0;
+      }
     .topnav a {display: none;}
     .nav a.icon {
       display: block;
@@ -102,11 +119,12 @@ body {
     .responsive a{
         color: #fff;
         font-size: 1.5em;
+        
     }
     .topnav.responsive a {
       float: none;
       display: block;
-      text-align: left;
+      text-align: center;
     }
 
     .descr h1{

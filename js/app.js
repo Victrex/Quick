@@ -1,12 +1,18 @@
+var x = document.getElementById("myTopnav");
+    var y = document.getElementById('icon');
+    var z = document.getElementById('body');
+    var footerActive = document.getElementById('footer_nav');
 function navCollapse() {
-    var x = document.getElementById("myTopnav");
-    var y = document.querySelector('.icon');
-    var z = document.querySelector('.body');
+    
     if (x.className === "topnav") {
       x.className += " responsive";
     } else {
       x.className = "topnav";
     }
-    z.classList.toggle('bodyScroll')
+     z.classList.toggle('bodyScroll');
     y.classList.toggle('colorActive');
+    footerActive.classList.toggle('active');
+    
+    
+
   }
