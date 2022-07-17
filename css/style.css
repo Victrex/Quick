@@ -329,3 +329,31 @@ ul li{
     font-size: 1.5em;
     color: #595B8F;
 }
+
+
+/*Web Motoristas*/
+h1.welcome{
+  font-size: 24px ;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+h1.welcome-text1{
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 20px ;
+  font-weight: bold;
+  text-align: center;
+}
+
+p.welcome-text2{
+  padding-left: 20px;
+  padding-right: 35px;
+  font-size: 12px ;
+  font-weight: normal;
+  text-align: center;
+  color: #808080;
+  vertical-align: top;
+}
+
