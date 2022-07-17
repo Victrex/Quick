@@ -67,7 +67,7 @@ body {
     .footer_Nav{
         
         position: absolute;
-        bottom: 15px;
+        bottom: 100px;
         
       }
 
@@ -83,6 +83,7 @@ body {
       position: absolute;
         right: 10px;
         top: 10px;
+        z-index: 99999;
     }
     
     .logoCont{
@@ -109,8 +110,10 @@ body {
     background-color: rgb(235, 147, 134);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 50px;
     align-items: center;
+    z-index: 9999;
     }
     .topnav.responsive .icon {
       position: absolute;
@@ -140,6 +143,9 @@ body {
       .prsnt{
         flex-wrap: wrap;
       }
+      div.cat_index{
+        height: 150px;
+    }
   }
 
   @media screen and (max-width: 300px) {
@@ -154,6 +160,27 @@ body {
     div.last p{
         font-size: 0.7em;
         text-align: center;
+    }
+    div.container-fluid h1{
+        font-size: 1.2em;
+        bottom: -30px;
+        right: 20px;
+        color: #808080;
+        font-size: 1em;
+    }
+    div.cat_index{
+        height: 100px;
+    }
+    div.iconCat .icons{
+        width: 25px;
+        height: 25px;
+    }
+    div.iconCat{
+        width: 40px;
+        height: 40px;
+    }
+    div.icon_cont span{
+        font-size: 0.8em;
     }
   }
 
@@ -329,3 +356,182 @@ ul li{
     font-size: 1.5em;
     color: #595B8F;
 }
+
+.icons_section{
+    margin-top: 20px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.icon_cont{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.icon_cont span{
+    font-size: 1em;
+    font-weight: 500;
+    color: #595B8F;
+}
+.icons{
+    width: 45px;
+    height: 45px;
+}
+.iconCat{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px #595b8f48;
+}
+.cat_index{
+    width: 90%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    min-width: fit-content;
+}
+.cat_index img{
+    width: 100%;
+    object-fit: cover;
+    
+}
+.container-fluid{
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.container-fluid h1{
+    font-size: 1.2em;
+    float: right;
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+
+.container-fluid h1 a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.container-dayliProducts{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-dayliProducts h1{
+    font-size: 1.2em;
+    align-self: flex-start;
+    margin-left: 25px;
+}
+
+
+.slide-container{
+    max-width: 90%;
+    width: 100%;
+    padding: 40px 0;
+
+}
+
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    min-width: 200px;
+    max-width: 200px;
+    width: 200px;
+    max-height: 250px;
+  }
+  .card-header{
+    padding: 0;
+    max-height: 120px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-header img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    margin: 0;
+  }
+ .card-body h4{
+    font-size: 1em;
+ } 
+ .card-body h5{
+    font-size: 0.8em;
+    color: #808080;
+ } 
+
+  
+  .card-body p {
+    font-size: 0.9em;
+    margin: 0 0 40px;
+    font-weight: 500;
+    color: #3eaf42;
+  }
+
+
+  .seeCard{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.8em;
+    height: 25px;
+}
+
+.swiper-navBtn{
+    color: #595B8F;
+    transition: color 0.3s ease;
+  }
+  .swiper-navBtn:hover{
+    color: #595B8F;
+  }
+  .swiper-navBtn::before,
+  .swiper-navBtn::after{
+    font-size: 35px;
+  }
+  .swiper-button-next{
+    right: 0;
+  }
+  .swiper-button-prev{
+    left: 0;
+  }
+  .swiper-pagination-bullet{
+    background-color: #595B8F;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active{
+    background-color: #595B8F;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .slide-content{
+      margin: 0 10px;
+    }
+    .swiper-navBtn{
+      display: none;
+    }
+  }
