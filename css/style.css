@@ -408,8 +408,33 @@ ul li{
     color: #595B8F;
 }
 
+/*Web Motoristas*/
+h1.welcome{
+  font-size: 24px ;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+h1.welcome-text1{
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 20px ;
+  font-weight: bold;
+  text-align: center;
+}
+
+p.welcome-text2{
+  padding-left: 20px;
+  padding-right: 35px;
+  font-size: 12px ;
+  font-weight: normal;
+  text-align: center;
+  color: #808080;
+  vertical-align: top;
+}
+
 .icons_section{
-    margin-top: 20px;
     width: 100%;
     height: 150px;
     display: flex;
@@ -619,6 +644,7 @@ ul li{
 .res{
     background-color: #EDDEA4;
 }
+<<<<<<< HEAD
 .corp_container{
     width: 100%;
 
@@ -787,3 +813,5 @@ div.cardPrd .corpInfo p{
     
     
 }
+=======
+>>>>>>> d5540d506731406c333f9d4841cbc8c340afcc42
