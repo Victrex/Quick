@@ -12,7 +12,5 @@ function navCollapse() {
      z.classList.toggle('bodyScroll');
     y.classList.toggle('colorActive');
     footerActive.classList.toggle('active');
-    
-    
-
   }
+

@@ -2,7 +2,7 @@ NAVBAR
 HTML >>
 <!-- <nav class="nav">
     <div class="logoCont">
-        <a href="#home" class="active"><img class="logo-navbar" src="ASSETS/LOGO/Logo_black_1.png" alt=""></a>
+        <a href="#home" ><img class="logo-navbar" src="ASSETS/LOGO/Logo_black_1.png" alt=""></a>
 
     </div>
     <div class="topnav" id="myTopnav">
@@ -144,7 +144,7 @@ ESTRUCTURA BASICA DE HTML
 <body class="" id="body">
     <nav class="nav">
         <div class="logoCont">
-            <a href="#home" class="active"><img class="logo-navbar" src="ASSETS/LOGO/Logo_black.svg" alt=""></a>
+            <a href="#home" ><img class="logo-navbar" src="ASSETS/LOGO/Logo_black.svg" alt=""></a>
     
         </div>
         <div class="topnav" id="myTopnav">
