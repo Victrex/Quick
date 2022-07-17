@@ -3,12 +3,12 @@ var swiper = new Swiper(".slide-content", {
     slidesPerView: 2,
     spaceBetween: 10,
     loop: true,
-    centerSlide: 'false',
+    centerSlide: 'true',
     fade: 'true',
     grabCursor: 'true',
     pagination: {
       el: ".swiper-pagination",
-      clickable: true,
+      clickable: false,
       dynamicBullets: false,
     },
     navigation: {
