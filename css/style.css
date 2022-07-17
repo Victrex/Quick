@@ -159,6 +159,18 @@ body {
     div.gridCard .corpInfo{
         transform: translateY(-40px);
     }
+    div.orderContainer .order_img{
+        width: 80%;
+    }
+    div.order_img img{
+        height: 100%;
+    }
+    div.orderContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
   }
   @media screen and (max-width: 900px) {
     div.gridCard{
@@ -180,6 +192,7 @@ body {
     div.gridCard{
         justify-content: center;
     }
+    
   }
 
   @media screen and (max-width: 300px) {
@@ -301,6 +314,7 @@ body {
     height: 35px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     align-content: center;
 
@@ -572,9 +586,10 @@ p.welcome-text2{
   .seeCard{
     position: absolute;
     bottom: 15px;
-    right: 10px;
+    right: 0px;
     font-size: 0.8em;
-    height: 25px;
+    height: 35px;
+    width: 100%;
 }
 
 .swiper-navBtn{
@@ -644,7 +659,6 @@ p.welcome-text2{
 .res{
     background-color: #EDDEA4;
 }
-<<<<<<< HEAD
 .corp_container{
     width: 100%;
 
@@ -692,9 +706,17 @@ p.welcome-text2{
     height: 120px;
     justify-content: flex-start;
     align-items: center;
+    gap: 10px;
+}
+.gridBtn{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    height: 35px;
 }
 .cardCorp .corpInfo {
-    margin-top: 10px;
+    margin: 0px;
 }
 
 .cardCorp .corpInfo h1 {
@@ -813,5 +835,136 @@ div.cardPrd .corpInfo p{
     
     
 }
-=======
->>>>>>> d5540d506731406c333f9d4841cbc8c340afcc42
+.orderContainer .order_img{
+    width: 400px;
+    overflow: hidden;
+}
+.order_img img{
+    width: 100%;
+    object-fit: cover;
+}
+.orderContainer{
+    display: flex;
+    flex: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+.orderContent{
+    overflow: hidden;
+}
+.orderContent h1{
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #F7A072;
+}
+.orderContent h2{
+    font-size: 1em;
+    font-weight: 700;
+    color: #595B8F;
+}
+.orderContent span{
+    font-size: 0.9em;
+    color: #3eaf42;
+}
+.orderContent p{
+    font-size: 0.7em;
+    color: #808080;
+}
+.invoice{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.invoice h1{
+    font-size: 1.5em;
+    font-weight: 700;
+}
+.invoice table tr td{
+    padding: 10px;
+    color: #595B8F;
+
+}
+.submit_order{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+.quantity{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+#totalOrder{
+    display: flex;
+    color: #3eaf42;
+}
+.profile_container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.profilePhoto{
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #F7A072;
+    
+}
+
+.profilePhoto img{
+    width: 100%;
+}
+.profileInfo h2{
+    font-size: 1em;
+    font-weight: 500;
+    color: #595B8F;
+}
+.profileInfo span{
+    font-size: 0.8em;
+}
+.optionsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.cardInfo{
+    width: 95%;
+    border-radius: 5px;
+    height: 100px;
+    background-color: #fff;
+    border-bottom: 0.5px solid #808080;
+    position: relative;
+    padding: 10px;
+}.cardInfo a{
+    text-decoration: none;
+    
+}
+.cardInfo i{
+    position: absolute;
+    right: 5px;
+    font-size: 1.5em;
+    color: #F7A072;
+}
+.cardInfo a h1{
+    font-size: 1em;
+    color: #595B8F;
+}
+.cardInfo span{
+    font-size: 0.8em;
+    color: #808080;
+}
