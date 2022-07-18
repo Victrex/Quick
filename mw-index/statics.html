@@ -21,7 +21,7 @@
             <a href="../motor.html">Inicio</a>
             <a href="#">Mis Pedidos</a>
             <a href="qs.html">Mi Cuenta</a>
-            <a href="faq.html">¡Conócenos!</a>
+            <a href="statics.html">Estadísticas</a>
             
           </div>
           <a href="javascript:void(0);" id="icon" class="icon" onclick="navCollapse()">
@@ -29,45 +29,64 @@
           </a>
         </nav>
 
-        <section>
+        <section class="statsContainer">
             <h3 style="font-weight:bolder;">Estadísticas</h3>
-            <h4>Hoy....</h4> <br>
+            <h4>Hoy...</h4> <br>
             <div class="stats">
-                <dl>
-                    <dt>Ordenes</dt>
-                    <dd class="liststat">3</dd><br>
-                    <dt>Ordenes</dt>
-                    <dd class="liststat">3</dd><br>
-                    <dt>Ordenes</dt>
-                    <dd class="liststat">3</dd><br>
-                </dl>
+                <table>
+                    <tr>
+                        <td>Ordenes Tomadas</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td >Ordenes Completadas</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Compensasión Total por entregas</td>
+                        <td>52.5 L</td>
+                    </tr>
+                </table>
+
             </div>
         <a href="../mw-index/peddisp.html" id="req"> Ver pedidos</a>
         </section>
-        <br>
-        <section>
-            <br>
+        <br> <br>
+        <section class="statsContainer">
             <h4>Este mes...</h4> <br>
             <div class="stats">
-                <dl>
-                    <dt>Ordenes tomadas</dt>
-                    <dd class="liststat">15</dd><br>
-                    <dt>Ordenes Completadas</dt>
-                    <dd class="liststat">13</dd><br>
-                    <dt>Compesasión por entregas completadas</dt>
-                    <dd class="liststat">227.50</dd><br>
-                    <dt>Salario</dt>
-                    <dd class="liststat">8000.00</dd><br>
-                    <dt>+20% Compesasión por entregas completadas</dt>
-                    <dd class="liststat">45.50</dd><br>
-                </dl>
+                <table>
+                    <tr>
+                        <td>Ordenes Tomadas</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td >Ordenes Completadas</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>Compensasión Total por entregas</td>
+                        <td>227.50</td>
+                    </tr>
+                    <tr>
+                        <td>Salario</td>
+                        <td>8000.00</td>
+                    </tr>
+                    <tr>
+                        <td>+20% Compesasión por entregas completadas</td>
+                        <td>45.50</td>
+                    </tr>
+                    <tr>
+                        <td> <hr></td>
+                    </tr>
+                    <tr>
+                        <td>Total Retiro </td>
+                        <td> 8273.00</td>
+                    </tr>
+                </table>
+                
             </div>
-            <div class="retired">
-                <dl>
-                    <dt>Total Retiro</dt>
-                    <dd class="liststat">8273.00</dd><br>
-                </dl>
-            </div>
+
         </section>
 
         <div class="btn_back"><button onclick="location.href='../mw-index/cat.html'" class="btn btn_primary btn_large">Regresar</button></div>

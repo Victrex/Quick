@@ -66,3 +66,16 @@ const lessQ = () =>{
   total.innerHTML = quantity.value * 139.00;
   }
 }
+
+let email1 = document.getElementById('InputEmail1');
+let password1 = document.getElementById('Password1');
+const validateLogin = () => {
+  if(email1.value == ''){
+    alert("Correo Electronico no valido");
+  }else{
+    if(password1.value == ''){
+      alert("Contraseña no valida")
+    }
+  }
+  
+}

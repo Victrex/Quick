@@ -156,6 +156,7 @@ body {
     div.gridCard{
         width: 150px;
         height: 220px;
+        max-height: 300px;
     }
     div.gridCard .corpInfo{
         transform: translateY(-40px);
@@ -628,8 +629,9 @@ p.welcome-text2{
   }
 
 .cardCat_content{
-
+    width: 90%;
     border-radius: 10px;
+    overflow: hidden;
 }
 .cardCat_content a{
     width: 350px;
@@ -639,16 +641,19 @@ p.welcome-text2{
     flex-direction: column;
     justify-content: space-between;
     padding: 10px;
-
     text-decoration: none;
+}
+.cardCat_content a h1{
+    font-size: 1.5em;
+    width: 100%;
 }
 .cat_container{
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    min-height: 90vh;
+    gap: 20px;
 }
 
 .gro{
@@ -660,11 +665,8 @@ p.welcome-text2{
 .res{
     background-color: #EDDEA4;
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 20289512e6224897040fddded1969cd855635521
 
 .text-password{
   width: 100%;
@@ -716,14 +718,8 @@ p.welcome-text2{
 }
 
 .pedrec{
-<<<<<<< HEAD
   background-color: #00A3B2;
 }
-=======
-    background-color: #00A3B2;
-}
-
->>>>>>> 20289512e6224897040fddded1969cd855635521
 .corp_container{
     width: 100%;
 
@@ -751,7 +747,6 @@ p.welcome-text2{
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    justify-content: flex-start;
     align-items: center;
 }
 .cardCorp{
@@ -767,9 +762,10 @@ p.welcome-text2{
 .gridCard{
     display: flex;
     flex-wrap: wrap;
-    width: 300px;
-    height: 120px;
-    justify-content: flex-start;
+    width: 150px;
+    height: 220px;
+    max-height: 300px;
+    justify-content: center;
     align-items: center;
     gap: 10px;
 }
@@ -782,6 +778,9 @@ p.welcome-text2{
 }
 .cardCorp .corpInfo {
     margin: 0px;
+}
+.gridCard .corpInfo{
+    transform: translateY(-40px);
 }
 
 .cardCorp .corpInfo h1 {
@@ -1032,18 +1031,24 @@ div.cardPrd .corpInfo p{
 .cardInfo span{
     font-size: 0.8em;
     color: #808080;
-<<<<<<< HEAD
-}
-=======
 }
 
+
+.statsContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .stats{
-  margin-top: 10px;
-  font-size: 16px;
-  border-bottom-style: solid;
-  border-bottom-color: #EB9486;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
-
+.stats table{
+    width: 90%;
+}
 .peddis{
   border-bottom-style: solid;
   border-bottom-color: #EB9486;
@@ -1105,4 +1110,11 @@ div.cardPrd .corpInfo p{
 	align-content: center;
 
 }
->>>>>>> 20289512e6224897040fddded1969cd855635521
+.OrderInfo{
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+}
+.OrderInfo h1{
+    font-size: 1em;
+}

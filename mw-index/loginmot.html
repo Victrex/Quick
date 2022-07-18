@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="../ASSETS/LOGO/Logo_white.svg" type="image/x-icon">
-    <title>LogInMotoristas </title>
+    <link rel="stylesheet" href="../css/motor.css">
+    <title>Iniciar Sesión </title>
 </head>
 <body class="" id="body" >
     <nav class="nav">
@@ -28,26 +29,28 @@
             <i class="fa fa-bars"></i>
           </a>
         </nav>
-
-        <section id="login-motor">
+        <br><br>
+        <section class="login-motor">
             <div>
-                <br>
-                <br>
-                <h1 class="welcome-text1">¡Bienvenidos Motoristas</h1>
-                <br>
-                <br>
-                <br>
-                <br>
-                <form action="">
-                    <label class="logintext1" for="username">Nombre de Usuario</label><br>
-                    <input class="login" type="text" id="username" name="username"><br>
-                    <label class="logintext1"    for="username">Password</label><br>
-                    <input class="login" type="password" id="password" name=password">
-                    <a href="#" id="forgot-password"> ¿Olvidó su Contraseña?</a>
-                    <br><br><br>
-                    <div class="logbtn"><a href="mw-index/cat.html"><input type="submit" class="btn btn_large btn_primary" value="Iniciar Sesión"></a></div>
-                </form>
+                <h1 class="welcome-text1">¡Bienvenidos Motoristas!</h1>
             </div>
+                <form class="LoginForm">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Correo Electronico</label>
+                      <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Correo Electronico">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Contraseña</label>
+                      <input type="password" class="form-control" id="Password1" placeholder="Contraseña">
+                    </div>
+                    <a href="cat.html">¿Olvidó Su Contraseña?</a>
+                        <button type="submit" value="Iniciar Sesión" class="btn btn_primary">
+                            <a href="cat.html" id="validateLogin" onclick="validateLogin()">
+                                Iniciar
+                            </a>
+                        </button>
+                  </form>
+            
     
     
     
