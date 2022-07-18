@@ -660,8 +660,6 @@ p.welcome-text2{
 .res{
     background-color: #EDDEA4;
 }
-<<<<<<< HEAD
-
 
 .text-password{
   width: 100%;
@@ -713,8 +711,9 @@ p.welcome-text2{
 }
 
 .pedrec{
-  background-color: #00A3B2;
-=======
+    background-color: #00A3B2;
+}
+
 .corp_container{
     width: 100%;
 
@@ -1023,5 +1022,73 @@ div.cardPrd .corpInfo p{
 .cardInfo span{
     font-size: 0.8em;
     color: #808080;
->>>>>>> 953f17180a71e1d5c299559304e92274a9c5b160
+}
+
+.stats{
+  margin-top: 10px;
+  font-size: 16px;
+  border-bottom-style: solid;
+  border-bottom-color: #EB9486;
+}
+
+.peddis{
+  border-bottom-style: solid;
+  border-bottom-color: #EB9486;
+}
+.retired{
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.liststat{
+  text-align: right;
+}
+
+.btn_back{
+  padding: 20px;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	align-content: stretch;
+  float: inline-end;
+  text-align: center;
+}
+
+#req{
+  margin-top: 15px;
+  float: right;
+}
+
+.card_peddis{
+  justify-content: space-between;
+	align-items: stretch;
+  width: 100%;
+  display: grid;
+	grid-template-columns: 1fr ;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+	grid-template-rows: 1fr;
+}
+
+.actualstatus{
+  background-color: #3eaf42;
+  height: 200%;
+  color: #fff;
+  width: 50%;
+  font-size: 24px;
+  border-radius: 25px;
+  text-align: center;
+  
+}
+
+.tomtexts{
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+
 }
