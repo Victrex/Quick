@@ -310,6 +310,10 @@ body {
     background-color: rgb(235, 147, 134);
     color: #fff;
 }
+.btn_aux{
+    background-color: #3eaf42;
+    color: #fff;
+}
 
 .btn {
     border-radius: 50px;
@@ -934,6 +938,7 @@ div.cardPrd .corpInfo p{
     font-size: 0.7em;
     color: #808080;
 }
+
 .invoice{
     display: flex;
     flex-direction: column;
@@ -1117,4 +1122,181 @@ div.cardPrd .corpInfo p{
 }
 .OrderInfo h1{
     font-size: 1em;
+}
+
+.orderTook{
+    font-size: 1.2em;
+}
+.orderStatus_Container{
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+.statusContent{
+    width: 80%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status_header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.status_header h1{
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.status_header .status{
+    width: 90%;
+    height: 35px;
+    border-radius: 15px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.status h1{
+    font-size: 1.2em;
+}
+.st_coming{
+    background-color: #3eaf42;
+}
+.st_origin{
+    background-color: #F2DD8A;
+}
+.st_delivery{
+    background-color: #EB9486;
+}
+.st_cancel{
+    background-color: #db2f14;
+}
+.actualOrder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+.actualOrder h1{
+    font-size: 1.5em;
+    font-weight: 700;  
+    color: #595B8F;
+    text-align: center;
+}
+.orderData{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+}
+.orderData img{
+    max-width: 200px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+.info_Order h2{
+    color: #EB9486;
+    font-size: 1.3em;
+}
+.info_Order span{
+    color: #808080;
+    font-size: 1em;
+}
+
+.clientData{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    background-color: #F9F8F8;
+    box-shadow: 0px 10px 25px #0000001e;
+    padding: 5px;
+}
+.clientData span i{
+    color: #595B8F;
+    margin-right: 10px;
+}
+.infoClient{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.infoClient span{
+    font-size: 0.9em;
+    color: #808080;
+}
+.infoClient h1{
+    font-size: 1.2em;
+}
+
+.ConfirmContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.cardRec{
+    width: 90%;
+    min-height: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    border: 0.5px solid #7b7f9a57;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-between;
+    margin: 5px;
+}
+.cardRec_header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cardRec_header h1{
+    font-size: 1em;
+    font-weight: 700;
+}
+.cardRec_header span{
+    color: #00A3B2;
+    font-size: 0.8em;
+}
+.cardRec_footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cardRec_footer div:first-child{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+#compensation{
+    color: #3eaf42;
+    font-size: 0.8em;
+}
+div.finalStatus{
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 5px;
+}
+.finalStatus h1{
+    color: #fff;
+    font-size: 0.8em;
 }

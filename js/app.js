@@ -79,3 +79,25 @@ const validateLogin = () => {
   }
   
 }
+
+let statusSelect = document.getElementById('StatusControlSelect');
+const status = () => {
+  let x = document.getElementById('status');
+  if (statusSelect.selectedOptions[0].value == 'En el Origen') {
+    x.innerHTML = "<h1>En Origen</h1>";
+    x.classList = "status st_origin"
+    
+  }else
+  if (statusSelect.selectedOptions[0].value == 'En Camino') {
+    x.innerHTML = "<h1>En Camino</h1>";
+    x.classList = "status st_coming"
+    
+  }else
+  if (statusSelect.selectedOptions[0].value == 'Punto de Entrega') {
+    x.innerHTML = "<h1>En Punto de Entrega</h1>";
+    x.classList = "status st_delivery"
+    
+  }
+
+
+}
