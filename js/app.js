@@ -49,21 +49,31 @@ let totalCont = document.getElementById('total_cont');
 let cont = 1;
 let total = document.getElementById('total');
 
+var product = JSON.parse(localStorage.getItem("products"));
+let KeyOrder = JSON.parse(localStorage.getItem('orderKey'));
+
 
 const moreQ = () =>{
+  let totalOrder;
   quantity.value = ++cont;
   totalCont.innerHTML = quantity.value ;
-  total.innerHTML = quantity.value * 139.00; //el precio del producto
+  totalOrder = quantity.value * product[KeyOrder].price;
+  total.innerHTML = `L. ${totalOrder+70.00}`; //el precio del producto
+
 }
 const lessQ = () =>{
+  let totalOrder;
   quantity.value = --cont;
   totalCont.innerHTML = quantity.value ;
+  totalOrder = quantity.value * product[KeyOrder].price;
+  total.innerHTML = `L. ${totalOrder + 70.00}`
   if (cont < 1) {
     alert('La Cantidad no Es valida')
     cont = 1;
-    quantity.value = cont;
-  totalCont.innerHTML = quantity.value ;
-  total.innerHTML = quantity.value * 139.00;
+    quantity.value = cont--;
+    totalCont.innerHTML = quantity.value ;
+    totalOrder = quantity.value * product[KeyOrder].price;
+    total.innerHTML = `L. ${totalOrder + 70.00}`
   }
 }
 
@@ -100,4 +110,8 @@ const status = () => {
   }
 
 
+};
+
+const logout = () =>{
+  localStorage.removeItem("keyUser");
 }
