@@ -1343,3 +1343,119 @@ div.finalStatus{
 .muted_active{
     display: none;
 }
+
+.admin-stats{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+    width: 96%;
+    margin-left: 20PX;
+    padding: 20px;
+    background-color: #FFF;
+    box-shadow: 10px 10px 5px lightblue;
+
+}
+
+.ads{
+    border-right-style: solid;
+    border-right-color: #595B8F;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.cat_admin{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+    text-align: start;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+    padding: 10px;
+}
+
+
+.ad-prod{
+    background-color: #0E73D0;
+    margin: 10px;
+    
+}
+
+.ad-com{
+    background-color: #C8E3BA ;
+    margin: 10px;
+}
+
+.ad-mot{
+    background-color: #595B8F ;
+    margin: 10px;
+}
+
+.ad-ord{
+    background-color: #EB9486 ;
+    margin: 10px;
+}
+
+#adtxt{
+    white-space: pre;
+}
+
+.editbtn{
+    background-color: #EB9486;
+    font-weight: bold;
+    border-color: #EB9486;
+    margin: 10px;
+}
+
+.delbtn{
+    background-color: #96CF78;
+    font-weight: bold;
+    border-color: #96CF78;
+}
+
+.btncmp{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: center;
+	align-content: stretch;
+}
+
+.comp-afil{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+    background-color: #FFF;
+}
+
+
+.comp-afil table tr{
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+    background-color: #FFF;
+    width: 100%;
+    box-shadow: 10px 10px 5px #595B8F;
+    text-align: left;
+  
+}
+
+
+.th-compafil{
+    text-align: center;
+}
+
+.aggcomp{
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-row-gap: 20px;
+	grid-column-gap: 20px;
+}
