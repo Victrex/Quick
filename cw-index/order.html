@@ -40,10 +40,9 @@
                 <div class="orderContainer">
                     <div class="order_img"></div>
                     <div class="orderContent">
-                        <h1 id="name">Suprema</h1>
-                        <span id="price">Precio LPS. 279.00</span> 
+                        <h1 id="name"></h1>
+                        <span id="price"></span> 
                         <p id="desp">
-                            Elaborada con Peperoni, carne de res y cerdo, champiñones, chile verde y cebolla.
                         </p>
                         <h2>Cantidad</h2>
                         <form class="quantity" action="">
@@ -63,17 +62,17 @@
         <h1>Factura del pedido</h1>
         <table>
             <tr>
-                <td>Precio Total por los Productos</td> <td id="total_price"></td>
+                <td>Precio Total por los Productos</td> <td>L.</td> <td id="total_price"></td>
             </tr>
             <tr>
-                <td>Cantidad de Productos</td> <td id="total_cont">1</td>
+                <td>Cantidad de Productos</td> <td>#</td> <td id="total_cont">1</td>
         
             </tr>
             <tr>
-                <td>Coste de Entrega</td> <td id="deliver">L. 70.00</td>
+                <td>Coste de Entrega</td> <td>L.</td> <td id="deliver">70.00</td>
             </tr>
             <tr>
-                <td>Total a Pagar</td> <td id="total"></td>
+                <td>Total a Pagar</td> <td>L.</td> <td id="total"></td>
             </tr>
             
             
@@ -83,9 +82,8 @@
     <br>
 
     <footer class="submit_order">
-        <a href="../index.html">
-            <input type="submit" class="btn btn_primary btn_large" value="Cargar Pedido">
-        </a>
+            <input type="submit" class="btn btn_primary btn_large" onclick="chargeOrder();" value="Cargar Pedido">
+        
         
     </footer>
     

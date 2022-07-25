@@ -9,13 +9,25 @@ var clientUsers = [
         gender: 'masculino',
         shopping: [],
     },
+    {
+        name: 'Andre',
+        last_name: 'Romanov',
+        email: 'vgvasquez@gmail.com',
+        password: '1234',
+        phone: '9500-1170',
+        ProfilePhoto: '../ASSETS/users/clntUsers/user_prueba.jpg',
+        gender: 'masculino',
+        shopping: [],
+    },
 
-]
+];
+
 var motUsers = [
     {
         name: 'Daniels',
         last_name: 'Hernandez',
         email: 'daniels@gmail.com',
+        password: 'daniels1234',
         phone: '9746-6784',
         ProfilePhoto: '../ASSETS/user/motUsers/user_prueba.jpg',
         gender: 'masculino' 
@@ -81,33 +93,80 @@ var products = [
         photo: '../ASSETS/products/super_suprema.jpg',
     },
 ]
-localStorage.setItem("companys", JSON.stringify(companys))
-localStorage.setItem("users", JSON.stringify(clientUsers));
-localStorage.setItem("products", JSON.stringify(products))
-var users = JSON.parse(localStorage.getItem("users"));
+
+if (localStorage.getItem("products") == null) {
+    localStorage.setItem("products", JSON.stringify(products));
+}
+if (localStorage.getItem("companys") == null) {
+    localStorage.setItem("companys", JSON.stringify(companys));
+}
+
+
+
+
 var products = JSON.parse(localStorage.getItem("products"));
-const Ulogin = () => {
+var users = JSON.parse(localStorage.getItem("users"));
+  var mots = JSON.parse(localStorage.getItem("mot"));
+  const ML = () =>{
+    if (localStorage.getItem("mot") == null) {
+        localStorage.setItem("mot", JSON.stringify(motUsers));
+        window.location.reload();
+    };
+    
+  };
+  
+
+  const Mlogin = () => {
+    let email = document.getElementById('Email2');
+    let password = document.getElementById('Password2');
+    if (!email.value == "") {
+        let a = mots.filter(mots => mots.email == email.value);
+        if (a.length == 0) {
+            document.querySelector(".noProfile").classList.remove("active");
+        } else {
+            
+                if (a[0].password == password.value ) {
+                    location.href ="cat.html";
+                    localStorage.setItem("keyUser", a[0].email); 
+                    return false;
+                    
+                }else{
+                    document.querySelector(".noProfile").classList.remove("active");//cuando la contraseña sea incorrecta
+                    document.querySelector(".noProfile").innerHTML = "La contraseña es incorrecta";
+                };
+        }
+      
+    }
+    
+};
+const UL = () =>{
+    if (localStorage.getItem("users") == null) {
+        localStorage.setItem("users", JSON.stringify(clientUsers));
+        window.location.reload();
+    }
+  };
+  const Ulogin = () => {
     let email = document.getElementById('Email1');
     let password = document.getElementById('Password1');
     if (!email.value == "") {
-        console.log(email.value + " " + password.value);
-
-    }
-    users.forEach(e => {
-        if (email.value == e.email) {
-            if (password.value == e.password) {
-                location.href = "../index.html";
-                localStorage.setItem("keyUser", e.email);
-                
-            }else{
-                alert("contraseña incorrecta");
-                
-            }
+        let a = users.filter(users => users.email == email.value);
+        if (a.length == 0) {
+            document.querySelector(".noProfile").classList.remove("active");//cuando no se encuentre el perfil en la base de datos
+        } else {
+                if (a[0].password == password.value ) {
+                     location.href = "../index.html"; 
+                    localStorage.setItem("keyUser", a[0].email);
+                    return false;             
+                    
+                }else{
+                    document.querySelector(".noProfile").classList.remove("active");//cuando la contraseña sea incorrecta
+                    document.querySelector(".noProfile").innerHTML = "La contraseña es incorrecta";
+                };
         }
-        
-        
-    });
-}
+      
+    }
+
+  };
 const cwUser = () =>{
     let photo = document.querySelector('.profilePhoto');
     let name = document.querySelector('.nameUser');
@@ -216,11 +275,35 @@ const order = () => {
     let desp = document.getElementById('desp');
     let img = document.querySelector('.order_img');
     img.innerHTML = `<img src="${product[orderKey].photo}" alt="">`;
-    document.getElementById('total').innerHTML = `L. ${product[orderKey].price + 70.00} `;
-    document.getElementById('total_price').innerHTML = `L. ${product[orderKey].price} `; 
+    document.getElementById('total').innerHTML =  product[orderKey].price + 70.00 ;
+    document.getElementById('total_price').innerHTML =  product[orderKey].price ; 
     name.innerHTML = product[orderKey].productName;
     price.innerHTML = `Precio Lps. ${product[orderKey].price}`;
     desp.innerHTML = product[orderKey].desp; 
+};
+const chargeOrder = () => {
+    console.log("OrdenCargada");
+    //localStorage.removeItem('orderKey');
+    let totalPrice = document.getElementById('total');
+    console.log("el total del pedido es " + totalPrice.innerHTML);
+    let user = localStorage.getItem("keyUser");
+    let orderList = JSON.parse(localStorage.getItem("orderlist"));
+    users.forEach(element => {
+        if (element.email == user) {
+            let order = {
+                nameProduct : `'${document.getElementById('name').innerHTML}'`,
+            totalOrder: `${totalPrice.innerHTML}`,
+            img: `'${document.querySelector('.order_img').innerHTML}'`,
+            quantity: `${document.getElementById('total_cont').innerHTML}`,
+            };
+            element.shopping.push(order);
+        console.log(element);
+        localStorage.setItem("orderlist", JSON.stringify(users));
+        }
+    });
+    console.log(users);
+   
+    location.href = "../index.html";
 }
 
 
@@ -241,4 +324,43 @@ const order = () => {
           form.classList.add('was-validated')
         }, false)
       })
-  })()
+  })();
+
+  const cargarUsers = () => {
+    let x = JSON.parse(localStorage.getItem("users"));
+    console.log(x);
+  }
+
+
+  const pedidos = () => {
+        let x = document.getElementById('prds');
+        let y = JSON.parse(localStorage.getItem("orderlist"));
+        y.forEach(e => {
+            console.log(localStorage.getItem("KeyUser"));
+            if (e.email == localStorage.getItem("keyUser")) {
+                e.shopping.forEach(element => {
+                    x.innerHTML += `
+                <a class="linkPrd" href="#">
+                <hr>
+                <div class="cardPrd">
+                    <div class="cardPrd_header">
+                        ${element.img}
+                    </div>
+                    <div class="corpInfo">
+                        <h1>${element.nameProduct}</h1>
+                        <span>Total por Este Pedido <span id="totalOrder"> Lps ${element.totalOrder}</span></span> 
+                        <span>Cantidad de Productos: <span id="totalQuantity"> #${element.quantity}</span></span>
+                    </div>
+                    
+                </div>
+                <hr>
+            </a>
+                `;
+                });
+                
+            }
+        });
+        
+  }
+  
+  

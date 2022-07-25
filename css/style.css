@@ -155,7 +155,7 @@ body {
       }
     div.gridCard{
         width: 150px;
-        height: 220px;
+        min-height: 220px;
         max-height: 300px;
     }
     
@@ -175,7 +175,7 @@ body {
   @media screen and (max-width: 900px) {
     div.gridCard{
         width: 150px;
-        height: 220px;
+        min-height: 220px;
     }
     
     div.gridCard input{
@@ -783,7 +783,7 @@ p.welcome-text2{
     display: flex;
     flex-wrap: wrap;
     min-width: 150px;
-    height: 220px;
+    min-height: 220px;
     max-height: 300px;
     justify-content: center;
     align-items: center;
@@ -1342,4 +1342,8 @@ div.finalStatus{
 
 .muted_active{
     display: none;
+}
+
+.noProfile {
+    color: #db2f14;
 }

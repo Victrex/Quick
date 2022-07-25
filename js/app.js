@@ -57,23 +57,20 @@ const moreQ = () =>{
   let totalOrder;
   quantity.value = ++cont;
   totalCont.innerHTML = quantity.value ;
-  totalOrder = quantity.value * product[KeyOrder].price;
-  total.innerHTML = `L. ${totalOrder+70.00}`; //el precio del producto
+  total.innerHTML = (quantity.value * product[KeyOrder].price) + 70.00; //el precio del producto
 
 }
 const lessQ = () =>{
   let totalOrder;
   quantity.value = --cont;
   totalCont.innerHTML = quantity.value ;
-  totalOrder = quantity.value * product[KeyOrder].price;
-  total.innerHTML = `L. ${totalOrder + 70.00}`
+  total.innerHTML = (quantity.value * product[KeyOrder].price) + 70.00;
   if (cont < 1) {
     alert('La Cantidad no Es valida')
     cont = 1;
     quantity.value = cont--;
     totalCont.innerHTML = quantity.value ;
-    totalOrder = quantity.value * product[KeyOrder].price;
-    total.innerHTML = `L. ${totalOrder + 70.00}`
+    total.innerHTML = (quantity.value * product[KeyOrder].price) + 70.00;
   }
 }
 
@@ -114,4 +111,9 @@ const status = () => {
 
 const logout = () =>{
   localStorage.removeItem("keyUser");
+  localStorage.removeItem("users");
+  localStorage.removeItem("company");
+  localStorage.removeItem("companys");
+  localStorage.removeItem("products");
+  localStorage.removeItem("mot");
 }
