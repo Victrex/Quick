@@ -1,4 +1,4 @@
-# proyecto-poo-quick
+# proyecto-poo-quick version 1.1.2
 # Version de Bootstrap 4.6.1
 # Version de FontAwesome 4.7.0
  
