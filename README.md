@@ -1,4 +1,4 @@
-# proyecto-poo-quick
+# proyecto-poo-quick version 1.1.1
 # Version de Bootstrap 4.6.1
 # Version de FontAwesome 4.7.0
  
@@ -6,4 +6,4 @@
 
 
 # Paginas Principales: index.html  landing.html   motor.html 
-# Token Vic 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
+
