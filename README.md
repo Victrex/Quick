@@ -1,8 +1,9 @@
-# proyecto-poo-quick version 1.1.1
+# proyecto-poo-quick version 1.1.2
 # Version de Bootstrap 4.6.1
 # Version de FontAwesome 4.7.0
  
-# Por los Momentos la pagina web, solo cuenta con un frontEnd Estatico, y la informacion mostrada es estatica, inyectada directamente al codigo HTML, y en los proximos dias trasladaremos la informacion a JSON y trabajar dinamicamente, antes de empezar a trabajar con el Backend 
+# En l a version 1.1.2 del proyecto se empezara a implementar el backend, con NodeJS como servidor, Typescript como lenguaje para las REQ y RES, models, controllers, etc.y MongoDB como base de datos.
+
 
 
 # Paginas Principales: index.html  landing.html   motor.html 
