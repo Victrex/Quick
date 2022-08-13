@@ -38,21 +38,19 @@
             <table>
             <tr>
                 <th class="th-compafil" style="width: 3%;" >No.</th>
-                <th class="th-compafil" style="width: 12%;">Código</th>
                 <th class="th-compafil" style="width: 15%;">Nombre</th>
-                <th class="th-compafil" style="width: 13%;">Cargo</th>
+                <th class="th-compafil" style="width: 13%;">Género</th>
                 <th class="th-compafil" style="width: 10%;">Telefóno</th>
-                <th class="th-compafil" style="width: 12%;">Estado</th>
+                <th class="th-compafil" style="width: 12%;">E-mail</th>
                 <th class="th-compafil" style="width: 15%;">Acción</th>
             </tr>
               
               <tr>
                 <td>1</td>
-                <td>#1999082343</td>
-                <td><a href="#">Kevin Osorto</a></td>
-                <td>Motorista</td>
-                <td>9540-4559</td>
-                <td>En Movimiento</td>
+                <td><a href="#">Sara Reyes</a></td>
+                <td>Femenino</td>
+                <td>9886-0521</td>
+                <td>sara.reyes96@gmail.com</td>
                 <td>
                     <div class="btncmp">
                         <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
@@ -80,95 +78,63 @@
                       <div class="modal-content">
                         <div class="modal-header">
 
-                          <strong><h2 class="modal-title" id="staticBackdropLabel">Agregar/editar Motorista</h2></strong>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <strong><h2 class="modal-title" id="staticBackdropLabel">Editar Colaboradores</h2></strong>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                          </button>
+                            </button>
+                            <h3>Datos Personales</h3>
                         </div>
                         <div class="modal-body">
                           <div class="modal-mot">
                             <div class="formmotprincipal">
-                              <div>
-                                <label for="nombre" class="form-label">Nombre Completo</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
-                             
-                                <div class="bornDate-tel">
-                                  <div>
-                                      <label for="dobirth" class="form-label form-mot">Fecha De Nacimiento</label>
-                                      <input type="date" class="form-control form-mot" id="txtcomp" value="" required>
-                                  </div>
-                                  <div>
-                                    <label for="telefono" class="form-label form-mot">Telefono</label>
-                                    <input type="text" class="form-control form-mot" id="txtcomp" value="" required>
-                                  </div>
-                                </div>
-  
-                                <br> 
-                                <label for="livplace" class="form-label">Lugar de Residencia</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
-                              </div>
-                              <div class="secondpartprinmot">
-                                <div class="gender-cvstatus">
-                                  <div>
-                                      <label for="gender" class="form-label">Genero</label>
-                                      <input type="text" class="form-control" id="txtcomp" value="" required>
-                                  </div>
-                                  <div>
-                                    <label for="cvstatus" class="form-label">Estado Civil</label>
+                            <div>
+                                    <label for="nombre" class="form-label">Nombre Completo</label>
                                     <input type="text" class="form-control" id="txtcomp" value="" required>
-                                  </div>
+                                
+                                    <div class="bornDate-tel">
+                                    <div>
+                                        <label for="dobirth" class="form-label form-mot">Fecha De Nacimiento</label>
+                                        <input type="date" class="form-control form-mot" id="txtcomp" value="" required>
+                                    </div>
+                                    <div>
+                                        <label for="telefono" class="form-label form-mot">Telefono</label>
+                                        <input type="text" class="form-control form-mot" id="txtcomp" value="" required>
+                                    </div>
+                                    </div>
+    
+                                    <br> 
+                                    <label for="livplace" class="form-label">Lugar de Residencia</label>
+                                    <input type="text" class="form-control" id="txtcomp" value="" required>
+                                </div>
+                            <div class="secondpartprinmot">
+                                <div class="gender-cvstatus">
+                                <div>
+                                    <label for="gender" class="form-label">Genero</label>
+                                    <input type="text" class="form-control" id="txtcomp" value="" required>
+                                </div>
+                                    <div>
+                                        <label for="username" class="form-label">Nombre de Usuario</label>
+                                        <input type="text" class="form-control" id="txtcomp" value="" required>
+                                    </div>
+                                    <div>
+                                    <label for="email" class="form-label">Correo Electrónico</label>
+                                    <input type="text" class="form-control" id="txtcomp" value="" required>
+                                    </div>
                                 </div>
                                 <div class="upload-image">
-                                  <label for="exampleFormControlFile1">Subir imagen</label>
-                                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        <label for="exampleFormControlFile1">Subir imagen</label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    <div>
+                                        <label for="passsword" class="form-label">Contraseña</label>
+                                        <input type="text" class="form-control" id="txtcomp" value="" required>
+                                    </div>
                                 </div>
                               </div>
                             </div>  
-                            <h2>Quick Motorista</h2>
-                            <div class="formmotsecondary"> 
-                            
-                              <div>
-                                <label for="charge" class="form-label">Cargo</label>
-                                <select class="form-control" id="lista-charge">
-                                  <option selected></option>
-                                  <option value="1">Motorista</option>
-                                  <option value="2">Otro</option>
-                                </select>
-                              </div>
-                              <div>
-                                <label for="status" class="form-label">Estado</label>
-                                <select class="form-control" id="lista-status">
-                                  <option selected></option>
-                                  <option value="1">En movimiento</option>
-                                  <option value="2">Disponible</option>
-                                  <option value="3">Inhabilitado</option>
-                                </select>
-                              </div>
-                              <div>
-                                <label for="username" class="form-label">Nombre de Usuario</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
-                              </div>
-                              <div>
-                                <label for="regNumber" class="form-label">N° Registro</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
-                              </div>
-                              <div>
-                                <label for="email" class="form-label">Correo Electrónico</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
-                              </div>
-                              <div>
-                                <label for="passsword" class="form-label">Contraseña</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
-                              </div>
-                              
-                            </div>
-                           
-                            
-                            
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
-                          <button type="button" class="btn btn_primary">Agregar Motorista</button>
+                          <button type="button" class="btn btn_primary">Guardar Cambios</button>
                         </div>
                       </div>
                     </div>
@@ -183,7 +149,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal-delete" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <a href="#">Kevin Osorto</a>
+                            <a href="#">...</a>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
