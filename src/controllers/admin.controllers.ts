@@ -15,11 +15,11 @@ export const adminMotoristas = (req:Request, res:Response) => {
 }
 
 export const adminProductos = (req:Request, res:Response) => {
-    res.sendFile(path.resolve(__dirname,'../public/admin-index/adminprod.html'));
+    res.sendFile(path.join(__dirname,'../public/admin-index/adminprod.html'));
 }
 export const adminOrdenes = (req:Request, res:Response) => {
-    res.sendFile(path.resolve(__dirname,'../public/admin-index/adminord.html'));
+    res.sendFile(path.join(__dirname,'../public/admin-index/adminord.html'));
 }
 export const adminClientes = (req:Request, res:Response) => {
-    res.sendFile(path.resolve(__dirname,'../public/admin-index/admincol.html'));
+    res.sendFile(path.join(__dirname,'../public/admin-index/admincol.html'));
 }
