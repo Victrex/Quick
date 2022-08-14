@@ -1,24 +1,27 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.adminClientes = exports.adminOrdenes = exports.adminProductos = exports.adminMotoristas = exports.indexAdmin = void 0;
+const path_1 = __importDefault(require("path"));
 const indexAdmin = (req, res) => {
-    res.send('AQUI SE VA A MOSTRAR LA PAGINA DE ADMIN');
+    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/principal.html'));
 };
 exports.indexAdmin = indexAdmin;
 const adminMotoristas = (req, res) => {
-    res.send('AQUI SE VA A MOSTRAR LA PAGINA DE MOTORISTAS');
+    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/adminmot.html'));
 };
 exports.adminMotoristas = adminMotoristas;
 const adminProductos = (req, res) => {
-    res.send('AQUI SE VA A MOSTRAR LA PAGINA DE PRODUCTOS');
+    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/adminprod.html'));
 };
 exports.adminProductos = adminProductos;
 const adminOrdenes = (req, res) => {
-    res.send('AQUI SE VA A MOSTRAR LA PAGINA DE ORDENES');
+    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/adminord.html'));
 };
 exports.adminOrdenes = adminOrdenes;
 const adminClientes = (req, res) => {
-    /* res.send('AQUI SE VA A MOSTRAR LA PAGINA DE CLIENTES'); */
-    res.render('../public/admin-index/admincol.html');
+    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/admincol.html'));
 };
 exports.adminClientes = adminClientes;

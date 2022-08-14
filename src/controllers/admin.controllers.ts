@@ -1,18 +1,23 @@
-import { Request, Response } from "express";
+import express, {Express, Request, Response } from "express";
+import path from "path";
+
+
+
+
 
 export const indexAdmin = (req:Request, res:Response) => {
-        res.send('AQUI SE VA A MOSTRAR LA PAGINA DE ADMIN');
+    res.sendFile(path.resolve(__dirname,'../public/admin-index/principal.html'));
 }
 export const adminMotoristas = (req:Request, res:Response) => {
-    res.send('AQUI SE VA A MOSTRAR LA PAGINA DE MOTORISTAS');
+    res.sendFile(path.resolve(__dirname,'../public/admin-index/adminmot.html'));
 }
+
 export const adminProductos = (req:Request, res:Response) => {
-    res.send('AQUI SE VA A MOSTRAR LA PAGINA DE PRODUCTOS');
+    res.sendFile(path.resolve(__dirname,'../public/admin-index/adminprod.html'));
 }
 export const adminOrdenes = (req:Request, res:Response) => {
-    res.send('AQUI SE VA A MOSTRAR LA PAGINA DE ORDENES');
+    res.sendFile(path.resolve(__dirname,'../public/admin-index/adminord.html'));
 }
 export const adminClientes = (req:Request, res:Response) => {
-    /* res.send('AQUI SE VA A MOSTRAR LA PAGINA DE CLIENTES'); */
-    res.render('../public/admin-index/admincol.html')
+    res.sendFile(path.resolve(__dirname,'../public/admin-index/admincol.html'));
 }
