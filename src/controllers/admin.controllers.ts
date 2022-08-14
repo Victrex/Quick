@@ -9,7 +9,9 @@ export const indexAdmin = (req:Request, res:Response) => {
     res.sendFile(path.resolve(__dirname,'../public/admin-index/principal.html'));
 }
 export const adminMotoristas = (req:Request, res:Response) => {
-    res.sendFile(path.resolve(__dirname,'../public/admin-index/adminmot.html'));
+    res.sendFile(path.join(__dirname,'../public/admin-index/adminmot.html'));
+    
+    
 }
 
 export const adminProductos = (req:Request, res:Response) => {

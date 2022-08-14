@@ -10,7 +10,7 @@ const indexAdmin = (req, res) => {
 };
 exports.indexAdmin = indexAdmin;
 const adminMotoristas = (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/adminmot.html'));
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminmot.html'));
 };
 exports.adminMotoristas = adminMotoristas;
 const adminProductos = (req, res) => {

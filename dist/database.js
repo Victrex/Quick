@@ -12,16 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = require("mongoose");
 const products_model_1 = __importDefault(require("./models/products.model"));
-//conectar a la base de datos
-function connectDB() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const db = yield (0, mongoose_1.connect)("mongodb+srv://QuickDB:8Xudeey_hA.g8U$@cluster0.gmhxjfx.mongodb.net/?retryWrites=true&w=majority");
-        console.log('database is conected to', db.connection.db.databaseName);
-    });
-}
-connectDB();
 function addProduct(name, company, category, price, description, photo) {
     return __awaiter(this, void 0, void 0, function* () {
         const product = new products_model_1.default({
