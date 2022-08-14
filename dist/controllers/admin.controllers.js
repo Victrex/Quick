@@ -11,19 +11,19 @@ const indexAdmin = (req, res) => {
 };
 exports.indexAdmin = indexAdmin;
 const adminMotoristas = (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/adminmot.html'));
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminmot.html'));
 };
 exports.adminMotoristas = adminMotoristas;
 const adminProductos = (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/adminprod.html'));
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminprod.html'));
 };
 exports.adminProductos = adminProductos;
 const adminOrdenes = (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/adminord.html'));
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminord.html'));
 };
 exports.adminOrdenes = adminOrdenes;
 const adminClientes = (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/admincol.html'));
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/admincol.html'));
 };
 exports.adminClientes = adminClientes;
 const getProducts = (req, res) => {
