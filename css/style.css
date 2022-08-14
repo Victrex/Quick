@@ -1517,3 +1517,11 @@ div.finalStatus{
 	grid-row-gap: 20px;
 	grid-column-gap: 20px;
 }
+
+.tyctext{
+    padding: 40px;
+}
+
+.tyctext p{
+    text-align: justify;
+}
