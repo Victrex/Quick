@@ -12,6 +12,7 @@ const app = (0, express_1.default)();
 const port = process.env.PORT;
 //routes
 app.use('/admin', admin_routes_1.default);
+//
 //server
 app.listen(port, () => {
     console.log(`[SERVER] running at http://localhost:${port}`);
