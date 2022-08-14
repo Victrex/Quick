@@ -9,40 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Product = void 0;
+exports.motorsUser = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
-class companys {
+class motorsUser {
 }
 __decorate([
-    (0, typegoose_1.prop)(),
-    __metadata("design:type", String)
-], companys.prototype, "company", void 0);
-class Product {
-}
-__decorate([
-    (0, typegoose_1.prop)({ type: String, required: true }),
-    __metadata("design:type", String)
-], Product.prototype, "productName", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ type: () => [companys] }),
-    __metadata("design:type", companys)
-], Product.prototype, "company", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ type: String, required: true, trim: true }),
-    __metadata("design:type", String)
-], Product.prototype, "category", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ type: Number, default: 0 }),
+    (0, typegoose_1.prop)({ type: Number, required: true }),
     __metadata("design:type", Number)
-], Product.prototype, "price", void 0);
+], motorsUser.prototype, "code", void 0);
 __decorate([
     (0, typegoose_1.prop)({ type: String, required: true }),
     __metadata("design:type", String)
-], Product.prototype, "description", void 0);
+], motorsUser.prototype, "nameMotor", void 0);
 __decorate([
     (0, typegoose_1.prop)({ type: String, required: true }),
     __metadata("design:type", String)
-], Product.prototype, "photo", void 0);
-exports.Product = Product;
-const ProductModel = (0, typegoose_1.getModelForClass)(Product);
-exports.default = ProductModel;
+], motorsUser.prototype, "charge", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
+], motorsUser.prototype, "telephone", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String }),
+    __metadata("design:type", String)
+], motorsUser.prototype, "state", void 0);
+exports.motorsUser = motorsUser;

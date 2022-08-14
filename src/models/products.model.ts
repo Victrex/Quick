@@ -6,8 +6,8 @@ class companys{
     company: string
 }
 
-class Product {
-    @prop({type:String, required:true, trim: true })
+export class Product {
+    @prop({type:String, required:true })
     productName:string;
 
     @prop({type: () => [companys]})
@@ -26,3 +26,7 @@ class Product {
     photo:string;
 
 }
+
+
+const ProductModel = getModelForClass(Product);
+export default ProductModel;

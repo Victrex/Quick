@@ -8,8 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+const products_model_1 = __importDefault(require("./models/products.model"));
 //conectar a la base de datos
 function connectDB() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -18,10 +22,23 @@ function connectDB() {
     });
 }
 connectDB();
+function addProduct(name, company, category, price, description, photo) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const product = new products_model_1.default({
+            productName: `${name}`,
+            company: `${company}`,
+            category: `${category}`,
+            price: `${price}`,
+            description: `${description}`,
+            photo: `${photo}`
+        });
+        yield product.save();
+    });
+}
 function getQueries() {
     return __awaiter(this, void 0, void 0, function* () {
-        const users = "";
-        console.log(users);
+        const product = yield products_model_1.default.find();
+        console.log(product);
     });
 }
 getQueries();
