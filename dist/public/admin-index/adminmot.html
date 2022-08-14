@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../ASSETS/LOGO/Logo_white.svg" type="image/x-icon">
+    <title>Quick</title>
+</head>
+<body class="" id="body">
+    <nav class="nav">
+    <div class="logoCont">
+        <a href="#home" ><img class="logo-navbar" src="../ASSETS/LOGO/Logo_black.svg" alt=""></a>
+
+    </div>
+    <div class="topnav" id="myTopnav">
+        
+      <a href="../admin/clientes">Colaboradores</a>
+        <a href="../admin">Peticiones</a>
+        <a href="../admin">Admin</a>
+        
+      </div>
+      <a href="javascript:void(0);" id="icon" class="icon" onclick="navCollapse()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </nav>
+    
+
+    <article>
+       <h1><strong>Administración-Victor Vasquez</strong></h1> <br>
+        
+        <h2>Motoristas</h2><br>
+       
+         <div class="comp-afil">
+            <table>
+            <tr>
+                <th class="th-compafil" style="width: 3%;" >No.</th>
+                <th class="th-compafil" style="width: 12%;">Código</th>
+                <th class="th-compafil" style="width: 15%;">Nombre</th>
+                <th class="th-compafil" style="width: 13%;">Cargo</th>
+                <th class="th-compafil" style="width: 10%;">Telefóno</th>
+                <th class="th-compafil" style="width: 12%;">Estado</th>
+                <th class="th-compafil" style="width: 15%;">Acción</th>
+            </tr>
+              
+              <tr>
+                <td>1</td>
+                <td>#1999082343</td>
+                <td><a href="#">Kevin Osorto</a></td>
+                <td>Motorista</td>
+                <td>9540-4559</td>
+                <td>En Movimiento</td>
+                <td>
+                    <div class="btncmp">
+                        <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
+                        <button class="btn delbtn" data-bs-toggle="modal-delete" data-bs-target="#modal-delete">Eliminar</button>
+                    </div>
+                </td>
+            
+                
+              </tr>
+              
+    
+            </table>
+
+
+            <div class="btn_prod">
+                
+                    <div class="btnsadd" >
+                        <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn_primary btn_large">Agregar Motorista</button>
+                      </div>
+                    
+                </div>
+                 
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+
+                          <strong><h2 class="modal-title" id="staticBackdropLabel">Agregar/editar Motorista</h2></strong>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="modal-mot">
+                            <div class="formmotprincipal">
+                              <div>
+                                <label for="nombre" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                             
+                                <div class="bornDate-tel">
+                                  <div>
+                                      <label for="dobirth" class="form-label form-mot">Fecha De Nacimiento</label>
+                                      <input type="date" class="form-control form-mot" id="txtcomp" value="" required>
+                                  </div>
+                                  <div>
+                                    <label for="telefono" class="form-label form-mot">Telefono</label>
+                                    <input type="text" class="form-control form-mot" id="txtcomp" value="" required>
+                                  </div>
+                                </div>
+  
+                                <br> 
+                                <label for="livplace" class="form-label">Lugar de Residencia</label>
+                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                              </div>
+                              <div class="secondpartprinmot">
+                                <div class="gender-cvstatus">
+                                  <div>
+                                      <label for="gender" class="form-label">Genero</label>
+                                      <input type="text" class="form-control" id="txtcomp" value="" required>
+                                  </div>
+                                  <div>
+                                    <label for="cvstatus" class="form-label">Estado Civil</label>
+                                    <input type="text" class="form-control" id="txtcomp" value="" required>
+                                  </div>
+                                </div>
+                                <div class="upload-image">
+                                  <label for="exampleFormControlFile1">Subir imagen</label>
+                                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                </div>
+                              </div>
+                            </div>  
+                            <h2>Quick Motorista</h2>
+                            <div class="formmotsecondary"> 
+                            
+                              <div>
+                                <label for="charge" class="form-label">Cargo</label>
+                                <select class="form-control" id="lista-charge">
+                                  <option selected></option>
+                                  <option value="1">Motorista</option>
+                                  <option value="2">Otro</option>
+                                </select>
+                              </div>
+                              <div>
+                                <label for="status" class="form-label">Estado</label>
+                                <select class="form-control" id="lista-status">
+                                  <option selected></option>
+                                  <option value="1">En movimiento</option>
+                                  <option value="2">Disponible</option>
+                                  <option value="3">Inhabilitado</option>
+                                </select>
+                              </div>
+                              <div>
+                                <label for="username" class="form-label">Nombre de Usuario</label>
+                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                              </div>
+                              <div>
+                                <label for="regNumber" class="form-label">N° Registro</label>
+                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                              </div>
+                              <div>
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                              </div>
+                              <div>
+                                <label for="passsword" class="form-label">Contraseña</label>
+                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                              </div>
+                              
+                            </div>
+                           
+                            
+                            
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn_primary">Agregar Motorista</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                    <!-- Modal Eliminar-->
+                    <div class="modal fade" id="staticBackdrop modal-delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal-delete" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <a href="#">Kevin Osorto</a>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn_primary">Confirmar</button></div>
+                        </div>
+                      </div>
+                    </div>
+
+
+        
+        </div> 
+        
+        
+       
+    </article>
+    
+
+    <script src="../js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</body>
+</html>
