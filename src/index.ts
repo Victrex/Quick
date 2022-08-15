@@ -27,7 +27,7 @@ app.use(methodOverride('_method'))
 
 
 //routes
-app.use('/admin', adminRoutes)
+app.use('./admin/', adminRoutes)
 
 
 
