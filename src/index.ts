@@ -2,6 +2,7 @@ import express, {Express, Response, Request} from "express";
 import mongoose, {connect, Schema} from "mongoose";
 import dotenv from 'dotenv';
 import cors from 'cors';
+import path from "path";
 import adminRoutes from "./routes/admin.routes";
 import path from "path";
 dotenv.config();
@@ -11,7 +12,6 @@ const port = process.env.PORT;
 
 
 app.use(cors())
-app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 var publicPath = path.resolve(__dirname, './src/public');
