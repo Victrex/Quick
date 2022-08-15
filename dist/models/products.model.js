@@ -24,8 +24,8 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "productName", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ type: () => [companys] }),
-    __metadata("design:type", companys)
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
 ], Product.prototype, "company", void 0);
 __decorate([
     (0, typegoose_1.prop)({ type: String, required: true, trim: true }),

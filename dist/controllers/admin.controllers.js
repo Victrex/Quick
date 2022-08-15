@@ -10,6 +10,7 @@ const motors_model_1 = __importDefault(require("../models/motors.model"));
 const client_model_1 = __importDefault(require("../models/client.model"));
 const company_model_1 = __importDefault(require("../models/company.model"));
 const order_model_1 = __importDefault(require("../models/order.model"));
+const database_1 = require("../database");
 const indexAdmin = (req, res) => {
     res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/principal.html'));
 };
@@ -33,6 +34,8 @@ exports.adminClientes = adminClientes;
 /*CRUD Productos
  */
 const getProducts = (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminprod.html'));
+    (0, database_1.getQueries)();
     products_model_1.default.find().then(result => {
         res.send(result);
         res.end();
@@ -72,6 +75,7 @@ const postProduct = (req, res) => {
         description: req.body.description,
         photo: req.body.photo
     });
+    (0, database_1.addProduct)(product.productName, product.company, product.category, product.price, product.description, product.photo);
     product
         .save()
         .then(data => {

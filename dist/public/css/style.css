@@ -1517,3 +1517,7 @@ div.finalStatus{
 	grid-row-gap: 20px;
 	grid-column-gap: 20px;
 }
+
+.modal-content{
+    height: 100%;
+}

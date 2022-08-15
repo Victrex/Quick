@@ -5,8 +5,6 @@ import cors from 'cors';
 import path from "path";
 import adminRoutes from "./routes/admin.routes";
 import methodOverride from 'method-override';
-import session from "express-session";
-import handlebars from 'handlebars'
 
 
 
@@ -19,17 +17,12 @@ const port = process.env.PORT;
 app.use(cors())
 app.use(express.urlencoded({extended:false}));
 
-var publicPath = path.resolve(__dirname, './src/public');
 
 app.set('public', path.join(__dirname, 'public')) 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride('_method'))
-app.use(session({
-    secret: 'mysecretapp',
-    resave: true,
-    saveUninitialized: true
-}))
+
 
 
 

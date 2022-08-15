@@ -363,4 +363,33 @@ const chargeOrder = () => {
         
   }
   
-  
+
+  //cargar productos en el crud de admin Productos
+
+  const productsAdmin = document.getElementById('productsAdmin');
+  const loadProductsAdmin = () => {
+    let i = 1;
+    products.forEach(e => {
+        productsAdmin.innerHTML += `
+        <tr>
+                <td>${i}</td>
+                <td>${e.productName}</td>
+                <td>${e.price}</td>
+                <td><a href="#">Abrir Imagen</a></td>
+                <td>${e.company}</td>
+                <td>${e.category}</td>
+                <td>${e.desp}</td>
+                <td>
+                    <div class="btncmp">
+                        <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
+                        <button class="btn delbtn">Eliminar</button>
+                    </div>
+                </td>
+            
+                
+              </tr>
+        `
+        i++;
+    });
+  }
+

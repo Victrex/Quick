@@ -3,41 +3,41 @@ import { indexAdmin, adminMotoristas, adminProductos, adminOrdenes, adminCliente
 
 const router = Router();
 router.get('/', indexAdmin)
-router.get('/motoristas', adminMotoristas);
-router.get('/productos', adminProductos);
-router.get('/ordenes', adminOrdenes);
-router.get('/clientes', adminClientes);
+//router.get('/motoristas', adminMotoristas);
+//router.get('/productos', adminProductos);
+//router.get('/ordenes', adminOrdenes);
+//router.get('/clientes', adminClientes);
 
 //Router Productos
-router.get('/', getProducts);
+router.get('/productos', getProducts);
 router.get('/:id', getProduct);
-router.post('/', postProduct);
+router.post('/productos', postProduct);
 router.put('/:id', putProduct);
 router.delete('/:id', deleteProduct);
 
 //Router Motoristas
-router.get('/', getMotoristas);
+router.get('/motoristas', getMotoristas);
 router.get('/:id', getMotorista);
 router.post('/', postMotorista);
 router.put('/:id', putMotorista);
 router.delete('/:id', deleteMotorista);
 
 //Router Clientes
-router.get('/', getClients);
+router.get('/clientes', getClients);
 router.get('/:id', getClient);
 router.post('/', postClient);
 router.put('/:id', putClient);
 router.delete('/:id', deleteClient);
 
 //Router Empresas
-router.get('/', getCompanies);
+router.get('/empresas', getCompanies);
 router.get('/:id', getCompany);
 router.post('/', postCompany);
 router.put('/:id', putCompany);
 router.delete('/:id', deleteCompany);
 
 //Router Ordenes
-router.get('/', getOrders);
+router.get('/ordenes', getOrders);
 router.get('/:id', getOrder);
 router.post('/', postOrder);
 router.put('/:id', putOrder);

@@ -7,6 +7,7 @@ import motorModel from "../models/motors.model";
 import clientModel from "../models/client.model";
 import companyModel from "../models/company.model";
 import orderModel from "../models/order.model";
+import { addProduct, getQueries } from "../database";
 
 
 
@@ -33,6 +34,8 @@ export const adminClientes = (req:Request, res:Response) => {
 /*CRUD Productos
  */
 export const getProducts = (req:Request , res:Response) => {
+        res.sendFile(path.join(__dirname,'../public/admin-index/adminprod.html'));
+        getQueries();
         ProductModel.find().then(result=>{
                 res.send(result);
                 res.end();      
@@ -60,7 +63,7 @@ export const getProduct = (req:Request , res:Response) => {
 }
 
 export const postProduct = (req:Request , res:Response) => {
-        if(!req.body){
+         if(!req.body){
                 res.status(400).send({mssage: 'Contenido no puede estar vacio'});
                 return;
         }
@@ -75,6 +78,7 @@ export const postProduct = (req:Request , res:Response) => {
                 photo:req.body.photo
 
         })
+        addProduct(product.productName, product.company, product.category, product.price, product.description, product.photo )
         product
                 .save()
                 .then(data =>{
@@ -86,8 +90,8 @@ export const postProduct = (req:Request , res:Response) => {
                                 message:error.message || "Algo ocurrió al crear el objeto"
                         });
                 res.end();
-                });
-        
+                }); 
+
 }
 
 export const putProduct = (req:Request , res:Response) => {
@@ -132,6 +136,7 @@ export const deleteProduct = (req:Request , res:Response) => {
 
 /*CRUD Motoristas */
 export const getMotoristas = (req:Request , res:Response) => {
+        res.sendFile(path.join(__dirname,'../public/admin-index/adminmot.html'));
         motorModel.find().then(result=>{
                 res.send(result);
                 res.end();      
@@ -229,6 +234,7 @@ export const deleteMotorista = (req:Request , res:Response) => {
 
 /*CRUD Clientes/Colab */
 export const getClients = (req:Request , res:Response) => {
+        res.sendFile(path.join(__dirname,'../public/admin-index/admincol.html'));
         clientModel.find().then(result=>{
                 res.send(result);
                 res.end();      
@@ -419,6 +425,7 @@ export const deleteCompany = (req:Request , res:Response) => {
 
 /*CRUD Ordenes*/
 export const getOrders = (req:Request , res:Response) => {
+        res.sendFile(path.join(__dirname,'../public/admin-index/adminord.html'));
         orderModel.find().then(result=>{
                 res.send(result);
                 res.end();      

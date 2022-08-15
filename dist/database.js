@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getQueries = exports.addProduct = void 0;
 const products_model_1 = __importDefault(require("./models/products.model"));
 function addProduct(name, company, category, price, description, photo) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -26,11 +27,13 @@ function addProduct(name, company, category, price, description, photo) {
         yield product.save();
     });
 }
+exports.addProduct = addProduct;
 function getQueries() {
     return __awaiter(this, void 0, void 0, function* () {
         const product = yield products_model_1.default.find();
-        console.log(product);
+        console.log(product[1]);
     });
 }
-getQueries();
+exports.getQueries = getQueries;
+//getQueries();
 console.log('hh');

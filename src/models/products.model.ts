@@ -10,8 +10,8 @@ export class Product {
     @prop({type:String, required:true })
     productName:string;
 
-    @prop({type: () => [companys]})
-    company:companys;
+    @prop({type: String, required: true})
+    company:string;
     
     @prop({type:String, required:true, trim: true })
     category:string;
