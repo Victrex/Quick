@@ -1,4 +1,4 @@
-import express, {Express, Request, Response } from "express";
+import express, {Express, Request, response, Response } from "express";
 import path from "path";
 import ProductModel from "../models/products.model";
 import { getModelForClass, modelOptions, prop, Ref } from "@typegoose/typegoose";
@@ -8,6 +8,7 @@ import clientModel from "../models/client.model";
 import companyModel from "../models/company.model";
 import orderModel from "../models/order.model";
 import { addProduct, getQueries } from "../database";
+import { Console } from "console";
 
 
 
@@ -34,10 +35,12 @@ export const adminClientes = (req:Request, res:Response) => {
 /*CRUD Productos
  */
 export const getProducts = (req:Request , res:Response) => {
-        res.sendFile(path.join(__dirname,'../public/admin-index/adminprod.html'));
-        getQueries();
+        //res.sendFile(path.join(__dirname,'../public/admin-index/adminprod.html'));
+        //getQueries();
         ProductModel.find().then(result=>{
                 res.send(result);
+                console.log(result);
+                
                 res.end();      
         })
         .catch(error => {
@@ -77,8 +80,8 @@ export const postProduct = (req:Request , res:Response) => {
                 description:req.body.description,
                 photo:req.body.photo
 
-        })
-        addProduct(product.productName, product.company, product.category, product.price, product.description, product.photo )
+        }) 
+        
         product
                 .save()
                 .then(data =>{
@@ -90,7 +93,7 @@ export const postProduct = (req:Request , res:Response) => {
                                 message:error.message || "Algo ocurrió al crear el objeto"
                         });
                 res.end();
-                }); 
+                });  
 
 }
 
@@ -109,7 +112,7 @@ export const putProduct = (req:Request , res:Response) => {
                 photo:req.body.photo
 
         }).then(updateData =>{
-                        res.send({message: 'Registro actualizado', updateData});
+                        console.log({message: 'Registro actualizado', updateData});
                         res.end();
                 })
                 .catch(error => {
@@ -122,16 +125,17 @@ export const putProduct = (req:Request , res:Response) => {
 }
 
 export const deleteProduct = (req:Request , res:Response) => {
-        ProductModel.remove({_id: req.params.id}).then(removeResult=>{
+        
+         ProductModel.remove({'_id': req.params.id}).then(removeResult=>{
                 res.send({message: 'Registro eliminado', removeResult});
                 res.end();      
         })
         .catch(error => {
                 res.status(500).send({
-                        message:error.message || "Algo ocurrió al eliminsr el registro"
+                        message:error.message || "Algo ocurrió al eliminar el registro"
                 });
         res.end();
-        });
+        }); 
 }
 
 /*CRUD Motoristas */

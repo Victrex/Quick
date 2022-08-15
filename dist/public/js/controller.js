@@ -362,27 +362,43 @@ const chargeOrder = () => {
         });
         
   }
-  
+const API_URL = 'http://localhost:8585/admin/products'  
+var productosArray = [];
+
+  const cargarProducts = () => {
+    fetch(API_URL)
+    .then(response => response.json())
+    .then(data => {
+        productosArray = data
+        console.log(productosArray);
+        loadProductsAdmin(productosArray)
+    })
+  };
+  cargarProducts();
 
   //cargar productos en el crud de admin Productos
 
   const productsAdmin = document.getElementById('productsAdmin');
-  const loadProductsAdmin = () => {
+  const loadProductsAdmin = (prod) => {
+    console.log(prod)
     let i = 1;
-    products.forEach(e => {
+    productosArray.forEach(e => {
         productsAdmin.innerHTML += `
         <tr>
                 <td>${i}</td>
-                <td>${e.productName}</td>
+                <td class="name">${e.productName}</td>
                 <td>${e.price}</td>
                 <td><a href="#">Abrir Imagen</a></td>
                 <td>${e.company}</td>
                 <td>${e.category}</td>
-                <td>${e.desp}</td>
+                <td>${e.description}</td>
                 <td>
                     <div class="btncmp">
                         <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
-                        <button class="btn delbtn">Eliminar</button>
+                        <form action="../admin/productos/id" method="get">
+                            <button class="btn delbtn" type="submit" >Eliminar</button>
+                        </form>
+                        
                     </div>
                 </td>
             
@@ -393,3 +409,9 @@ const chargeOrder = () => {
     });
   }
 
+  function updateprd(id) {
+    console.log(id);
+  }
+  const updateproduct = (id) => {
+    console.log("hola");
+  }

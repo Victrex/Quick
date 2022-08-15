@@ -26,9 +26,25 @@ __decorate([
     __metadata("design:type", Number)
 ], clientUser.prototype, "telephone", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ type: String }),
+    (0, typegoose_1.prop)({ type: String, required: true }),
     __metadata("design:type", String)
 ], clientUser.prototype, "email", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String }),
+    __metadata("design:type", String)
+], clientUser.prototype, "date", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], clientUser.prototype, "address", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], clientUser.prototype, "userName", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], clientUser.prototype, "password", void 0);
 exports.clientUser = clientUser;
 const clientModel = (0, typegoose_1.getModelForClass)(clientUser);
 exports.default = clientModel;

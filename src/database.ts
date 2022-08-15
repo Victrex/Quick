@@ -79,7 +79,7 @@ export async  function addMotor(nameMotor: string,gender: String,telephone: numb
 
 export async function getQueries() {
     const product = await Product.find();
-    console.log(product[1]); 
+    console.log(product); 
 } 
 
 //getQueries();

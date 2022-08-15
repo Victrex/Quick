@@ -10,7 +10,6 @@ const motors_model_1 = __importDefault(require("../models/motors.model"));
 const client_model_1 = __importDefault(require("../models/client.model"));
 const company_model_1 = __importDefault(require("../models/company.model"));
 const order_model_1 = __importDefault(require("../models/order.model"));
-const database_1 = require("../database");
 const indexAdmin = (req, res) => {
     res.sendFile(path_1.default.resolve(__dirname, '../public/admin-index/principal.html'));
 };
@@ -34,10 +33,11 @@ exports.adminClientes = adminClientes;
 /*CRUD Productos
  */
 const getProducts = (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminprod.html'));
-    (0, database_1.getQueries)();
+    //res.sendFile(path.join(__dirname,'../public/admin-index/adminprod.html'));
+    //getQueries();
     products_model_1.default.find().then(result => {
         res.send(result);
+        console.log(result);
         res.end();
     })
         .catch(error => {
@@ -75,7 +75,6 @@ const postProduct = (req, res) => {
         description: req.body.description,
         photo: req.body.photo
     });
-    (0, database_1.addProduct)(product.productName, product.company, product.category, product.price, product.description, product.photo);
     product
         .save()
         .then(data => {
@@ -103,7 +102,7 @@ const putProduct = (req, res) => {
         description: req.body.description,
         photo: req.body.photo
     }).then(updateData => {
-        res.send({ message: 'Registro actualizado', updateData });
+        console.log({ message: 'Registro actualizado', updateData });
         res.end();
     })
         .catch(error => {
@@ -115,13 +114,13 @@ const putProduct = (req, res) => {
 };
 exports.putProduct = putProduct;
 const deleteProduct = (req, res) => {
-    products_model_1.default.remove({ _id: req.params.id }).then(removeResult => {
+    products_model_1.default.remove({ '_id': req.params.id }).then(removeResult => {
         res.send({ message: 'Registro eliminado', removeResult });
         res.end();
     })
         .catch(error => {
         res.status(500).send({
-            message: error.message || "Algo ocurrió al eliminsr el registro"
+            message: error.message || "Algo ocurrió al eliminar el registro"
         });
         res.end();
     });
@@ -129,6 +128,7 @@ const deleteProduct = (req, res) => {
 exports.deleteProduct = deleteProduct;
 /*CRUD Motoristas */
 const getMotoristas = (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminmot.html'));
     motors_model_1.default.find().then(result => {
         res.send(result);
         res.end();
@@ -219,6 +219,7 @@ const deleteMotorista = (req, res) => {
 exports.deleteMotorista = deleteMotorista;
 /*CRUD Clientes/Colab */
 const getClients = (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/admincol.html'));
     client_model_1.default.find().then(result => {
         res.send(result);
         res.end();
@@ -395,6 +396,7 @@ const deleteCompany = (req, res) => {
 exports.deleteCompany = deleteCompany;
 /*CRUD Ordenes*/
 const getOrders = (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminord.html'));
     order_model_1.default.find().then(result => {
         res.send(result);
         res.end();

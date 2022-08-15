@@ -12,8 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getQueries = exports.addProduct = void 0;
+exports.getQueries = exports.addMotor = exports.addClient = exports.addCompany = exports.addProduct = void 0;
 const products_model_1 = __importDefault(require("./models/products.model"));
+const client_model_1 = __importDefault(require("./models/client.model"));
+const company_model_1 = __importDefault(require("./models/company.model"));
+const motors_model_1 = __importDefault(require("./models/motors.model"));
 function addProduct(name, company, category, price, description, photo) {
     return __awaiter(this, void 0, void 0, function* () {
         const product = new products_model_1.default({
@@ -28,10 +31,61 @@ function addProduct(name, company, category, price, description, photo) {
     });
 }
 exports.addProduct = addProduct;
+function addCompany(name, comp, category, price, description, photo) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const company = new company_model_1.default({
+            productName: `${name}`,
+            company: `${comp}`,
+            category: `${category}`,
+            price: `${price}`,
+            description: `${description}`,
+            photo: `${photo}`
+        });
+        yield company.save();
+    });
+}
+exports.addCompany = addCompany;
+function addClient(name, gender, telephone, email, date, address, userName, password) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const client = new client_model_1.default({
+            name: `${name}`,
+            gender: `${gender}`,
+            telephone: `${telephone}`,
+            email: `${email}`,
+            date: `${date}`,
+            adress: `${address}`,
+            userName: `${userName}`,
+            password: `${password}`
+        });
+        yield client.save();
+    });
+}
+exports.addClient = addClient;
+function addMotor(nameMotor, gender, telephone, status, photo, date, address, charge, code, state, email, userName, password) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const motor = new motors_model_1.default({
+            nameMotor: `${nameMotor}`,
+            gender: `${gender}`,
+            telephone: `${telephone}`,
+            status: `${status}`,
+            photo: `${photo}`,
+            date: `${date}`,
+            address: `${address}`,
+            charge: `${charge}`,
+            code: `${code}`,
+            state: `${state}`,
+            email: `${email}`,
+            userName: `${userName}`,
+            password: `${password}`
+        });
+        yield motor.save();
+    });
+}
+exports.addMotor = addMotor;
 function getQueries() {
     return __awaiter(this, void 0, void 0, function* () {
         const product = yield products_model_1.default.find();
-        console.log(product[1]);
+        console.log(product);
     });
 }
 exports.getQueries = getQueries;

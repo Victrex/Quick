@@ -4,16 +4,16 @@ import { indexAdmin, adminMotoristas, adminProductos, adminOrdenes, adminCliente
 const router = Router();
 router.get('/', indexAdmin)
 //router.get('/motoristas', adminMotoristas);
-//router.get('/productos', adminProductos);
+router.get('/productos/', adminProductos);
 //router.get('/ordenes', adminOrdenes);
 //router.get('/clientes', adminClientes);
 
 //Router Productos
-router.get('/productos', getProducts);
-router.get('/:id', getProduct);
+router.get('/products', getProducts);
+router.get('productos/:id', getProduct);
 router.post('/productos', postProduct);
-router.put('/:id', putProduct);
-router.delete('/:id', deleteProduct);
+router.put('productos/:id', putProduct);
+router.delete('productos/id', deleteProduct);
 
 //Router Motoristas
 router.get('/motoristas', getMotoristas);
