@@ -13,7 +13,7 @@ router.get('/products', admin_controllers_1.getProducts); //listo
 router.get('productos/:id', admin_controllers_1.getProduct);
 router.post('/productos', admin_controllers_1.postProduct); //listo
 router.put('productos/:id', admin_controllers_1.putProduct);
-router.post('productos/:id', admin_controllers_1.deleteProduct);
+router.delete('productos/:id', admin_controllers_1.deleteProduct);
 //Router Motoristas
 router.get('/motoristas/get', admin_controllers_1.getMotoristas);
 router.get('/:id', admin_controllers_1.getMotorista);

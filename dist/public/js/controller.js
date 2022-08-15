@@ -396,7 +396,7 @@ var productosArray = [];
                     <div class="btncmp">
                         <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
                         <form action="/productos/:id" method="post">
-                            <button class="btn delbtn" type="submit" >Eliminar</button>
+                            <button class="btn delbtn" type="submit" onclic="eliminaProductosEmpresa(${e._id})">Eliminar</button>
                         </form>
                         
                     </div>
@@ -407,6 +407,23 @@ var productosArray = [];
         `
         i++;
     });
+  }
+
+  const eliminaProductosEmpresa = (id) => {
+    let id = sessionStorage.getItem(id);
+
+    axios({
+        method: 'delete',
+        url:`http://localhost:8585/productos/${id}`,
+        ResponseType:"json"
+    }).then(
+        (res) => {
+            alert("Producto Eliminado")
+        }
+    ).catch(err=>{
+        console.log(err)
+    });
+
   }
 
   function updateprd(id) {

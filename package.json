@@ -23,6 +23,7 @@
     "@typegoose/typegoose": "^9.11.0",
     "@types/express-session": "^1.17.5",
     "@types/method-override": "^0.0.32",
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "handlebars": "^4.7.7",
