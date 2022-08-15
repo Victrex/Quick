@@ -20,7 +20,7 @@ export class motorsUser{
     charge: string;
     @prop({type:String, required:true})
     code: string;
-    @prop({type:String, required:true})
+    @prop({type:String})
     state: string;
     @prop({type:String, required:true})
     email: string;

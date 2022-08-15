@@ -370,17 +370,17 @@ var productosArray = [];
     .then(response => response.json())
     .then(data => {
         productosArray = data
-        console.log(productosArray);
         loadProductsAdmin(productosArray)
     })
   };
-  cargarProducts();
+  //cargarProducts();
 
   //cargar productos en el crud de admin Productos
 
-  const productsAdmin = document.getElementById('productsAdmin');
+  
   const loadProductsAdmin = (prod) => {
-    console.log(prod)
+    const productsAdmin = document.getElementById('productsAdmin');
+    
     let i = 1;
     productosArray.forEach(e => {
         productsAdmin.innerHTML += `
@@ -416,30 +416,32 @@ var productosArray = [];
     console.log("hola");
   }
 
-  const API_URL_CLIENT = 'http://localhost:8585/admin/clientes';
+
+
+  const API_URL_CLIENT = 'http://localhost:8585/admin/clientes/get';
   var clientArray = [];
   const cargarClientes = () => {
     fetch(API_URL_CLIENT)
     .then(response => response.json())
     .then(data => {
-        productosArray = data
-        console.log(productosArray);
-        loadClientAdmin(productosArray)
+        clientArray = data
+        loadClientAdmin(clientArray)
     })
   }
 
-  const clientesAdmin = document.getElementById('clientAdmin');
+  
   const loadClientAdmin = (client) => {
-    console.log(client);
+    const clientesAdmin = document.getElementById('clientAdmin');
+    
     let i = 1;
     clientArray.forEach(e => {
         clientesAdmin.innerHTML += `
         <tr>
         <td>${i}</td>
-        <td><a href="#">${e.nombre}</a></td>
-        <td>Femenino</td>
-        <td>9886-0521</td>
-        <td>sara.reyes96@gmail.com</td>
+        <td><a href="#">${e.name}</a></td>
+        <td>${e.gender}</td>
+        <td>${e.telephone}</td>
+        <td>${e.email}</td>
         <td>
             <div class="btncmp">
                 <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
@@ -449,7 +451,47 @@ var productosArray = [];
       </tr>
         
         `
+        i++;
+    })
 
+  }
+
+  const API_URL_MOTOR = 'http://localhost:8585/admin/motoristas/get';
+  var motoristasArray = [];
+  const cargarMotor = () => {
+    fetch(API_URL_MOTOR)
+    .then(response => response.json())
+    .then(data => {
+        motoristasArray = data
+        console.log(motoristasArray);
+        loadMotorAdmin(motoristasArray)
+    })
+  }
+
+  
+  const loadMotorAdmin = (client) => {
+    const motorAdmin = document.getElementById('motorAdmin');
+    
+    let i = 1;
+    motoristasArray.forEach(e => {
+        motorAdmin.innerHTML += `
+        <tr>
+        <td>${i}</td>
+        <td>#${e.code}</td>
+        <td><a href="#">${e.nameMotor}</a></td>
+        <td>${e.charge}</td>
+        <td>${e.telephone}</td>
+        <td>${e.state}</td>
+        <td>
+            <div class="btncmp">
+                <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
+                <button class="btn delbtn" data-bs-toggle="modal-delete" data-bs-target="#modal-delete">Eliminar</button>
+            </div>
+        </td>
+      </tr>
+        
+        `
+        i++;
     })
 
   }

@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="../ASSETS/LOGO/Logo_white.svg" type="image/x-icon">
     <title>Quick</title>
 </head>
-<body class="" id="body">
+<body class="" id="body" onload="cargarMotor()">
     <nav class="nav">
     <div class="logoCont">
         <a href="#home" ><img class="logo-navbar" src="../ASSETS/LOGO/Logo_black.svg" alt=""></a>
@@ -35,7 +35,7 @@
         <h2>Motoristas</h2><br>
        
          <div class="comp-afil">
-            <table>
+            <table id="motorAdmin">
             <tr>
                 <th class="th-compafil" style="width: 3%;" >No.</th>
                 <th class="th-compafil" style="width: 12%;">Código</th>
@@ -46,22 +46,7 @@
                 <th class="th-compafil" style="width: 15%;">Acción</th>
             </tr>
               
-              <tr>
-                <td>1</td>
-                <td>#1999082343</td>
-                <td><a href="#">Kevin Osorto</a></td>
-                <td>Motorista</td>
-                <td>9540-4559</td>
-                <td>En Movimiento</td>
-                <td>
-                    <div class="btncmp">
-                        <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
-                        <button class="btn delbtn" data-bs-toggle="modal-delete" data-bs-target="#modal-delete">Eliminar</button>
-                    </div>
-                </td>
-            
-                
-              </tr>
+
               
     
             </table>
@@ -90,37 +75,37 @@
                             <div class="formmotprincipal">
                               <div>
                                 <label for="nombre" class="form-label">Nombre Completo</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                                <input type="text" name="nameMotor" class="form-control" id="txtcomp" value="" required>
                              
                                 <div class="bornDate-tel">
                                   <div>
                                       <label for="dobirth" class="form-label form-mot">Fecha De Nacimiento</label>
-                                      <input type="date" class="form-control form-mot" id="txtcomp" value="" required>
+                                      <input type="date" name="date" class="form-control form-mot" id="txtcomp" value="" required>
                                   </div>
                                   <div>
                                     <label for="telefono" class="form-label form-mot">Telefono</label>
-                                    <input type="text" class="form-control form-mot" id="txtcomp" value="" required>
+                                    <input type="text" name="telephone" class="form-control form-mot" id="txtcomp" value="" required>
                                   </div>
                                 </div>
   
                                 <br> 
                                 <label for="livplace" class="form-label">Lugar de Residencia</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                                <input type="text" name="address" class="form-control" id="txtcomp" value="" required>
                               </div>
                               <div class="secondpartprinmot">
                                 <div class="gender-cvstatus">
                                   <div>
                                       <label for="gender" class="form-label">Genero</label>
-                                      <input type="text" class="form-control" id="txtcomp" value="" required>
+                                      <input type="text" name="gender" class="form-control" id="txtcomp" value="" required>
                                   </div>
                                   <div>
                                     <label for="cvstatus" class="form-label">Estado Civil</label>
-                                    <input type="text" class="form-control" id="txtcomp" value="" required>
+                                    <input type="text" name="status" class="form-control" id="txtcomp" value="" required>
                                   </div>
                                 </div>
                                 <div class="upload-image">
                                   <label for="exampleFormControlFile1">Subir imagen</label>
-                                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                  <input type="file" name="photo" class="form-control-file" id="exampleFormControlFile1">
                                 </div>
                               </div>
                             </div>  
@@ -129,36 +114,36 @@
                             
                               <div>
                                 <label for="charge" class="form-label">Cargo</label>
-                                <select class="form-control" id="lista-charge">
-                                  <option selected></option>
+                                <input name="charge" class="form-control" id="lista-charge">
+<!--                                   <option selected></option>
                                   <option value="1">Motorista</option>
                                   <option value="2">Otro</option>
-                                </select>
+                                </select> -->
                               </div>
                               <div>
                                 <label for="status" class="form-label">Estado</label>
-                                <select class="form-control" id="lista-status">
-                                  <option selected></option>
+                                <input name="state" class="form-control" id="lista-status">
+<!--                                   <option selected></option>
                                   <option value="1">En movimiento</option>
                                   <option value="2">Disponible</option>
                                   <option value="3">Inhabilitado</option>
-                                </select>
+                                </select> -->
                               </div>
                               <div>
                                 <label for="username" class="form-label">Nombre de Usuario</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                                <input name="userName" type="text" class="form-control" id="txtcomp" value="" required>
                               </div>
                               <div>
                                 <label for="regNumber" class="form-label">N° Registro</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                                <input name="code" type="text" class="form-control" id="txtcomp" value="" required>
                               </div>
                               <div>
                                 <label for="email" class="form-label">Correo Electrónico</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                                <input name="email" type="text" class="form-control" id="txtcomp" value="" required>
                               </div>
                               <div>
                                 <label for="passsword" class="form-label">Contraseña</label>
-                                <input type="text" class="form-control" id="txtcomp" value="" required>
+                                <input name="password" type="text" class="form-control" id="txtcomp" value="" required>
                               </div>
                               
                             </div>
@@ -168,7 +153,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
-                          <button type="button" class="btn btn_primary">Agregar Motorista</button>
+                          <button type="submit" class="btn btn_primary">Agregar Motorista</button>
                         </div>
                       </div>
                     </form>
@@ -200,7 +185,7 @@
        
     </article>
     
-
+    <script src="../js/controller.js"></script>
     <script src="../js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>

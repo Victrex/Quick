@@ -4,26 +4,26 @@ const express_1 = require("express");
 const admin_controllers_1 = require("../controllers/admin.controllers");
 const router = (0, express_1.Router)();
 router.get('/', admin_controllers_1.indexAdmin);
-//router.get('/motoristas', adminMotoristas);
+router.get('/motoristas', admin_controllers_1.adminMotoristas);
 router.get('/productos', admin_controllers_1.adminProductos);
 //router.get('/ordenes', adminOrdenes);
-//router.get('/clientes', adminClientes);
+router.get('/clientes', admin_controllers_1.adminClientes);
 //Router Productos
-router.get('/products', admin_controllers_1.getProducts);
+router.get('/products', admin_controllers_1.getProducts); //listo
 router.get('productos/:id', admin_controllers_1.getProduct);
-router.post('/productos', admin_controllers_1.postProduct);
+router.post('/productos', admin_controllers_1.postProduct); //listo
 router.put('productos/:id', admin_controllers_1.putProduct);
 router.post('productos/:id', admin_controllers_1.deleteProduct);
 //Router Motoristas
-router.get('/motoristas', admin_controllers_1.getMotoristas);
+router.get('/motoristas/get', admin_controllers_1.getMotoristas);
 router.get('/:id', admin_controllers_1.getMotorista);
-router.post('/', admin_controllers_1.postMotorista);
+router.post('/motoristas', admin_controllers_1.postMotorista);
 router.put('/:id', admin_controllers_1.putMotorista);
 router.delete('/:id', admin_controllers_1.deleteMotorista);
 //Router Clientes
-router.get('/clientes', admin_controllers_1.getClients);
+router.get('/clientes/get', admin_controllers_1.getClients); //listo
 router.get('/:id', admin_controllers_1.getClient);
-router.post('/', admin_controllers_1.postClient);
+router.post('/clientes', admin_controllers_1.postClient); //listo
 router.put('/:id', admin_controllers_1.putClient);
 router.delete('/:id', admin_controllers_1.deleteClient);
 //Router Empresas

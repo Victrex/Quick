@@ -129,7 +129,6 @@ const deleteProduct = (req, res) => {
 exports.deleteProduct = deleteProduct;
 /*CRUD Motoristas */
 const getMotoristas = (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/adminmot.html'));
     motors_model_1.default.find().then(result => {
         res.send(result);
         res.end();
@@ -162,11 +161,19 @@ const postMotorista = (req, res) => {
     }
     //new motorista
     const motorista = new motors_model_1.default({
-        code: req.body.code,
         nameMotor: req.body.nameMotor,
-        charge: req.body.charge,
+        gender: req.body.gender,
         telephone: req.body.telephone,
-        status: req.body.status
+        status: req.body.status,
+        photo: req.body.photo,
+        date: req.body.date,
+        address: req.body.address,
+        charge: req.body.charge,
+        code: req.body.code,
+        state: req.body.state,
+        email: req.body.email,
+        userName: req.body.userName,
+        password: req.body.password
     });
     motorista
         .save()
@@ -220,9 +227,21 @@ const deleteMotorista = (req, res) => {
 exports.deleteMotorista = deleteMotorista;
 /*CRUD Clientes/Colab */
 const getClients = (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/admincol.html'));
+    //res.sendFile(path.join(__dirname,'../public/admin-index/admincol.html'));
+    /* clientModel.find().then(result=>{
+            res.send(result);
+            console.log(result)
+            res.end();
+    })
+    .catch(error => {
+            res.status(500).send({
+                    message:error.message || "Algo ocurrió al mostrar los registros"
+            });
+    res.end();
+    }); */
     client_model_1.default.find().then(result => {
         res.send(result);
+        console.log(result);
         res.end();
     })
         .catch(error => {
@@ -254,9 +273,13 @@ const postClient = (req, res) => {
     //new cliente
     const client = new client_model_1.default({
         name: req.body.name,
-        charge: req.body.charge,
+        gender: req.body.gender,
         telephone: req.body.telephone,
-        email: req.body.email
+        email: req.body.email,
+        date: req.body.date,
+        address: req.body.address,
+        userName: req.body.userName,
+        password: req.body.password
     });
     client
         .save()

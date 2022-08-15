@@ -50,7 +50,7 @@ __decorate([
     __metadata("design:type", String)
 ], motorsUser.prototype, "code", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ type: String, required: true }),
+    (0, typegoose_1.prop)({ type: String }),
     __metadata("design:type", String)
 ], motorsUser.prototype, "state", void 0);
 __decorate([

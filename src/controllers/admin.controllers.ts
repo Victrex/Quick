@@ -140,7 +140,6 @@ export const deleteProduct = (req:Request , res:Response) => {
 
 /*CRUD Motoristas */
 export const getMotoristas = (req:Request , res:Response) => {
-        res.sendFile(path.join(__dirname,'../public/admin-index/adminmot.html'));
         motorModel.find().then(result=>{
                 res.send(result);
                 res.end();      
@@ -151,6 +150,7 @@ export const getMotoristas = (req:Request , res:Response) => {
                 });
         res.end();
         });
+        
         
 }
 
@@ -175,11 +175,19 @@ export const postMotorista = (req:Request , res:Response) => {
 
         //new motorista
         const motorista = new motorModel({
-                code:req.body.code,
-                nameMotor:req.body.nameMotor,
-                charge:req.body.charge,
-                telephone:req.body.telephone,
-                status:req.body.status
+    nameMotor: req.body.nameMotor,
+    gender: req.body.gender,
+    telephone: req.body.telephone,
+    status: req.body.status,
+    photo: req.body.photo,
+    date: req.body.date,
+    address: req.body.address,
+    charge: req.body.charge,
+    code: req.body.code,
+    state: req.body.state,
+    email: req.body.email,
+    userName: req.body.userName,
+    password: req.body.password
 
         })
         motorista
@@ -238,9 +246,22 @@ export const deleteMotorista = (req:Request , res:Response) => {
 
 /*CRUD Clientes/Colab */
 export const getClients = (req:Request , res:Response) => {
-        res.sendFile(path.join(__dirname,'../public/admin-index/admincol.html'));
+        //res.sendFile(path.join(__dirname,'../public/admin-index/admincol.html'));
+        /* clientModel.find().then(result=>{
+                res.send(result);
+                console.log(result)
+                res.end();      
+        })
+        .catch(error => {
+                res.status(500).send({
+                        message:error.message || "Algo ocurrió al mostrar los registros"
+                });
+        res.end();
+        }); */
         clientModel.find().then(result=>{
                 res.send(result);
+                console.log(result);
+                
                 res.end();      
         })
         .catch(error => {
@@ -273,10 +294,15 @@ export const postClient = (req:Request , res:Response) => {
 
         //new cliente
         const client = new clientModel({
-                name:req.body.name,
-                charge:req.body.charge,
-                telephone:req.body.telephone,
-                email:req.body.email
+    name: req.body.name,
+    gender: req.body.gender,
+    telephone: req.body.telephone,
+    email: req.body.email,
+    date: req.body.date,
+    address: req.body.address,
+    userName: req.body.userName,
+    password: req.body.password
+
 
         })
         client
