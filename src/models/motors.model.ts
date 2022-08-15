@@ -15,5 +15,9 @@ export class motorsUser{
     telephone: number;
 
     @prop({type:String})
-    state: string;
+    status: string;
 }
+
+const motorModel = getModelForClass(motorsUser);
+export default motorModel;
+

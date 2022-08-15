@@ -21,8 +21,11 @@
   "homepage": "https://github.com/DanielsHndz/proyecto-poo-quick#readme",
   "dependencies": {
     "@typegoose/typegoose": "^9.11.0",
+<<<<<<< HEAD
     "@types/express-session": "^1.17.5",
     "@types/method-override": "^0.0.32",
+=======
+>>>>>>> b7a68e556bafcd64f9d55e09cfb1dc09026f100e
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "handlebars": "^4.7.7",
