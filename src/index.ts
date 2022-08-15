@@ -26,6 +26,11 @@ app.use(methodOverride('_method'))
 
 
 
+
+
+
+
+
 //routes
 app.use('/admin', adminRoutes)
 
