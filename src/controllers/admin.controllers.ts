@@ -125,8 +125,8 @@ export const putProduct = (req:Request , res:Response) => {
 }
 
 export const deleteProduct = (req:Request , res:Response) => {
-        
-         ProductModel.remove({'_id': req.params.id}).then(removeResult=>{
+        res.send('recibido')
+         /* ProductModel.remove({'_id': req.params.id}).then(removeResult=>{
                 res.send({message: 'Registro eliminado', removeResult});
                 res.end();      
         })
@@ -135,7 +135,7 @@ export const deleteProduct = (req:Request , res:Response) => {
                         message:error.message || "Algo ocurrió al eliminar el registro"
                 });
         res.end();
-        }); 
+        });  */
 }
 
 /*CRUD Motoristas */

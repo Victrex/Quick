@@ -362,11 +362,11 @@ const chargeOrder = () => {
         });
         
   }
-const API_URL = 'http://localhost:8585/admin/products'  
+const API_URL_PRODUCTS = 'http://localhost:8585/admin/products'  
 var productosArray = [];
 
   const cargarProducts = () => {
-    fetch(API_URL)
+    fetch(API_URL_PRODUCTS)
     .then(response => response.json())
     .then(data => {
         productosArray = data
@@ -395,7 +395,7 @@ var productosArray = [];
                 <td>
                     <div class="btncmp">
                         <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
-                        <form action="../admin/productos/id" method="get">
+                        <form action="/productos/:id" method="post">
                             <button class="btn delbtn" type="submit" >Eliminar</button>
                         </form>
                         
@@ -414,4 +414,42 @@ var productosArray = [];
   }
   const updateproduct = (id) => {
     console.log("hola");
+  }
+
+  const API_URL_CLIENT = 'http://localhost:8585/admin/clientes';
+  var clientArray = [];
+  const cargarClientes = () => {
+    fetch(API_URL_CLIENT)
+    .then(response => response.json())
+    .then(data => {
+        productosArray = data
+        console.log(productosArray);
+        loadClientAdmin(productosArray)
+    })
+  }
+
+  const clientesAdmin = document.getElementById('clientAdmin');
+  const loadClientAdmin = (client) => {
+    console.log(client);
+    let i = 1;
+    clientArray.forEach(e => {
+        clientesAdmin.innerHTML += `
+        <tr>
+        <td>${i}</td>
+        <td><a href="#">${e.nombre}</a></td>
+        <td>Femenino</td>
+        <td>9886-0521</td>
+        <td>sara.reyes96@gmail.com</td>
+        <td>
+            <div class="btncmp">
+                <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
+                <button class="btn delbtn" data-bs-toggle="modal-delete" data-bs-target="#modal-delete">Eliminar</button>
+            </div>
+        </td>
+      </tr>
+        
+        `
+
+    })
+
   }

@@ -114,16 +114,17 @@ const putProduct = (req, res) => {
 };
 exports.putProduct = putProduct;
 const deleteProduct = (req, res) => {
-    products_model_1.default.remove({ '_id': req.params.id }).then(removeResult => {
-        res.send({ message: 'Registro eliminado', removeResult });
-        res.end();
-    })
-        .catch(error => {
-        res.status(500).send({
-            message: error.message || "Algo ocurrió al eliminar el registro"
-        });
-        res.end();
-    });
+    res.send('recibido');
+    /* ProductModel.remove({'_id': req.params.id}).then(removeResult=>{
+           res.send({message: 'Registro eliminado', removeResult});
+           res.end();
+   })
+   .catch(error => {
+           res.status(500).send({
+                   message:error.message || "Algo ocurrió al eliminar el registro"
+           });
+   res.end();
+   });  */
 };
 exports.deleteProduct = deleteProduct;
 /*CRUD Motoristas */

@@ -5,7 +5,7 @@ const admin_controllers_1 = require("../controllers/admin.controllers");
 const router = (0, express_1.Router)();
 router.get('/', admin_controllers_1.indexAdmin);
 //router.get('/motoristas', adminMotoristas);
-router.get('/productos/', admin_controllers_1.adminProductos);
+router.get('/productos', admin_controllers_1.adminProductos);
 //router.get('/ordenes', adminOrdenes);
 //router.get('/clientes', adminClientes);
 //Router Productos
@@ -13,7 +13,7 @@ router.get('/products', admin_controllers_1.getProducts);
 router.get('productos/:id', admin_controllers_1.getProduct);
 router.post('/productos', admin_controllers_1.postProduct);
 router.put('productos/:id', admin_controllers_1.putProduct);
-router.delete('productos/id', admin_controllers_1.deleteProduct);
+router.post('productos/:id', admin_controllers_1.deleteProduct);
 //Router Motoristas
 router.get('/motoristas', admin_controllers_1.getMotoristas);
 router.get('/:id', admin_controllers_1.getMotorista);
