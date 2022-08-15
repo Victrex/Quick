@@ -15,18 +15,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = require("mongoose");
 const dotenv_1 = __importDefault(require("dotenv"));
-const admin_routes_1 = __importDefault(require("./routes/admin.routes"));
+const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
+const admin_routes_1 = __importDefault(require("./routes/admin.routes"));
+const method_override_1 = __importDefault(require("method-override"));
+const express_session_1 = __importDefault(require("express-session"));
 dotenv_1.default.config();
 //configs
 const app = (0, express_1.default)();
 const port = process.env.PORT;
+app.use((0, cors_1.default)());
+app.use(express_1.default.urlencoded({ extended: false }));
 var publicPath = path_1.default.resolve(__dirname, './src/public');
+app.set('public', path_1.default.join(__dirname, 'public'));
 app.use(express_1.default.json());
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
+app.use((0, method_override_1.default)('_method'));
+app.use((0, express_session_1.default)({
+    secret: 'mysecretapp',
+    resave: true,
+    saveUninitialized: true
+}));
 //routes
 app.use('/admin', admin_routes_1.default);
-//
 //server
 app.listen(port, () => {
     console.log(`[SERVER] running at http://localhost:${port}`);
