@@ -1,3 +1,5 @@
+//const { default: axios } = require("axios");
+//import axios from "axios";
 var clientUsers = [
     {
         name: 'Victor',
@@ -395,9 +397,9 @@ var productosArray = [];
                 <td>
                     <div class="btncmp">
                         <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
-                        <form action="/productos/:id" method="post">
-                            <button class="btn delbtn" type="submit" onclic="eliminaProductosEmpresa(${e._id})">Eliminar</button>
-                        </form>
+                        
+                            <button class="btn delbtn" id="${e._id}" type="submit" onclick="eliminaProductosEmpresa(this)">Eliminar</button>
+                        
                         
                     </div>
                 </td>
@@ -405,16 +407,21 @@ var productosArray = [];
                 
               </tr>
         `
+
         i++;
     });
   }
+  const showId = (id) => {
+    let identifier = sessionStorage.getItem(id);
+    console.log(identifier);
+  }
 
   const eliminaProductosEmpresa = (id) => {
-    let id = sessionStorage.getItem(id);
+    //let identifier = sessionStorage.getItem(id);
 
     axios({
         method: 'delete',
-        url:`http://localhost:8585/productos/${id}`,
+        url:`http://localhost:8585/productos/${id.id}`,
         ResponseType:"json"
     }).then(
         (res) => {
