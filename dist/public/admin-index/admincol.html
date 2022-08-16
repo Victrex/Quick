@@ -30,9 +30,9 @@
     
 
     <article>
-       <h1><strong>Administración-Victor Vasquez</strong></h1> <br>
+       <h1><strong>Administración</strong></h1> <br>
         
-        <h2>Motoristas</h2><br>
+        <h2>Clientes afiliados</h2><br>
        
          <div class="comp-afil">
             <table id="clientAdmin">
@@ -50,9 +50,11 @@
             <div class="btn_prod">
                 
                     <div class="btnsadd" >
-                        <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn_primary btn_large">Agregar Motorista</button>
+                        <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn_primary ">Agregar Motorista</button>
                       </div>
-                    
+                      <div class="btnsadd">
+                        <button type="button" data-target="#staticBackdrop" id="saveChanges" class="btn btn_secondary ">Guardar Cambios</button></div>
+                    </div>
                 </div>
                  
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -91,7 +93,12 @@
                                 <div class="gender-cvstatus">
                                   <div>
                                       <label for="gender" class="form-label">Genero</label>
-                                      <input name="gender" type="text" class="form-control" id="txtcomp" value="" required>
+                                      <select name="gender" type="text" class="form-control" id="txtcomp" value="" required>
+                                        <option value=""></option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Otro">Otro</option>
+                                      </select>
                                   </div>
                                   <div>
                                         <label for="username" class="form-label">Nombre de Usuario</label>

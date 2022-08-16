@@ -1,4 +1,4 @@
-//const { default: axios } = require("axios");
+//const { default: axios } = require("axios");chare
 //import axios from "axios";
 var clientUsers = [
     {
@@ -35,7 +35,7 @@ var motUsers = [
         gender: 'masculino' 
     }
 ];
-var companys = [
+/* var companys = [
     {
         name: 'Pizza Hut',
         category: 'restaurante',
@@ -94,7 +94,7 @@ var products = [
         desp: 'Elaborada con pepperoni, carne de res y cerdo, salchicha italiana, jamón, champiñones, aceitunas, cebolla y chile verde.',
         photo: '../ASSETS/products/super_suprema.jpg',
     },
-]
+] 
 
 if (localStorage.getItem("products") == null) {
     localStorage.setItem("products", JSON.stringify(products));
@@ -102,7 +102,7 @@ if (localStorage.getItem("products") == null) {
 if (localStorage.getItem("companys") == null) {
     localStorage.setItem("companys", JSON.stringify(companys));
 }
-
+*/
 
 
 
@@ -128,7 +128,7 @@ var users = JSON.parse(localStorage.getItem("users"));
         } else {
             
                 if (a[0].password == password.value ) {
-                    location.href ="cat.html";
+                    location.href ="/motor/inicio";
                     localStorage.setItem("keyUser", a[0].email); 
                     return false;
                     
@@ -156,7 +156,7 @@ const UL = () =>{
             document.querySelector(".noProfile").classList.remove("active");//cuando no se encuentre el perfil en la base de datos
         } else {
                 if (a[0].password == password.value ) {
-                     location.href = "../index.html"; 
+                     location.href = "../quick"; 
                     localStorage.setItem("keyUser", a[0].email);
                     return false;             
                     
@@ -189,105 +189,12 @@ const cwUser = () =>{
 
 
 
-const loadCorps = () => {
-    let i = 0;
-    document.getElementById('corp').innerHTML = ''
-    var companys = JSON.parse(localStorage.getItem("companys"));
-    companys.forEach(e => {
-        document.getElementById('corp').innerHTML += `
-        <div class="cardCorp gridCard">
-        <div class="cardCorp_content">
-            <div class="corpImg">
-                <img src="${e.photo}" alt="">
-            </div>
-            <div class="corpInfo">
-                <h1>${e.name}</h1> 
-            </div>
-        </div>
-            <button type="button" id="${i}"  onclick="catIndex(${i})" class="btn btn_secondary gridBtn" > Ver Productos</button>      
-    </div>  
-        `;
-    i++;
-    });
-}
-
-const catIndex = (a) => {
-    console.log(companys[a].name)
-    localStorage.setItem("company", companys[a].name);
-    location.href = "prd.html"
-};
 
 
-const prd = () => {
-    
-    console.log("Pagina Cargada");
-    let prdContainer = document.getElementById('prds');
-    let keyPrd = localStorage.getItem("company");
-    let companys = JSON.parse(localStorage.getItem("companys"));
-    let header = document.querySelector(".header");
-    let i = 0;
-    companys.forEach(d => {
-        if (d.name == keyPrd) {
-            header.innerHTML = `
-    <img src="${d.cover}" alt="">
-    <div class="bg"></div>
-    <div class="PrdName tit_primary" id="PrdName">
-        <h1>${d.name}</h1>
-        <span>${d.desp}</span>
-    </div>
-    `;
-        }
-    });
-    
-    products.forEach(e => {
-        if(e.company == keyPrd){
-            prdContainer.innerHTML += `
-            <a class="linkPrd" id="${i}" onclick="orderKey(this)">
-                <hr>
-                <div class="cardPrd">
-                    <div class="cardPrd_header">
-                        <img src="${e.photo}" alt="">
-                    </div>
-                    <div class="corpInfo">
-                        <h1>${e.productName}</h1>
-                        <span>PRECIO LPS. ${e.price}</span> 
-                        <p>
-                            ${e.desp}
-                        </p>
-                    </div>
-                    
-                </div>
-                <hr>
-            </a>
-            `;
-            i++;
-            console.log(e.company);
-        }
-    })
-};
 
-const orderKey = (a) => {localStorage.setItem("orderKey", a.id);
-location.href = "order.html"
-}
-const order = () => {    
-    let product = JSON.parse(localStorage.getItem("products"));
-    let orderKey = JSON.parse(localStorage.getItem('orderKey'));
-    let name = document.getElementById('name');
-    let price = document.getElementById('price');
-    let desp = document.getElementById('desp');
-    let img = document.querySelector('.order_img');
-    img.innerHTML = `<img src="${product[orderKey].photo}" alt="">`;
-    document.getElementById('total').innerHTML =  product[orderKey].price + 70.00 ;
-    document.getElementById('total_price').innerHTML =  product[orderKey].price ; 
-    name.innerHTML = product[orderKey].productName;
-    price.innerHTML = `Precio Lps. ${product[orderKey].price}`;
-    desp.innerHTML = product[orderKey].desp; 
-};
 const chargeOrder = () => {
-    console.log("OrdenCargada");
-    //localStorage.removeItem('orderKey');
+    localStorage.removeItem('orderKey');
     let totalPrice = document.getElementById('total');
-    console.log("el total del pedido es " + totalPrice.innerHTML);
     let user = localStorage.getItem("keyUser");
     let orderList = JSON.parse(localStorage.getItem("orderlist"));
     users.forEach(element => {
@@ -295,19 +202,38 @@ const chargeOrder = () => {
             let order = {
                 nameProduct : `'${document.getElementById('name').innerHTML}'`,
             totalOrder: `${totalPrice.innerHTML}`,
-            img: `'${document.querySelector('.order_img').innerHTML}'`,
+            photo: `'${document.querySelector('.img_order_took').id}'`,
             quantity: `${document.getElementById('total_cont').innerHTML}`,
             };
             element.shopping.push(order);
-        console.log(element);
-        localStorage.setItem("orderlist", JSON.stringify(users));
+        console.log(order);
+        localStorage.setItem("orderlist", JSON.stringify(order));
+        postOrder(order)
         }
     });
     console.log(users);
-   
-    location.href = "../index.html";
-}
 
+    location.href = "../quick";
+};
+
+
+
+const postOrder = async (order) => {
+    const respuesta = await fetch('http://localhost:8585/admin/ordenes/postOrders', {
+        method: "post",
+        headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nameProduct: order.nameProduct,
+                quantity: order.quantity,
+                totalOrder: order.totalOrder,
+                photo: order.photo,
+            })
+    });
+    const data = await respuesta.json();
+    console.log(data);
+}
 
 (function () {
     'use strict'
@@ -337,91 +263,42 @@ const chargeOrder = () => {
   const pedidos = () => {
         let x = document.getElementById('prds');
         let y = JSON.parse(localStorage.getItem("orderlist"));
-        y.forEach(e => {
-            console.log(localStorage.getItem("KeyUser"));
-            if (e.email == localStorage.getItem("keyUser")) {
-                e.shopping.forEach(element => {
+        console.log(y);
                     x.innerHTML += `
                 <a class="linkPrd" href="#">
                 <hr>
                 <div class="cardPrd">
                     <div class="cardPrd_header">
-                        ${element.img}
+                        ${y.img}
                     </div>
                     <div class="corpInfo">
-                        <h1>${element.nameProduct}</h1>
-                        <span>Total por Este Pedido <span id="totalOrder"> Lps ${element.totalOrder}</span></span> 
-                        <span>Cantidad de Productos: <span id="totalQuantity"> #${element.quantity}</span></span>
+                        <h1>${y.nameProduct}</h1>
+                        <span>Total por Este Pedido <span id="totalOrder"> Lps ${y.totalOrder}</span></span> 
+                        <span>Cantidad de Productos: <span id="totalQuantity"> #${y.quantity}</span></span>
                     </div>
                     
                 </div>
                 <hr>
             </a>
                 `;
-                });
-                
-            }
-        });
+    
         
   }
-const API_URL_PRODUCTS = 'http://localhost:8585/admin/products'  
-var productosArray = [];
-
-  const cargarProducts = () => {
-    fetch(API_URL_PRODUCTS)
-    .then(response => response.json())
-    .then(data => {
-        productosArray = data
-        loadProductsAdmin(productosArray)
-    })
-  };
-  //cargarProducts();
-
-  //cargar productos en el crud de admin Productos
 
   
-  const loadProductsAdmin = (prod) => {
-    const productsAdmin = document.getElementById('productsAdmin');
-    
-    let i = 1;
-    productosArray.forEach(e => {
-        productsAdmin.innerHTML += `
-        <tr>
-                <td>${i}</td>
-                <td class="name">${e.productName}</td>
-                <td>${e.price}</td>
-                <td><a href="#">Abrir Imagen</a></td>
-                <td>${e.company}</td>
-                <td>${e.category}</td>
-                <td>${e.description}</td>
-                <td>
-                    <div class="btncmp">
-                        <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
-                        
-                            <button class="btn delbtn" id="${e._id}" type="submit" onclick="eliminaProductosEmpresa(this)">Eliminar</button>
-                        
-                        
-                    </div>
-                </td>
-            
-                
-              </tr>
-        `
+  
 
-        i++;
-    });
-  }
-  const showId = (id) => {
-    let identifier = sessionStorage.getItem(id);
-    console.log(identifier);
-  }
 
+
+
+
+  //import axios from 'axios';
   const eliminaProductosEmpresa = (id) => {
     //let identifier = sessionStorage.getItem(id);
 
     axios({
         method: 'delete',
-        url:`http://localhost:8585/productos/${id.id}`,
+        url:`./productos/${id}`,
         ResponseType:"json"
     }).then(
         (res) => {
@@ -469,7 +346,7 @@ var productosArray = [];
         <td>
             <div class="btncmp">
                 <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
-                <button class="btn delbtn" data-bs-toggle="modal-delete" data-bs-target="#modal-delete">Eliminar</button>
+                <input class="btn delbtn btn_large" onclick="deleteClientAdmin(this)" id="${e._id}" data-bs-toggle="modal-delete" data-bs-target="#modal-delete"value="Eliminar">
             </div>
         </td>
       </tr>
@@ -477,8 +354,19 @@ var productosArray = [];
         `
         i++;
     })
-
   }
+  const deleteClientAdmin = async (id) => {
+        const respuesta = await fetch(('http://localhost:8585/admin/clientes/' + id.id), {
+            method: "delete",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(respuesta => respuesta)
+        .then(data => console.log(data))
+        .then(window.location.reload())
+        
+  }
+
 
   const API_URL_MOTOR = 'http://localhost:8585/admin/motoristas/get';
   var motoristasArray = [];
@@ -509,7 +397,7 @@ var productosArray = [];
         <td>
             <div class="btncmp">
                 <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
-                <button class="btn delbtn" data-bs-toggle="modal-delete" data-bs-target="#modal-delete">Eliminar</button>
+                <input type="submit" class="btn delbtn" data-bs-toggle="modal-delete" data-bs-target="#modal-delete" id="${e._id}" onclick="deleteMotAdmin(this)" value="Eliminar">
             </div>
         </td>
       </tr>
@@ -519,3 +407,78 @@ var productosArray = [];
     })
 
   }
+  const deleteMotAdmin = async (id) => {
+    const respuesta = await fetch(('http://localhost:8585/admin/motoristas/' + id.id), {
+        method: "delete",
+        headers: {
+            'Content-Type': 'application/json'
+            },
+    }).then(respuesta => respuesta.json())
+    .then(data => console.log(data))
+    .then(window.location.reload())
+  }
+
+  const API_URL_EMPRESAS = 'http://localhost:8585/admin/empresas/get'  
+var empresasArray = [];
+
+  const cargarEmpresas = () => {
+    fetch(API_URL_EMPRESAS)
+    .then(response => response.json())
+    .then(data => {
+        empresasArray = data
+        loadCompAdmin(empresasArray)
+    })
+  };
+  //cargarProducts();
+
+  //cargar productos en el crud de admin Empresas
+
+  
+  const loadCompAdmin = (prod) => {
+    const compAdmin = document.getElementById('compAdmin');
+    
+    let i = 1;
+    empresasArray.forEach(e => {
+        compAdmin.innerHTML += `
+        <tr>
+                <td>${i}</td>
+                <td class="name">${e.companyName}</td>
+                <td>${e.category}</td>
+                <td>${e.since}</td>
+                <td>${e.until}</td>
+                <td>
+                    <div class="btncmp">
+                        <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
+                        
+                            <input data-id="${e._id}" class="btn delbtn" id="${e._id}" type="submit" onclick="deleteCompAdmin(this)" value="Eliminar"
+                        
+                        
+                    </div>
+                </td>
+            
+                
+              </tr>
+        `
+
+        i++;
+    });
+  };
+  const deleteCompAdmin = async (id) => {
+    const respuesta = await fetch(('http://localhost:8585/admin/company/' + id.id),{
+        method: "delete",
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }).then(respuesta => respuesta.json())
+    .then(window.location.reload());
+  }
+
+  let save = document.getElementById('saveChanges');
+  if (save!= null) {
+    save.addEventListener("click", function (e) {
+    location.href = "/admin"
+  })
+  }
+  
+
+  

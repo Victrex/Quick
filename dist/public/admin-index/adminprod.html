@@ -30,7 +30,7 @@
     
 
     <article>
-       <h1><strong>Administración-Victor Vasquez</strong></h1> <br>
+       <h1><strong>Administración</strong></h1> <br>
         
         <h2>Productos</h2><br>
        
@@ -53,10 +53,10 @@
                 
                 <div>
                     <div class="btnsadd" >
-                        <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn_primary btn_large">Agregar Producto</button></div>
+                        <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn_primary ">Agregar Producto</button></div>
                     </div>
                     <div class="btnsadd">
-                        <button type="button" data-target="#staticBackdrop" class="btn btn_secondary btn_large">Guardar Cambios</button></div>
+                        <button type="button" data-target="#staticBackdrop" id="saveChanges" class="btn btn_secondary ">Guardar Cambios</button></div>
                     </div>
                 </div>
                  
@@ -74,11 +74,16 @@
                             <input name="productName" type="text" class="form-control" id="txtcomp" value="" required>
                             <div>
                                 <label for="empr" class="form-label">Empresa</label>
-                                <input name="company" class="form-control" id="lista-comp">
-
+                                <select name="company" class="form-control" id="list-emp">
+                                  
+                                </select>
                                 <label for="category" class="form-label">Categoria</label>
-                                <input name="category" class="form-control" id="lista-comp">
-
+                                <select name="category" class="form-control" id="lista-comp">
+                                  <option value="0" selected></option>
+                                  <option value="Restaurante">Restaurante</option>
+                                  <option value="Abarrotes">Abarrotes</option>
+                                  <option value="Farmacias">Farmacias</option>
+                                </select>
                             </div>
                             <div class="aggcomp">
                               <div>
@@ -112,7 +117,8 @@
         
        
     </article>
-    
+    <script src="../js/fetchApi.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/controller.js"></script>
     <script src="../js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

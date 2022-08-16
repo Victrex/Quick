@@ -9,30 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.company = void 0;
+exports.AllOrders = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
-class company {
+class AllOrders {
 }
 __decorate([
     (0, typegoose_1.prop)({ type: String, required: true }),
     __metadata("design:type", String)
-], company.prototype, "companyName", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ type: String, required: true, trim: true }),
-    __metadata("design:type", String)
-], company.prototype, "category", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ type: String, default: 0 }),
-    __metadata("design:type", String)
-], company.prototype, "since", void 0);
+], AllOrders.prototype, "nameProduct", void 0);
 __decorate([
     (0, typegoose_1.prop)({ type: String, required: true }),
     __metadata("design:type", String)
-], company.prototype, "until", void 0);
+], AllOrders.prototype, "company", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
+], AllOrders.prototype, "quantity", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
+], AllOrders.prototype, "totalOrder", void 0);
 __decorate([
     (0, typegoose_1.prop)({ type: String, required: true }),
     __metadata("design:type", String)
-], company.prototype, "photo", void 0);
-exports.company = company;
-const companyModel = (0, typegoose_1.getModelForClass)(company);
-exports.default = companyModel;
+], AllOrders.prototype, "photo", void 0);
+exports.AllOrders = AllOrders;
+const AllorderModel = (0, typegoose_1.getModelForClass)(AllOrders);
+exports.default = AllorderModel;

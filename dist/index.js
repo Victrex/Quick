@@ -18,7 +18,9 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const admin_routes_1 = __importDefault(require("./routes/admin.routes"));
+const clients_routes_1 = __importDefault(require("./routes/clients.routes"));
 const method_override_1 = __importDefault(require("method-override"));
+const motor_routes_1 = __importDefault(require("./routes/motor.routes"));
 dotenv_1.default.config();
 //configs
 const app = (0, express_1.default)();
@@ -32,6 +34,8 @@ app.use((0, method_override_1.default)('_method'));
 //Revisar
 //routes
 app.use('/admin', admin_routes_1.default);
+app.use('/', clients_routes_1.default);
+app.use('/motor', motor_routes_1.default);
 //server
 app.listen(port, () => {
     console.log(`[SERVER] running at http://localhost:${port}`);

@@ -1,6 +1,7 @@
 import express, {Express, Request, response, Response } from "express";
 import path from "path";
 import ProductModel from "../models/products.model";
+import AllOrders from "../models/orders.model"
 import { getModelForClass, modelOptions, prop, Ref } from "@typegoose/typegoose";
 import { type } from "os";
 import motorModel from "../models/motors.model";
@@ -30,6 +31,9 @@ export const adminOrdenes = (req:Request, res:Response) => {
 }
 export const adminClientes = (req:Request, res:Response) => {
     res.sendFile(path.join(__dirname,'../public/admin-index/admincol.html'));
+}
+export const adminEmpresas = (req:Request, res:Response) => {
+        res.sendFile(path.join(__dirname,'../public/admin-index/admincomp.html')); 
 }
 
 /*CRUD Productos
@@ -85,7 +89,7 @@ export const postProduct = (req:Request , res:Response) => {
         product
                 .save()
                 .then(data =>{
-                        res.send(data);
+                        res.redirect('/admin/productos')
                         res.end();
                 })
                 .catch(error => {
@@ -126,7 +130,7 @@ export const putProduct = (req:Request , res:Response) => {
 
 export const deleteProduct = (req:Request , res:Response) => {
         //res.send('recibido')
-        ProductModel.remove({'_id': req.params.id}).then(removeResult=>{
+        ProductModel.findByIdAndRemove({'_id': req.params.id}).then(removeResult=>{
                 res.send({message: 'Registro eliminado', removeResult});
                 res.end();      
         })
@@ -193,7 +197,7 @@ export const postMotorista = (req:Request , res:Response) => {
         motorista
                 .save()
                 .then(data =>{
-                        res.send(data);
+                        res.redirect('/admin/motoristas');
                         res.end();
                 })
                 .catch(error => {
@@ -308,7 +312,7 @@ export const postClient = (req:Request , res:Response) => {
         client
                 .save()
                 .then(data =>{
-                        res.send(data);
+                        res.redirect('/admin/clientes')
                         res.end();
                 })
                 .catch(error => {
@@ -397,13 +401,14 @@ export const postCompany = (req:Request , res:Response) => {
                 companyName:req.body.companyName,
                 category:req.body.category,
                 since:req.body.since,
-                until:req.body.until
+                until:req.body.until,
+                photo: req.body.photo
 
         })
         company
                 .save()
                 .then(data =>{
-                        res.send(data);
+                        res.redirect('/admin/empresas');
                         res.end();
                 })
                 .catch(error => {
@@ -540,6 +545,60 @@ export const deleteOrder = (req:Request , res:Response) => {
                 res.end();      
         })
         .catch(error => {
+                res.status(500).send({
+                        message:error.message || "Algo ocurrió al eliminar el registro"
+                });
+        res.end();
+        });
+}
+
+export const getOrdersDisp = (req:Request, res: Response) => {
+        AllOrders.find().then(result=>{
+                res.send(result);
+                res.end();      
+        })
+        .catch(error => {
+                res.status(500).send({
+                        message:error.message || "Algo ocurrió al mostrar los registros"
+                });
+        res.end();
+        });
+}
+
+
+export const postOrdersDisp = (req:Request, res:Response) => {
+        if(!req.body){
+                res.status(400).send({message: 'Contenido no puede estar vacio'});
+                return;
+        }
+
+        //new order
+        const order = new AllOrders({
+                nameProduct: req.body.nameProduct,
+                company: req.body.company,
+                quantity: req.body.quantity,
+                totalOrder: req.body.totalOrder,
+                photo: req.body.photo
+        })
+        order
+                .save()
+                .then(data =>{
+                        res.send(data);
+                        res.end();
+                })
+                .catch(error => {
+                        res.status(500).send({
+                                message:error.message || "Algo ocurrió al crear el objeto"
+                        });
+                res.end();
+                });
+}
+export const deleteOrdersDisp = (req:Request, res:Response) => {
+        AllOrders.remove({_id: req.params.id}).then(removeResult => {
+                res.send({message: 'Registro eliminado', removeResult});
+                res.end();      
+                }
+        ).catch(error => {
                 res.status(500).send({
                         message:error.message || "Algo ocurrió al eliminar el registro"
                 });

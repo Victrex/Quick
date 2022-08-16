@@ -10,22 +10,22 @@
     <link rel="shortcut icon" href="../ASSETS/LOGO/Logo_white.svg" type="image/x-icon">
     <title>Pizza Hut</title>
 </head>
-<body class="" id="body" onload="order()">
+<body class="" id="body" onload="cargarProductsOrder()">
     <nav class="nav">
         <div class="logoCont">
-            <a href="#home" ><img class="logo-navbar" src="../ASSETS/LOGO/Logo_black.svg" alt=""></a>
+            <a href="#home" ><img class="logo-navbar" src="ASSETS/LOGO/Logo_black.svg" alt=""></a>
     
         </div>
         <div class="topnav" id="myTopnav">
             
-            <a href="../index.html">Inicio</a>
-            <a href="finalList.html">Mis Pedidos</a>
-            <a href="user.html">Mi Cuenta</a>
-            <a href="../landing.html">¡Conócenos!</a>
+            <a href="../quick">Inicio</a>
+            <a href="../client/orderlist">Mis Pedidos</a>
+            <a href="../client/user">Mi Cuenta</a>
+            <a href="/">¡Conócenos!</a>
             
             <div id="footer_nav" class="footer_Nav active">
-                <a href="Ulogin.html" onclick="logout()">Cerrar Sesion</a>
-                <a href="../landing.html">Trabaja con Nosotros</a>
+                <a href="/login">Cerrar Sesion</a>
+                <a href="/">Trabaja con Nosotros</a>
             </div>
           </div>
           <a href="javascript:void(0);" id="icon" class="icon" onclick="navCollapse()">
@@ -89,7 +89,7 @@
     
 
 
-
+    <script src="../js/fetchApi.js"></script>
     <script src="../js/controller.js"></script>
     <script src="../js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -3,9 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteOrder = exports.putOrder = exports.postOrder = exports.getOrder = exports.getOrders = exports.deleteCompany = exports.putCompany = exports.postCompany = exports.getCompany = exports.getCompanies = exports.deleteClient = exports.putClient = exports.postClient = exports.getClient = exports.getClients = exports.deleteMotorista = exports.putMotorista = exports.postMotorista = exports.getMotorista = exports.getMotoristas = exports.deleteProduct = exports.putProduct = exports.postProduct = exports.getProduct = exports.getProducts = exports.adminClientes = exports.adminOrdenes = exports.adminProductos = exports.adminMotoristas = exports.indexAdmin = void 0;
+exports.deleteOrdersDisp = exports.postOrdersDisp = exports.getOrdersDisp = exports.deleteOrder = exports.putOrder = exports.postOrder = exports.getOrder = exports.getOrders = exports.deleteCompany = exports.putCompany = exports.postCompany = exports.getCompany = exports.getCompanies = exports.deleteClient = exports.putClient = exports.postClient = exports.getClient = exports.getClients = exports.deleteMotorista = exports.putMotorista = exports.postMotorista = exports.getMotorista = exports.getMotoristas = exports.deleteProduct = exports.putProduct = exports.postProduct = exports.getProduct = exports.getProducts = exports.adminEmpresas = exports.adminClientes = exports.adminOrdenes = exports.adminProductos = exports.adminMotoristas = exports.indexAdmin = void 0;
 const path_1 = __importDefault(require("path"));
 const products_model_1 = __importDefault(require("../models/products.model"));
+const orders_model_1 = __importDefault(require("../models/orders.model"));
 const motors_model_1 = __importDefault(require("../models/motors.model"));
 const client_model_1 = __importDefault(require("../models/client.model"));
 const company_model_1 = __importDefault(require("../models/company.model"));
@@ -30,6 +31,10 @@ const adminClientes = (req, res) => {
     res.sendFile(path_1.default.join(__dirname, '../public/admin-index/admincol.html'));
 };
 exports.adminClientes = adminClientes;
+const adminEmpresas = (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../public/admin-index/admincomp.html'));
+};
+exports.adminEmpresas = adminEmpresas;
 /*CRUD Productos
  */
 const getProducts = (req, res) => {
@@ -78,7 +83,7 @@ const postProduct = (req, res) => {
     product
         .save()
         .then(data => {
-        res.send(data);
+        res.redirect('/admin/productos');
         res.end();
     })
         .catch(error => {
@@ -115,7 +120,7 @@ const putProduct = (req, res) => {
 exports.putProduct = putProduct;
 const deleteProduct = (req, res) => {
     //res.send('recibido')
-    products_model_1.default.remove({ '_id': req.params.id }).then(removeResult => {
+    products_model_1.default.findByIdAndRemove({ '_id': req.params.id }).then(removeResult => {
         res.send({ message: 'Registro eliminado', removeResult });
         res.end();
     })
@@ -178,7 +183,7 @@ const postMotorista = (req, res) => {
     motorista
         .save()
         .then(data => {
-        res.send(data);
+        res.redirect('/admin/motoristas');
         res.end();
     })
         .catch(error => {
@@ -284,7 +289,7 @@ const postClient = (req, res) => {
     client
         .save()
         .then(data => {
-        res.send(data);
+        res.redirect('/admin/clientes');
         res.end();
     })
         .catch(error => {
@@ -367,12 +372,13 @@ const postCompany = (req, res) => {
         companyName: req.body.companyName,
         category: req.body.category,
         since: req.body.since,
-        until: req.body.until
+        until: req.body.until,
+        photo: req.body.photo
     });
     company
         .save()
         .then(data => {
-        res.send(data);
+        res.redirect('/admin/empresas');
         res.end();
     })
         .catch(error => {
@@ -505,3 +511,55 @@ const deleteOrder = (req, res) => {
     });
 };
 exports.deleteOrder = deleteOrder;
+const getOrdersDisp = (req, res) => {
+    orders_model_1.default.find().then(result => {
+        res.send(result);
+        res.end();
+    })
+        .catch(error => {
+        res.status(500).send({
+            message: error.message || "Algo ocurrió al mostrar los registros"
+        });
+        res.end();
+    });
+};
+exports.getOrdersDisp = getOrdersDisp;
+const postOrdersDisp = (req, res) => {
+    if (!req.body) {
+        res.status(400).send({ message: 'Contenido no puede estar vacio' });
+        return;
+    }
+    //new order
+    const order = new orders_model_1.default({
+        nameProduct: req.body.nameProduct,
+        company: req.body.company,
+        quantity: req.body.quantity,
+        totalOrder: req.body.totalOrder,
+        photo: req.body.photo
+    });
+    order
+        .save()
+        .then(data => {
+        res.send(data);
+        res.end();
+    })
+        .catch(error => {
+        res.status(500).send({
+            message: error.message || "Algo ocurrió al crear el objeto"
+        });
+        res.end();
+    });
+};
+exports.postOrdersDisp = postOrdersDisp;
+const deleteOrdersDisp = (req, res) => {
+    orders_model_1.default.remove({ _id: req.params.id }).then(removeResult => {
+        res.send({ message: 'Registro eliminado', removeResult });
+        res.end();
+    }).catch(error => {
+        res.status(500).send({
+            message: error.message || "Algo ocurrió al eliminar el registro"
+        });
+        res.end();
+    });
+};
+exports.deleteOrdersDisp = deleteOrdersDisp;

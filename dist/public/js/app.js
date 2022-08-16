@@ -50,27 +50,28 @@ let cont = 1;
 let total = document.getElementById('total');
 
 var product = JSON.parse(localStorage.getItem("products"));
-let KeyOrder = JSON.parse(localStorage.getItem('orderKey'));
+
+
 
 
 const moreQ = () =>{
   let totalOrder;
   quantity.value = ++cont;
   totalCont.innerHTML = quantity.value ;
-  total.innerHTML = (quantity.value * product[KeyOrder].price) + 70.00; //el precio del producto
+  total.innerHTML = (quantity.value * product.price) + 70.00; //el precio del producto
 
 }
 const lessQ = () =>{
   let totalOrder;
   quantity.value = --cont;
   totalCont.innerHTML = quantity.value ;
-  total.innerHTML = (quantity.value * product[KeyOrder].price) + 70.00;
+  total.innerHTML = (quantity.value * product.price) + 70.00;
   if (cont < 1) {
     alert('La Cantidad no Es valida')
     cont = 1;
     quantity.value = cont--;
     totalCont.innerHTML = quantity.value ;
-    total.innerHTML = (quantity.value * product[KeyOrder].price) + 70.00;
+    total.innerHTML = (quantity.value * product.price) + 70.00;
   }
 }
 

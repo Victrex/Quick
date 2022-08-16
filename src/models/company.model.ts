@@ -12,6 +12,8 @@ export class company {
 
     @prop({type: String, required:true})
     until:string;
+    @prop({type: String, required:true})
+    photo:string;
 }
 
 

@@ -4,8 +4,10 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import path from "path";
 import adminRoutes from "./routes/admin.routes";
+import clientRoutes from "./routes/clients.routes";
 import methodOverride from 'method-override';
-
+import motorRoutes from "./routes/motor.routes"
+import axios from 'axios';
 
 
 dotenv.config();
@@ -33,8 +35,8 @@ app.use(methodOverride('_method'))
 
 //routes
 app.use('/admin', adminRoutes)
-
-
+app.use('/', clientRoutes)
+app.use('/motor', motorRoutes)
 
 //server
 app.listen(port, () =>{
