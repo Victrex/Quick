@@ -53,14 +53,14 @@
                 
                 <div>
                     <div class="btnsadd" >
-                        <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn_primary ">Agregar Producto</button></div>
+                        <button type="button" data-toggle="modal" data-target="#staticBackdrop1" class="btn btn_primary ">Agregar Producto</button></div>
                     </div>
                     <div class="btnsadd">
                         <button type="button" data-target="#staticBackdrop" id="saveChanges" class="btn btn_secondary ">Guardar Cambios</button></div>
                     </div>
                 </div>
                  
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -111,7 +111,59 @@
                     </div>
                     </div>
                   </div>
-        
+                  
+
+                  <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <strong><h2 class="modal-title" id="staticBackdropLabel">EDITAR UN NUEVO PRODUCTO</h2></strong>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form class="modal-body" id="modalToEdit" >
+
+                              <label for="nombre" class="form-label">Nombre del producto</label>
+                              <input name="productName" type="text" class="form-control" id="nameEdit" value="" required>
+
+                            <div>
+                                <label for="empr" class="form-label">Empresa</label>
+                                <select name="company" class="form-control" value="" id="list-emp2">
+                                  
+                                </select>
+                                <label for="category" class="form-label">Categoria</label>
+                                <select name="category" class="form-control" value="" id="tagsEdit">
+                                  <option value="0" selected></option>
+                                  <option value="Restaurante">Restaurante</option>
+                                  <option value="Abarrotes">Abarrotes</option>
+                                  <option value="Farmacias">Farmacias</option>
+                                </select>
+                            </div>
+                            <div class="aggcomp">
+                              <div>
+                                  <label for="price" class="form-label">Precio</label>
+                                  <input name="price" type="text" class="form-control" id="priceEdit" value="" required>
+                              </div>
+                              <div class="upload-image">
+                                <label for="exampleFormControlFile1">Subir imagen</label>
+                                <input name="photo" type="file" class="form-control-file" id="photo">
+                              </div>  
+                            </div>
+                              <br>
+                            <div class="description" id="despEdit">
+                                
+                            </div>
+                           
+                            <div class="modal-footer" id="modal_footer_id">
+                              
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
+                    </div>
+                  </div>
         </div> 
         
         

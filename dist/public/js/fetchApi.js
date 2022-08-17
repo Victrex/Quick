@@ -120,8 +120,62 @@ const cargarProductsOrder = async () => {
     localStorage.setItem("products", JSON.stringify(ordenData));
 }
 
-
-
+    const putEdit = async (id) => {
+        let name = document.getElementById("nameEdit");
+        let comp = document.getElementById("list-emp2");
+        let cat = document.getElementById("tagsEdit");
+        let pric = document.getElementById("priceEdit")
+        let photo = document.getElementById("photo")
+        let desp = document.getElementById("description")
+        let obj = {
+            productName: name.value,
+            company: comp.value,
+            category: cat.value,
+            price: pric.value,
+            photo: photo.value,
+            description: desp.value
+        }
+        console.log(obj);
+        const respuesta = await fetch(('http://localhost:8585/admin/productos/' + id.id), {
+        method: "put",
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({
+            productName: `${name.value}`,
+            company: `${comp.value}`,
+            category: `${cat.value}`,
+            price: `${pric.value}`,
+            photo: `${photo.value}`,
+            description: `${desp.value}`
+        })
+    }).then(respuesta => respuesta.json())
+    .then(data => console.log(data))
+    .then(window.location.reload());
+        
+    }
+    const action = (id) => {
+        document.getElementById('editButton').id = id;
+    }
+    const loadToIDPrd = async (id) => {
+        
+        const respuesta = await fetch(('http://localhost:8585/admin/productos/' + id.id), {
+        method: "get"
+        });
+        PrdToEdit = await respuesta.json();
+        let response = PrdToEdit[0]
+        console.log(PrdToEdit[0]);
+        document.getElementById("nameEdit").value = `${response.productName}`
+        document.getElementById('priceEdit').value = `${response.price}`;
+        document.getElementById('despEdit').innerHTML = `<label for="exampleFormControlTextarea1">Descripción</label>
+        <textarea name="description" class="form-control" id="description" id="descriptionEdit" rows="3">${response.description}</textarea>`;
+        document.getElementById('tagsEdit').value =`${response.category}`;
+        document.getElementById('list-emp2').value =`${response.company}`;
+        document.getElementsByName('editButton').id = id.id;
+        document.getElementById('modal_footer_id').innerHTML = `
+        <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" name="editButton" id="${id.id}" class="btn btn_primary" onclick="putEdit(this)">Editar Producto</button>`
+    }
 
 
 
@@ -131,12 +185,15 @@ const cargarProductsOrder = async () => {
         method: "get"
     });
         productosArray = await respuesta.json();
+        console.log(productosArray[0]._id);
         const getCompanies = async () => {
             const response = await fetch('http://localhost:8585/admin/empresas/get', {
                 method: "get"
             });
             let companies = await response.json()
             loadCompaniesToSelect(companies)
+            loadCompaniesToSelectEdit(companies)
+            
         }
         getCompanies();
 
@@ -145,6 +202,16 @@ const cargarProductsOrder = async () => {
             comps.forEach(e => {
                 console.log(e.companyName);
                 document.getElementById('list-emp').innerHTML += `
+                <option value="${e.companyName}">${e.companyName}</option>
+            `
+            });
+            
+        }
+        const loadCompaniesToSelectEdit = (comps) => {
+            document.getElementById('list-emp2').innerHTML = '<option value="0" selected></option>'
+            comps.forEach(e => {
+                console.log(e.companyName);
+                document.getElementById('list-emp2').innerHTML += `
                 <option value="${e.companyName}">${e.companyName}</option>
             `
             });
@@ -166,7 +233,7 @@ const cargarProductsOrder = async () => {
                         <td>${e.description}</td>
                         <td>
                             <div class="btncmp">
-                                <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
+                                <button class="btn editbtn" data-toggle="modal" id="${e._id}" onclick="loadToIDPrd(this)" data-target="#staticBackdrop2">Editar</button>
                                 
                                     <input class="btn delbtn" id="${e._id}" type="submit" onclick="deleteProductsAdmin(this)" value="Eliminar">
                                 
@@ -182,6 +249,7 @@ const cargarProductsOrder = async () => {
             });
           }
         loadProductsAdmin()
+        
 
   };
   //cargarProducts();

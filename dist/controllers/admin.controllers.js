@@ -536,7 +536,13 @@ const postOrdersDisp = (req, res) => {
         company: req.body.company,
         quantity: req.body.quantity,
         totalOrder: req.body.totalOrder,
-        photo: req.body.photo
+        photo: req.body.photo,
+        user: [{
+                name: req.body.name,
+                email: req.body.email,
+                phone: req.body.email,
+                address: req.body.address
+            }]
     });
     order
         .save()

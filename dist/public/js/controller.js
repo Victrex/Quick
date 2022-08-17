@@ -143,9 +143,8 @@ var users = JSON.parse(localStorage.getItem("users"));
 }; */
 
 
-
+let resM
 const cargarML = (item) => {
-    console.log(item);
    fetch(('http://localhost:8585/admin/motoristas/' + item))
   .then(response => response.json())
   .then(data => {
@@ -163,6 +162,9 @@ const Mlogin = () => {
   let user = JSON.parse(localStorage.getItem("motors"))
   if (!email.value ==  "") {
       let a = user;
+      if (user.email == null) {
+            console.log('Nullo');
+      }
       if (a.email != email.value) {
           document.querySelector(".noProfile").classList.remove("active");//cuando no se encuentre el perfil en la base de datos
           
@@ -184,7 +186,7 @@ const Mlogin = () => {
                   document.querySelector(".noProfile").innerHTML = "La contraseña es incorrecta";
               };
       }
-    
+
   } 
 
 };
@@ -198,7 +200,6 @@ const Mlogin = () => {
 
 
   var resp;
-  let der
   const cargarUL = (item) => {
     fetch(('http://localhost:8585/admin/clientes/' + item))
     .then(response => response.json())
@@ -206,15 +207,13 @@ const Mlogin = () => {
         resp = data
         localStorage.setItem("users", JSON.stringify(resp))
         
-    });
+    }).catch(error => console.log(error));
     
   }
 
   const Ulogin = () => {
     let email = document.getElementById('Email1');
-    
     let password = document.getElementById('Password1');
-    
     cargarUL(email.value)
     let user = JSON.parse(localStorage.getItem("users"))
     if (!email.value ==  "") {
@@ -231,7 +230,8 @@ const Mlogin = () => {
                         email: `${a.email}`,
                         phone: `${a.telephone}`,
                         ProfilePhoto: `../ASSETS/users/clntUsers/${a.photo}`,
-                        gender: `${a.gender}`
+                        gender: `${a.gender}`,
+                        address: `${a.address}`
                     }));
                     return false;             
                     
@@ -270,25 +270,30 @@ const cwUser = () =>{
 const chargeOrder = () => {
     localStorage.removeItem('orderKey');
     let totalPrice = document.getElementById('total');
-    let user = localStorage.getItem("keyUser");
+    let user = JSON.parse(localStorage.getItem("keyUser"));
     let orderList = JSON.parse(localStorage.getItem("orderlist"));
-    users.forEach(element => {
-        if (element.email == user) {
+/*     users.forEach(element => {
+        if (element.email == user) { */
             let order = {
                 nameProduct : `'${document.getElementById('name').innerHTML}'`,
             totalOrder: `${totalPrice.innerHTML}`,
             photo: `'${document.querySelector('.img_order_took').id}'`,
             quantity: `${document.getElementById('total_cont').innerHTML}`,
+            user: {
+                name: `${user.name}`,
+                email: `${user.email}`,
+                phone: `${user.email}`,
+                address: `${user.address}`
+            }
             };
-            element.shopping.push(order);
-        console.log(order);
+            //element.shopping.push(order);
+        console.log(user);
         localStorage.setItem("orderlist", JSON.stringify(order));
-        postOrder(order)
-        }
-    });
-    console.log(users);
+        //postOrder(order)
+/*         }
+    }); */
 
-    location.href = "../quick";
+    //location.href = "../quick";
 };
 
 
@@ -304,6 +309,12 @@ const postOrder = async (order) => {
                 quantity: order.quantity,
                 totalOrder: order.totalOrder,
                 photo: order.photo,
+                user: {
+                    name: order.name,
+                    email: order.email,
+                    phone: order.email,
+                    address: order.address
+                }
             })
     });
     const data = await respuesta.json();

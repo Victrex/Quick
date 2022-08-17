@@ -9,8 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AllOrders = void 0;
+exports.AllOrders = exports.userOrder = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
+class userOrder {
+}
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], userOrder.prototype, "name", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], userOrder.prototype, "email", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", Number)
+], userOrder.prototype, "phone", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], userOrder.prototype, "address", void 0);
+exports.userOrder = userOrder;
 class AllOrders {
 }
 __decorate([
@@ -33,6 +52,10 @@ __decorate([
     (0, typegoose_1.prop)({ type: String, required: true }),
     __metadata("design:type", String)
 ], AllOrders.prototype, "photo", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: userOrder, required: true }),
+    __metadata("design:type", Array)
+], AllOrders.prototype, "user", void 0);
 exports.AllOrders = AllOrders;
 const AllorderModel = (0, typegoose_1.getModelForClass)(AllOrders);
 exports.default = AllorderModel;
