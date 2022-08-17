@@ -147,7 +147,7 @@ const getMotoristas = (req, res) => {
 };
 exports.getMotoristas = getMotoristas;
 const getMotorista = (req, res) => {
-    motors_model_1.default.find({ _id: req.params.id }).then(result => {
+    motors_model_1.default.findOne({ email: req.params.id }).then(result => {
         res.send(result);
         res.end();
     })
@@ -258,7 +258,7 @@ const getClients = (req, res) => {
 };
 exports.getClients = getClients;
 const getClient = (req, res) => {
-    client_model_1.default.find({ _id: req.params.id }).then(result => {
+    client_model_1.default.findOne({ email: req.params.id }).then(result => {
         res.send(result);
         res.end();
     })
@@ -284,7 +284,8 @@ const postClient = (req, res) => {
         date: req.body.date,
         address: req.body.address,
         userName: req.body.userName,
-        password: req.body.password
+        password: req.body.password,
+        photo: req.body.photo
     });
     client
         .save()

@@ -109,7 +109,7 @@ if (localStorage.getItem("companys") == null) {
 var products = JSON.parse(localStorage.getItem("products"));
 var users = JSON.parse(localStorage.getItem("users"));
   var mots = JSON.parse(localStorage.getItem("mot"));
-  const ML = () =>{
+/*   const ML = () =>{
     if (localStorage.getItem("mot") == null) {
         localStorage.setItem("mot", JSON.stringify(motUsers));
         window.location.reload();
@@ -140,24 +140,99 @@ var users = JSON.parse(localStorage.getItem("users"));
       
     }
     
+}; */
+
+
+
+const cargarML = (item) => {
+    console.log(item);
+   fetch(('http://localhost:8585/admin/motoristas/' + item))
+  .then(response => response.json())
+  .then(data => {
+      resM = data
+      localStorage.setItem("motors", JSON.stringify(resM))
+      
+  }).catch(error => console.log(error)); 
+  
+}
+
+const Mlogin = () => {
+    let email = document.getElementById('Email2');
+    let password = document.getElementById('Password2');
+    cargarML(email.value)
+  let user = JSON.parse(localStorage.getItem("motors"))
+  if (!email.value ==  "") {
+      let a = user;
+      if (a.email != email.value) {
+          document.querySelector(".noProfile").classList.remove("active");//cuando no se encuentre el perfil en la base de datos
+          
+      } else {
+              if (a.password == password.value ) {
+                   location.href = "../motor/inicio"; 
+                   localStorage.removeItem("motors")
+                  localStorage.setItem("keyUser", JSON.stringify({
+                      name: `${a.name}`,
+                      email: `${a.email}`,
+                      phone: `${a.telephone}`,
+                      ProfilePhoto: `../ASSETS/users/clntUsers/${a.photo}`,
+                      gender: `${a.gender}`
+                  }));
+                  return false;             
+                  
+              }else{
+                  document.querySelector(".noProfile").classList.remove("active");//cuando la contraseña sea incorrecta
+                  document.querySelector(".noProfile").innerHTML = "La contraseña es incorrecta";
+              };
+      }
+    
+  } 
+
 };
-const UL = () =>{
-    if (localStorage.getItem("users") == null) {
-        localStorage.setItem("users", JSON.stringify(clientUsers));
-        window.location.reload();
-    }
-  };
+
+
+
+
+
+
+
+
+
+  var resp;
+  let der
+  const cargarUL = (item) => {
+    fetch(('http://localhost:8585/admin/clientes/' + item))
+    .then(response => response.json())
+    .then(data => {
+        resp = data
+        localStorage.setItem("users", JSON.stringify(resp))
+        
+    });
+    
+  }
+
   const Ulogin = () => {
     let email = document.getElementById('Email1');
+    
     let password = document.getElementById('Password1');
-    if (!email.value == "") {
-        let a = users.filter(users => users.email == email.value);
-        if (a.length == 0) {
+    
+    cargarUL(email.value)
+    let user = JSON.parse(localStorage.getItem("users"))
+    if (!email.value ==  "") {
+        let a = user;
+        if (a.email != email.value) {
             document.querySelector(".noProfile").classList.remove("active");//cuando no se encuentre el perfil en la base de datos
+            
         } else {
-                if (a[0].password == password.value ) {
+                if (a.password == password.value ) {
                      location.href = "../quick"; 
-                    localStorage.setItem("keyUser", a[0].email);
+                     localStorage.removeItem("users")
+                    localStorage.setItem("keyUser", JSON.stringify({
+                        name: `${a.name}`,
+                        email: `${a.email}`,
+                        phone: `${a.telephone}`,
+                        ProfilePhoto: `../ASSETS/users/clntUsers/${a.photo}`,
+                        gender: `${a.gender}`
+                    }));
                     return false;             
                     
                 }else{
@@ -169,21 +244,21 @@ const UL = () =>{
     }
 
   };
+
 const cwUser = () =>{
     let photo = document.querySelector('.profilePhoto');
     let name = document.querySelector('.nameUser');
     let phone = document.querySelector('.phoneUser');
     let email = document.querySelector('.emailUser');
-    let keyUser = localStorage.getItem("keyUser");
-    users.forEach(e => {
-        if(e.email == keyUser){
-            console.log("El usuario es " + e.email);
-            photo.innerHTML = `<img src="${e.ProfilePhoto}" alt="" id="img_profile">`;
-            name.innerHTML = e.name + " " + e.last_name;
-            phone.innerHTML = e.phone;
-            email.innerHTML = e.email;
-        }
-    })
+    let keyUser = JSON.parse(localStorage.getItem("keyUser"));
+    console.log(keyUser);
+
+            console.log("El usuario es " + keyUser);
+            photo.innerHTML = `<img src="${keyUser.ProfilePhoto}" alt="" id="img_profile">`;
+            name.innerHTML = keyUser.name;
+            phone.innerHTML = keyUser.phone;
+            email.innerHTML = keyUser.email;
+
 
 }
 

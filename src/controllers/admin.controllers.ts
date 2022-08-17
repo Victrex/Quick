@@ -159,7 +159,7 @@ export const getMotoristas = (req:Request , res:Response) => {
 }
 
 export const getMotorista = (req:Request , res:Response) => {
-        motorModel.find({_id: req.params.id}).then(result=>{
+        motorModel.findOne({email: req.params.id}).then(result=>{
                 res.send(result);
                 res.end();      
         })
@@ -278,7 +278,7 @@ export const getClients = (req:Request , res:Response) => {
 }
 
 export const getClient = (req:Request , res:Response) => {
-        clientModel.find({_id: req.params.id}).then(result=>{
+        clientModel.findOne({email: req.params.id}).then(result=>{
                 res.send(result);
                 res.end();      
         })
@@ -298,15 +298,15 @@ export const postClient = (req:Request , res:Response) => {
 
         //new cliente
         const client = new clientModel({
-    name: req.body.name,
-    gender: req.body.gender,
-    telephone: req.body.telephone,
-    email: req.body.email,
-    date: req.body.date,
-    address: req.body.address,
-    userName: req.body.userName,
-    password: req.body.password
-
+                name: req.body.name,
+                gender: req.body.gender,
+                telephone: req.body.telephone,
+                email: req.body.email,
+                date: req.body.date,
+                address: req.body.address,
+                userName: req.body.userName,
+                password: req.body.password,
+                photo: req.body.photo
 
         })
         client

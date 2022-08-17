@@ -17,13 +17,13 @@ router.put('/productos/:id', admin_controllers_1.putProduct);
 router.delete('/productos/:id', admin_controllers_1.deleteProduct);
 //Router Motoristas
 router.get('/motoristas/get', admin_controllers_1.getMotoristas);
-router.get('/:id', admin_controllers_1.getMotorista);
+router.get('/motoristas/:id', admin_controllers_1.getMotorista);
 router.post('/motoristas', admin_controllers_1.postMotorista);
 router.put('/:id', admin_controllers_1.putMotorista);
 router.delete('/motoristas/:id', admin_controllers_1.deleteMotorista);
 //Router Clientes
 router.get('/clientes/get', admin_controllers_1.getClients); //listo
-router.get('/:id', admin_controllers_1.getClient);
+router.get('/clientes/:id', admin_controllers_1.getClient);
 router.post('/clientes', admin_controllers_1.postClient); //listo
 router.put('/:id', admin_controllers_1.putClient);
 router.delete('/clientes/:id', admin_controllers_1.deleteClient);

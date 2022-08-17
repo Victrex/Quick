@@ -18,14 +18,14 @@ router.delete('/productos/:id', deleteProduct);
 
 //Router Motoristas
 router.get('/motoristas/get', getMotoristas);
-router.get('/:id', getMotorista);
+router.get('/motoristas/:id', getMotorista);
 router.post('/motoristas', postMotorista);
 router.put('/:id', putMotorista);
 router.delete('/motoristas/:id', deleteMotorista);
 
 //Router Clientes
 router.get('/clientes/get', getClients); //listo
-router.get('/:id', getClient);
+router.get('/clientes/:id', getClient);
 router.post('/clientes', postClient); //listo
 router.put('/:id', putClient);
 router.delete('/clientes/:id', deleteClient);

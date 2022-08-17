@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:type", Number)
 ], clientUser.prototype, "telephone", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ type: String, required: true }),
+    (0, typegoose_1.prop)({ type: String, required: true, trim: true }),
     __metadata("design:type", String)
 ], clientUser.prototype, "email", void 0);
 __decorate([
@@ -38,9 +38,13 @@ __decorate([
     __metadata("design:type", String)
 ], clientUser.prototype, "address", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ type: String, required: true }),
+    (0, typegoose_1.prop)({ type: String, required: true, trim: true }),
     __metadata("design:type", String)
 ], clientUser.prototype, "userName", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], clientUser.prototype, "photo", void 0);
 __decorate([
     (0, typegoose_1.prop)({ type: String, required: true }),
     __metadata("design:type", String)

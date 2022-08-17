@@ -11,7 +11,7 @@ export class clientUser{
     @prop({type: Number, required:true})
     telephone: number;
 
-    @prop({type:String, required:true})
+    @prop({type:String, required:true, trim: true})
     email: string;
     
     @prop({type:String})
@@ -20,8 +20,10 @@ export class clientUser{
     @prop({type:String, required:true})
     address: string;
 
-    @prop({type:String, required:true})
+    @prop({type:String, required:true, trim: true})
     userName: string;
+    @prop({type:String, required:true})
+    photo: string;
 
     @prop({type:String, required:true})
     password: string;
