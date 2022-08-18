@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteOrdersDisp = exports.postOrdersDisp = exports.getOrdersDisp = exports.deleteOrder = exports.putOrder = exports.postOrder = exports.getOrder = exports.getOrders = exports.deleteCompany = exports.putCompany = exports.postCompany = exports.getCompany = exports.getCompanies = exports.deleteClient = exports.putClient = exports.postClient = exports.getClient = exports.getClients = exports.deleteMotorista = exports.putMotorista = exports.postMotorista = exports.getMotorista = exports.getMotoristas = exports.deleteProduct = exports.putProduct = exports.postProduct = exports.getProduct = exports.getProducts = exports.adminEmpresas = exports.adminClientes = exports.adminOrdenes = exports.adminProductos = exports.adminMotoristas = exports.indexAdmin = void 0;
+exports.deleteOrdersDisp = exports.postOrdersDisp = exports.getOrderDisp = exports.getOrdersDisp = exports.deleteOrder = exports.putOrder = exports.postOrder = exports.getOrder = exports.getOrders = exports.deleteCompany = exports.putCompany = exports.postCompany = exports.getCompany = exports.getCompanies = exports.deleteClient = exports.putClient = exports.postClient = exports.getClient = exports.getClients = exports.deleteMotorista = exports.putMotorista = exports.postMotorista = exports.getMotorista = exports.getMotoristas = exports.deleteProduct = exports.putProduct = exports.postProduct = exports.getProduct = exports.getProducts = exports.adminEmpresas = exports.adminClientes = exports.adminOrdenes = exports.adminProductos = exports.adminMotoristas = exports.indexAdmin = void 0;
 const path_1 = __importDefault(require("path"));
 const products_model_1 = __importDefault(require("../models/products.model"));
 const orders_model_1 = __importDefault(require("../models/orders.model"));
@@ -525,6 +525,19 @@ const getOrdersDisp = (req, res) => {
     });
 };
 exports.getOrdersDisp = getOrdersDisp;
+const getOrderDisp = (req, res) => {
+    orders_model_1.default.findById({ _id: req.params.id }).then(result => {
+        res.send(result);
+        res.end();
+    })
+        .catch(error => {
+        res.status(500).send({
+            message: error.message || "Algo ocurrió al mostrar los registros"
+        });
+        res.end();
+    });
+};
+exports.getOrderDisp = getOrderDisp;
 const postOrdersDisp = (req, res) => {
     if (!req.body) {
         res.status(400).send({ message: 'Contenido no puede estar vacio' });
@@ -537,12 +550,10 @@ const postOrdersDisp = (req, res) => {
         quantity: req.body.quantity,
         totalOrder: req.body.totalOrder,
         photo: req.body.photo,
-        user: [{
-                name: req.body.name,
-                email: req.body.email,
-                phone: req.body.email,
-                address: req.body.address
-            }]
+        userName: req.body.userName,
+        userEmail: req.body.userEmail,
+        userPhone: req.body.userPhone,
+        userAddress: req.body.userAddress
     });
     order
         .save()

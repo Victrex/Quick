@@ -1,108 +1,4 @@
-//const { default: axios } = require("axios");chare
-//import axios from "axios";
-var clientUsers = [
-    {
-        name: 'Victor',
-        last_name: 'Vasquez',
-        email: 'victrex1234@gmail.com',
-        password: 'victor1234',
-        phone: '9500-1170',
-        ProfilePhoto: '../ASSETS/users/clntUsers/user_prueba.jpg',
-        gender: 'masculino',
-        shopping: [],
-    },
-    {
-        name: 'Andre',
-        last_name: 'Romanov',
-        email: 'vgvasquez@gmail.com',
-        password: '1234',
-        phone: '9500-1170',
-        ProfilePhoto: '../ASSETS/users/clntUsers/user_prueba.jpg',
-        gender: 'masculino',
-        shopping: [],
-    },
 
-];
-
-var motUsers = [
-    {
-        name: 'Daniels',
-        last_name: 'Hernandez',
-        email: 'daniels@gmail.com',
-        password: 'daniels1234',
-        phone: '9746-6784',
-        ProfilePhoto: '../ASSETS/user/motUsers/user_prueba.jpg',
-        gender: 'masculino' 
-    }
-];
-/* var companys = [
-    {
-        name: 'Pizza Hut',
-        category: 'restaurante',
-        photo: '../ASSETS/brands/pizza_hut.png',
-        cover: '../ASSETS/brands/cover/pizza_hut_cover.jpg',
-        desp: 'Si lo piensas bien, todo en el mundo se puede dividir en dos categorías: pizza y no pizza.'
-        
-    },
-    {
-        name: 'Little Caesars',
-        category: 'restaurante',
-        photo: '../ASSETS/brands/little_caesars.jpg',
-        cover: '../ASSETS/brands/cover/little_caesars_cover.jpg',
-        desp: 'Si lo piensas bien, todo en el mundo se puede dividir en dos categorías: pizza y no pizza.'
-        
-    },
-    {
-        name: 'Burguer King',
-        category: 'restaurante',
-        photo: '../ASSETS/brands/burguer_king.png',
-        cover: '../ASSETS/brands/cover/burguer_king_cover.jpg',
-        desp: 'Si lo piensas bien, todo en el mundo se puede dividir en dos categorías: pizza y no pizza.'
-        
-    }
-]
-var products = [
-    {
-        productName : 'Suprema',
-        company: 'Pizza Hut',
-        category: 'restaurante',
-        price: 279.00,
-        desp: 'Elaborada con Peperoni, carne de res y cerdo, champiñones, chile verde y cebolla.',
-        photo: '../ASSETS/products/suprema.jpg',
-    },
-    {
-        productName : 'Pepperoni o Jamón Lovers',
-        company: 'Pizza Hut',
-        category: 'restaurante',
-        price: 279.00,
-        desp: 'Pepperoni o jamón en abundancia, queso 100% mozzarella.',
-        photo: '../ASSETS/products/pepperoni_o_jamon_lovers.jpg',
-    },
-    {
-        productName : '4 estaciones',
-        company: 'Pizza Hut',
-        category: 'restaurante',
-        price: 299.00,
-        desp: 'Cuatro diferentes especialidades en una sola pizza: súper suprema, canadiense, pepperoni y jamón.',
-        photo: '../ASSETS/products/4_estaciones.jpg',
-    },
-    {
-        productName : 'Super Suprema',
-        company: 'Pizza Hut',
-        category: 'restaurante',
-        price: 299.00,
-        desp: 'Elaborada con pepperoni, carne de res y cerdo, salchicha italiana, jamón, champiñones, aceitunas, cebolla y chile verde.',
-        photo: '../ASSETS/products/super_suprema.jpg',
-    },
-] 
-
-if (localStorage.getItem("products") == null) {
-    localStorage.setItem("products", JSON.stringify(products));
-}
-if (localStorage.getItem("companys") == null) {
-    localStorage.setItem("companys", JSON.stringify(companys));
-}
-*/
 
 
 
@@ -172,7 +68,7 @@ const Mlogin = () => {
               if (a.password == password.value ) {
                    location.href = "../motor/inicio"; 
                    localStorage.removeItem("motors")
-                  localStorage.setItem("keyUser", JSON.stringify({
+                  localStorage.setItem("keyUserMotor", JSON.stringify({
                       name: `${a.name}`,
                       email: `${a.email}`,
                       phone: `${a.telephone}`,
@@ -270,55 +166,44 @@ const cwUser = () =>{
 const chargeOrder = () => {
     localStorage.removeItem('orderKey');
     let totalPrice = document.getElementById('total');
-    let user = JSON.parse(localStorage.getItem("keyUser"));
-    let orderList = JSON.parse(localStorage.getItem("orderlist"));
-/*     users.forEach(element => {
-        if (element.email == user) { */
+    let keyUser = JSON.parse(localStorage.getItem("keyUser"));
+    let products = JSON.parse(localStorage.getItem("products"));
+
             let order = {
-                nameProduct : `'${document.getElementById('name').innerHTML}'`,
-            totalOrder: `${totalPrice.innerHTML}`,
-            photo: `'${document.querySelector('.img_order_took').id}'`,
-            quantity: `${document.getElementById('total_cont').innerHTML}`,
-            user: {
-                name: `${user.name}`,
-                email: `${user.email}`,
-                phone: `${user.email}`,
-                address: `${user.address}`
-            }
+                nameProduct : `${document.getElementById('name').innerHTML}`,
+                company: `${products.company}`,
+                totalOrder: `${totalPrice.innerHTML}`,
+                photo: `${document.querySelector('.img_order_took').id}`,
+                quantity: document.getElementById('total_cont').innerHTML,
+                userName: `${keyUser.name}`,
+                userEmail: `${keyUser.email}`,
+                userPhone: keyUser.phone,
+                userAddress: `${keyUser.address}`
             };
             //element.shopping.push(order);
-        console.log(user);
+        if (localStorage.getItem("orderlist") == null) {
+            console.log("no hay archivos");
+        }
         localStorage.setItem("orderlist", JSON.stringify(order));
-        //postOrder(order)
-/*         }
-    }); */
+        postOrder(order)
 
-    //location.href = "../quick";
+
+    location.href = "../quick";
 };
 
 
 
 const postOrder = async (order) => {
     const respuesta = await fetch('http://localhost:8585/admin/ordenes/postOrders', {
-        method: "post",
+        method: 'POST',
+        body: JSON.stringify(order),
         headers: {
             'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                nameProduct: order.nameProduct,
-                quantity: order.quantity,
-                totalOrder: order.totalOrder,
-                photo: order.photo,
-                user: {
-                    name: order.name,
-                    email: order.email,
-                    phone: order.email,
-                    address: order.address
-                }
-            })
-    });
-    const data = await respuesta.json();
-    console.log(data);
+            }
+    }).then(respuesta => respuesta.json())
+    
+    .then(/* window.location.reload() */ console.log(order)).catch(error => console.log(error)); 
+    ;
 }
 
 (function () {
@@ -641,6 +526,37 @@ var empresasArray = [];
     location.href = "/admin"
   })
   }
-  
+  const LPT = () => {
+    if (localStorage.getItem("order") == null) {
+            alert("¡La orden ya no está disponible!")
+            window.location.href = "../motor/inicio"        
+    } else{
+    let order = JSON.parse(localStorage.getItem("order"));
+    let imgOrder = document.getElementById("imgOrder");
+    let nameOrder = document.getElementById("nameOrder");
+    let orderCompany = document.getElementById("orderCompany");
+    let clientName = document.getElementById("clientName");
+    let clientAddress = document.getElementById("clientAddress");
+    let clientPhone = document.getElementById("clientPhone");
+    let total_price = document.getElementById("total_price");
+    let total_cont = document.getElementById("total_cont");
+    let total = document.getElementById("total");
+
+    console.log(order);
+
+    nameOrder.innerHTML = order.nameProduct;
+    orderCompany.innerHTML = order.company
+    clientName.innerHTML = order.userName;
+    clientAddress.innerHTML = order.userAddress;
+    clientPhone.innerHTML = order.userPhone;
+    total_price.innerHTML = (order.totalOrder/order.quantity)-70;
+    total_cont.innerHTML = order.quantity;
+    total.innerHTML = order.totalOrder;
+}
+}
+const finishOrder = () => {
+    localStorage.removeItem("order")
+    window.location.href='../motor/inicio';
+    }
 
   

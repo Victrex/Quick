@@ -293,7 +293,7 @@ const cargarProductsOrder = async () => {
                         <form>
                         <a  href="/motor/pedido-actual">
                         
-                            <input type="button" class="btn btn_secondary gridBtn" id="${element._id}" onclick="removeData(this)" value="Tomar Pedido">
+                            <input type="button" class="btn btn_secondary gridBtn" id="${element._id}" onclick=" ordTook(this)" value="Tomar Pedido">
                         </a>   
                         </form>
                 </div>`
@@ -304,8 +304,20 @@ const cargarProductsOrder = async () => {
     
   } 
 
+  const ordTook = async (id) => {
+    console.log(id.id);
+    const respuesta = await fetch(('http://localhost:8585/admin/ordenes/' + id.id), {
+        method:"get"
+    });
+    
+    let data = await respuesta.json()
+    console.log(data);
+    localStorage.setItem("order", JSON.stringify(data));
+    removeData(id.id)
+  }
+
   const removeData = async (id) => {
-    const respuesta = await fetch(('http://localhost:8585/admin/ordenes/delOrders/' + id.id), {
+    const respuesta = await fetch(('http://localhost:8585/admin/ordenes/delOrders/' + id), {
         method: "delete",
         headers: {
             'Content-Type': 'application/json'
