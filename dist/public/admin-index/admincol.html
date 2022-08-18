@@ -50,26 +50,28 @@
             <div class="btn_prod">
                 
                     <div class="btnsadd" >
-                        <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn_primary ">Agregar Motorista</button>
+                        <button type="button" data-toggle="modal" data-target="#staticBackdrop1" class="btn btn_primary ">Agregar Clientes</button>
                       </div>
                       <div class="btnsadd">
                         <button type="button" data-target="#staticBackdrop" id="saveChanges" class="btn btn_secondary ">Guardar Cambios</button></div>
                     </div>
                 </div>
                  
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                       <div class="modal-content">
                         <div class="modal-header">
 
-                            <strong><h2 class="modal-title" id="staticBackdropLabel">Editar Colaboradores</h2></strong>
+                            <strong><h2 class="modal-title" id="staticBackdropLabel">Agregar Colaboradores</h2></strong>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
-                            <h3>Datos Personales</h3>
+                           
                         </div>
                         <form class="modal-body" action="./clientes" method="post">
+                          
                           <div class="modal-mot">
+                            <h3>Datos Personales</h3>
                               <div>
                                     <label for="nombre" class="form-label">Nombre Completo</label>
                                     <input name="name" type="text" class="form-control" id="txtcomp" value="" required>
@@ -131,27 +133,81 @@
                     </div>
                   </div>
 
-                    <!-- Modal Eliminar-->
-                    <div class="modal fade" id="staticBackdrop modal-delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal-delete" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <a href="#">...</a>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
-                          <button type="submit" class="btn btn_primary">Confirmar</button></div>
+
+                  <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+
+                            <strong><h2 class="modal-title" id="staticBackdropLabel">Editar Cliente</h2></strong>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                           
                         </div>
+                        <form class="modal-body" id="modalToEdit">
+                          
+                          <div class="modal-mot">
+                            <h3>Datos Personales</h3>
+                              <div>
+                                    <label for="nombre" class="form-label">Nombre Completo</label>
+                                    <input name="name" id="nameEdit" type="text" class="form-control"  value="" required>
+                                
+                                    <div class="bornDate-tel">
+                                      <div>
+                                        <label for="dobirth" class="form-label form-mot">Fecha De Nacimiento</label>
+                                        <input name="date"  type="date" class="form-control form-mot" id="dateEdit" value="" required>
+                                      </div>
+                                      <div>
+                                        <label for="telefono" class="form-label form-mot">Telefono</label>
+                                        <input name="telephone"  id="telephone" data-keyboard="telephono" type="number" class="form-control form-mot" id="txtcomp" value="" required>
+                                      </div>
+                                    </div>
+    
+                                    <br> 
+                                    <label for="livplace" class="form-label">Lugar de Residencia</label>
+                                    <input name="address"  type="text" class="form-control" id="addressEdit" value="" required>
+                              
+                              <!-- <div class="secondpartprinmot"> -->
+                                <div class="gender-cvstatus">
+                                  <div>
+                                      <label for="gender" class="form-label">Genero</label>
+                                      <select name="gender" type="text" class="form-control" id="gender" value="" required>
+                                        <option value=""></option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Otro">Otro</option>
+                                      </select>
+                                  </div>
+                                  <div>
+                                        <label for="username" class="form-label">Nombre de Usuario</label>
+                                        <input name="userName" type="text" class="form-control" id="userName" value="" required>
+                                  </div>
+                                  <div>
+                                    <label for="email" class="form-label">Correo Electrónico</label>
+                                    <input name="email" type="email" class="form-control" id="txtcomp" value="" required>
+                                  </div>
+                                </div>
+                                <div class="upload-image">
+                                        <label for="exampleFormControlFile1">Subir imagen</label>
+                                        <input name="photo" type="file" class="form-control-file" id="photo">
+                                    <div>
+                                        <label for="passsword" class="form-label">Contraseña</label>
+                                        <input name="password" type="text" class="form-control" id="passsword" value="" required>
+                                    </div>
+                                </div>
+                              <!-- </div> -->
+                            </div>
+                          </div> 
+                             
+                          <div class="modal-footer" id="modal_footer_id">
+                          
+                          </div>
+                        </form>
+                        
                       </div>
                     </div>
-
-
-        
-        </div> 
+                  </div>
         
         
        

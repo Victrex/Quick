@@ -27,7 +27,7 @@ router.delete('/motoristas/:id', deleteMotorista);
 router.get('/clientes/get', getClients); //listo
 router.get('/clientes/:id', getClient);
 router.post('/clientes', postClient); //listo
-router.put('/:id', putClient);
+router.put('clientes/:id', putClient);
 router.delete('/clientes/:id', deleteClient);
 
 //Router Empresas

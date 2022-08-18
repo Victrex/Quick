@@ -25,7 +25,7 @@ router.delete('/motoristas/:id', admin_controllers_1.deleteMotorista);
 router.get('/clientes/get', admin_controllers_1.getClients); //listo
 router.get('/clientes/:id', admin_controllers_1.getClient);
 router.post('/clientes', admin_controllers_1.postClient); //listo
-router.put('/:id', admin_controllers_1.putClient);
+router.put('clientes/:id', admin_controllers_1.putClient);
 router.delete('/clientes/:id', admin_controllers_1.deleteClient);
 //Router Empresas
 router.get('/empresas/get', admin_controllers_1.getCompanies);

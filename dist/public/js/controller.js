@@ -431,8 +431,8 @@ const postOrder = async (order) => {
         <td>${e.email}</td>
         <td>
             <div class="btncmp">
-                <button class="btn editbtn" data-toggle="modal" data-target="#staticBackdrop">Editar</button>
-                <input class="btn delbtn btn_large" onclick="deleteClientAdmin(this)" id="${e._id}" data-bs-toggle="modal-delete" data-bs-target="#modal-delete"value="Eliminar">
+                <button class="btn editbtn" data-toggle="modal" id="${e._id}" onclick="putEditCliente(this)" data-target="#staticBackdrop2">Editar</button>
+                <input class="btn delbtn btn_large" onclick="deleteClienteAdmin(this)" id="${e._id}" data-bs-toggle="modal-delete" data-bs-target="#modal-delete"value="Eliminar">
             </div>
         </td>
       </tr>
@@ -441,6 +441,82 @@ const postOrder = async (order) => {
         i++;
     })
   }
+
+  const putEditCliente = async (id) => {
+    let name = document.getElementById("nameEdit");
+    let date = document.getElementById("dateEdit");
+    let telephone = document.getElementById("telephone");
+    let address = document.getElementById("addressEdit");
+    let photo = document.getElementById("photo");
+    let gender = document.getElementById("gender");
+    let userName = document.getElementById("userName");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+
+
+    let obj = {
+        name: name.value,
+        date: date.value,
+        telephone: telephone.value,
+        address: address.value,
+        gender: gender.value,
+        userName: userName.value,
+        email: email.value,
+        password: password.value,
+        photo: photo.value
+
+    }
+    console.log(obj);
+    const respuesta = await fetch(('http://localhost:8585/admin/clientes/' + id.id), {
+    method: "put",
+    headers: {
+        'Content-Type': 'application/json'
+        },
+    body: JSON.stringify({
+        name: `${name.value}`,
+        date: `${date.value}`,
+        telephone: `${telephone.value}`,
+        address: `${address.value}`,
+        gender: `${gender.value}`,
+        userName: `${userName}`,
+        email: `${email.value}`,
+        password: `${password.value}`,
+        photo: `${photo.value}`
+    })
+}).then(respuesta => respuesta.json())
+.then(data => console.log(data))
+.then(window.location.reload());
+    
+}
+const action = (id) => {
+    document.getElementById('editButton').id = id;
+}
+const loadToIDClientes = async (id) => {
+    
+    const respuesta = await fetch(('http://localhost:8585/admin/clientes/' + id.id), {
+    method: "get"
+    });
+
+    ClientToEdit = await respuesta.json();
+    let response = ClientToEdit[0]
+    console.log(ClientToEdit[0]);
+
+    document.getElementById("nameEdit").value = `${response.name}`
+    document.getElementById("dateEdit").value = `${response.dateeEdit}`,
+    document.getElementById("telephone").value = `${response.telephone}`
+    document.getElementById("addressEdit").value = `${response.responseaddress}`
+    document.getElementById("photo").value = `${response.gender}`
+    document.getElementById("gender").value =  `${response.userName}`
+    document.getElementById("userName").value = `${response.email}`
+    document.getElementById("email").value = `${response.password}`
+    document.getElementById("password").value = `${response.photo}`
+    document.getElementsByName('editButton').id = id.id;
+    document.getElementById('modal_footer_id').innerHTML = `
+    <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
+    <button type="button" name="editButton" id="${id.id}" class="btn btn_primary" onclick="putEdit(this)">Editar Producto</button>`
+}
+
+
   const deleteClientAdmin = async (id) => {
         const respuesta = await fetch(('http://localhost:8585/admin/clientes/' + id.id), {
             method: "delete",
