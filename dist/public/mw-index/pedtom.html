@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="../ASSETS/LOGO/Logo_white.svg" type="image/x-icon">
     <title>Document</title>
 </head>
-<body class="" id="body">
+<body class="" id="body" onload="LPT()">
     <nav class="nav">
         <div class="logoCont">
             <a href="#home" ><img class="logo-navbar" src="../ASSETS/LOGO/Logo_black.svg" alt=""></a>
@@ -44,19 +44,22 @@
                 <div class="actualOrder">
                     <h1>Orden Actual</h1>
                     <div class="orderData">
-                        <img src="../ASSETS/products/suprema.jpg" alt="">
+                        <div id="imgOrder">
+                            <img src="../ASSETS/products/suprema.jpg" alt="">
+                        </div>
+                       
                         <div class="info_Order">
-                            <h2 id="nameOrder">Suprema</h2>
-                            <span id="orderCompany">Pizza Hut</span>
+                            <h2 id="nameOrder"></h2>
+                            <span id="orderCompany"></span>
                         </div>
                     </div>
                     <br> <br>
                     <div class="clientData">
                         <div class="infoClient">
-                            <h1>Victor Vasquez</h1>
-                            <span>Col. La Soledad</span>
+                            <h1 id="clientName"></h1>
+                            <span id="clientAddress">Col. La Soledad</span>
                         </div>
-                        <span> <i class="fa-solid fa-mobile-button"></i>9500-1170</span>
+                        <span id="clientPhone"> <i class="fa-solid fa-mobile-button"></i>9500-1170</span>
                     </div>
                     <br>
                     <input type="submit" onclick="" value="Ubicación" class="btn btn_primary btn_large">
@@ -101,7 +104,7 @@
                               <option>Cancelada</option>
                             </select>
                           </div>
-                          <input type="submit" onclick="location.href='../mw-index/cat.html'" value="Finalizar Pedido" class="btn btn_aux">
+                          <input type="submit" onclick="finishOrder() "  value="Finalizar Pedido" class="btn btn_aux">
                     
                         </div>
 
@@ -125,7 +128,7 @@
     
     
     
-    
+    <script src="../js/controller.js"></script>
     <script src="../js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>

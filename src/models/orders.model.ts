@@ -24,8 +24,14 @@ export class AllOrders{
     totalOrder: number;
     @prop({type: String, required:true})
     photo: string;
-    @prop({type: userOrder, required:true})
-    user: Array<userOrder>;
+    @prop({type:String, required:true})
+    userName: string;
+    @prop({type:String, required:true})
+    userEmail: string;
+    @prop({type:Number, required:true})
+    userPhone: number;
+    @prop({type:String, required:true})
+    userAddress: string
 }
 
 

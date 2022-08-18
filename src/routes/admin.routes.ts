@@ -1,5 +1,5 @@
 import { Express, Router } from "express";
-import { indexAdmin, adminMotoristas, adminProductos, adminOrdenes, adminClientes, getProducts, postProduct , getProduct, putProduct, deleteProduct, getMotoristas, getMotorista, postMotorista, putMotorista, deleteMotorista, getClients, getClient, deleteClient, postClient, putClient, getCompanies, getCompany, postCompany, putCompany, deleteCompany, getOrder, deleteOrder, getOrders, postOrder, putOrder, adminEmpresas, getOrdersDisp, postOrdersDisp, deleteOrdersDisp } from "../controllers/admin.controllers";
+import { indexAdmin, adminMotoristas, adminProductos, adminOrdenes, adminClientes, getProducts, postProduct , getProduct, putProduct, deleteProduct, getMotoristas, getMotorista, postMotorista, putMotorista, deleteMotorista, getClients, getClient, deleteClient, postClient, putClient, getCompanies, getCompany, postCompany, putCompany, deleteCompany, getOrder, deleteOrder, getOrders, postOrder, putOrder, adminEmpresas, getOrdersDisp, postOrdersDisp, deleteOrdersDisp, getOrderDisp } from "../controllers/admin.controllers";
 
 const router = Router();
 router.get('/', indexAdmin)
@@ -46,6 +46,7 @@ router.delete('/:id', deleteOrder);
 
 //Router Ordenes Disponibles
 router.get('/ordenes/getDisp', getOrdersDisp)
+router.get('/ordenes/:id', getOrderDisp)
 router.post('/ordenes/postOrders', postOrdersDisp)
 router.delete('/ordenes/delOrders/:id', deleteOrdersDisp)
 

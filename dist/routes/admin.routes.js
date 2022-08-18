@@ -41,6 +41,7 @@ router.put('/:id', admin_controllers_1.putOrder);
 router.delete('/:id', admin_controllers_1.deleteOrder);
 //Router Ordenes Disponibles
 router.get('/ordenes/getDisp', admin_controllers_1.getOrdersDisp);
+router.get('/ordenes/:id', admin_controllers_1.getOrderDisp);
 router.post('/ordenes/postOrders', admin_controllers_1.postOrdersDisp);
 router.delete('/ordenes/delOrders/:id', admin_controllers_1.deleteOrdersDisp);
 exports.default = router;

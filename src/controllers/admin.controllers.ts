@@ -564,7 +564,18 @@ export const getOrdersDisp = (req:Request, res: Response) => {
         res.end();
         });
 }
-
+export const getOrderDisp = (req:Request, res: Response) => {
+        AllOrders.findById({_id: req.params.id}).then(result=>{
+                res.send(result);
+                res.end();      
+        })
+        .catch(error => {
+                res.status(500).send({
+                        message:error.message || "Algo ocurrió al mostrar los registros"
+                });
+        res.end();
+        });
+}
 
 export const postOrdersDisp = (req:Request, res:Response) => {
         if(!req.body){
@@ -579,12 +590,10 @@ export const postOrdersDisp = (req:Request, res:Response) => {
                 quantity: req.body.quantity,
                 totalOrder: req.body.totalOrder,
                 photo: req.body.photo,
-                user: [{
-                        name: req.body.name,
-                        email: req.body.email,
-                        phone: req.body.email,
-                        address: req.body.address
-                    }]
+                userName: req.body.userName,
+                userEmail: req.body.userEmail,
+                userPhone: req.body.userPhone,
+                userAddress: req.body.userAddress
         })
         order
                 .save()

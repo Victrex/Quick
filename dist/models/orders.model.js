@@ -53,9 +53,21 @@ __decorate([
     __metadata("design:type", String)
 ], AllOrders.prototype, "photo", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ type: userOrder, required: true }),
-    __metadata("design:type", Array)
-], AllOrders.prototype, "user", void 0);
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], AllOrders.prototype, "userName", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], AllOrders.prototype, "userEmail", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
+], AllOrders.prototype, "userPhone", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], AllOrders.prototype, "userAddress", void 0);
 exports.AllOrders = AllOrders;
 const AllorderModel = (0, typegoose_1.getModelForClass)(AllOrders);
 exports.default = AllorderModel;
