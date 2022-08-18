@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteOrdersDisp = exports.postOrdersDisp = exports.getOrderDisp = exports.getOrdersDisp = exports.deleteOrder = exports.putOrder = exports.postOrder = exports.getOrder = exports.getOrders = exports.deleteCompany = exports.putCompany = exports.postCompany = exports.getCompany = exports.getCompanies = exports.deleteClient = exports.putClient = exports.postClient = exports.getClient = exports.getClients = exports.deleteMotorista = exports.putMotorista = exports.postMotorista = exports.getMotorista = exports.getMotoristas = exports.deleteProduct = exports.putProduct = exports.postProduct = exports.getProduct = exports.getProducts = exports.adminEmpresas = exports.adminClientes = exports.adminOrdenes = exports.adminProductos = exports.adminMotoristas = exports.indexAdmin = void 0;
+exports.deleteOrdersDisp = exports.postOrdersDisp = exports.getOrderDisp = exports.getOrdersDisp = exports.deleteOrder = exports.putOrder = exports.postOrder = exports.getOrder = exports.getOrders = exports.deleteCompany = exports.putCompany = exports.postCompany = exports.getCompany = exports.getCompanies = exports.deleteClient = exports.putClient = exports.postClient = exports.getClientEdit = exports.getClient = exports.getClients = exports.deleteMotorista = exports.putMotorista = exports.postMotorista = exports.getMotorista = exports.getMotoristas = exports.deleteProduct = exports.putProduct = exports.postProduct = exports.getProduct = exports.getProducts = exports.adminEmpresas = exports.adminClientes = exports.adminOrdenes = exports.adminProductos = exports.adminMotoristas = exports.indexAdmin = void 0;
 const path_1 = __importDefault(require("path"));
 const products_model_1 = __importDefault(require("../models/products.model"));
 const orders_model_1 = __importDefault(require("../models/orders.model"));
@@ -232,18 +232,6 @@ const deleteMotorista = (req, res) => {
 exports.deleteMotorista = deleteMotorista;
 /*CRUD Clientes/Colab */
 const getClients = (req, res) => {
-    //res.sendFile(path.join(__dirname,'../public/admin-index/admincol.html'));
-    /* clientModel.find().then(result=>{
-            res.send(result);
-            console.log(result)
-            res.end();
-    })
-    .catch(error => {
-            res.status(500).send({
-                    message:error.message || "Algo ocurrió al mostrar los registros"
-            });
-    res.end();
-    }); */
     client_model_1.default.find().then(result => {
         res.send(result);
         console.log(result);
@@ -270,6 +258,19 @@ const getClient = (req, res) => {
     });
 };
 exports.getClient = getClient;
+const getClientEdit = (req, res) => {
+    client_model_1.default.findOne({ _id: req.params.id }).then(result => {
+        res.send(result);
+        res.end();
+    })
+        .catch(error => {
+        res.status(500).send({
+            message: error.message || "Algo ocurrió al mostrar los registros"
+        });
+        res.end();
+    });
+};
+exports.getClientEdit = getClientEdit;
 const postClient = (req, res) => {
     if (!req.body) {
         res.status(400).send({ message: 'Contenido no puede estar vacio' });
@@ -308,9 +309,14 @@ const putClient = (req, res) => {
     }
     client_model_1.default.updateOne({ _id: req.params.id }, {
         name: req.body.name,
-        charge: req.body.charge,
+        gender: req.body.gender,
         telephone: req.body.telephone,
-        email: req.body.email
+        email: req.body.email,
+        date: req.body.date,
+        address: req.body.address,
+        userName: req.body.userName,
+        password: req.body.password,
+        photo: req.body.photo
     }).then(updateData => {
         res.send({ message: 'Registro actualizado', updateData });
         res.end();

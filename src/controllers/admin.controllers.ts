@@ -250,18 +250,7 @@ export const deleteMotorista = (req:Request , res:Response) => {
 
 /*CRUD Clientes/Colab */
 export const getClients = (req:Request , res:Response) => {
-        //res.sendFile(path.join(__dirname,'../public/admin-index/admincol.html'));
-        /* clientModel.find().then(result=>{
-                res.send(result);
-                console.log(result)
-                res.end();      
-        })
-        .catch(error => {
-                res.status(500).send({
-                        message:error.message || "Algo ocurrió al mostrar los registros"
-                });
-        res.end();
-        }); */
+
         clientModel.find().then(result=>{
                 res.send(result);
                 console.log(result);
@@ -279,6 +268,18 @@ export const getClients = (req:Request , res:Response) => {
 
 export const getClient = (req:Request , res:Response) => {
         clientModel.findOne({email: req.params.id}).then(result=>{
+                res.send(result);
+                res.end();      
+        })
+        .catch(error => {
+                res.status(500).send({
+                        message:error.message || "Algo ocurrió al mostrar los registros"
+                });
+        res.end();
+        });
+}
+export const getClientEdit = (req:Request , res:Response) => {
+        clientModel.findOne({_id: req.params.id}).then(result=>{
                 res.send(result);
                 res.end();      
         })
@@ -331,10 +332,16 @@ export const putClient = (req:Request , res:Response) => {
         }
 
         clientModel.updateOne({_id: req.params.id},{
-                name:req.body.name,
-                charge:req.body.charge,
-                telephone:req.body.telephone,
-                email:req.body.email
+
+                name: req.body.name,
+                gender: req.body.gender,
+                telephone: req.body.telephone,
+                email: req.body.email,
+                date: req.body.date,
+                address: req.body.address,
+                userName: req.body.userName,
+                password: req.body.password,
+                photo: req.body.photo
 
         }).then(updateData =>{
                         res.send({message: 'Registro actualizado', updateData});
