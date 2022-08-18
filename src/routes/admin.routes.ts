@@ -1,5 +1,5 @@
 import { Express, Router } from "express";
-import { indexAdmin, adminMotoristas, adminProductos, adminOrdenes, adminClientes, getProducts, postProduct , getProduct, putProduct, deleteProduct, getMotoristas, getMotorista, postMotorista, putMotorista, deleteMotorista, getClients, getClient, deleteClient, postClient, putClient, getCompanies, getCompany, postCompany, putCompany, deleteCompany, getOrder, deleteOrder, getOrders, postOrder, putOrder, adminEmpresas, getOrdersDisp, postOrdersDisp, deleteOrdersDisp, getOrderDisp } from "../controllers/admin.controllers";
+import { indexAdmin, adminMotoristas, adminProductos, adminOrdenes, adminClientes, getProducts, postProduct , getProduct, putProduct, deleteProduct, getMotoristas, getMotorista, postMotorista, putMotorista, deleteMotorista, getClients, getClient, deleteClient, postClient, putClient, getCompanies, getCompany, postCompany, putCompany, deleteCompany, getOrder, deleteOrder, getOrders, postOrder, putOrder, adminEmpresas, getOrdersDisp, postOrdersDisp, deleteOrdersDisp, getOrderDisp, getClientEdit } from "../controllers/admin.controllers";
 
 const router = Router();
 router.get('/', indexAdmin)
@@ -26,8 +26,9 @@ router.delete('/motoristas/:id', deleteMotorista);
 //Router Clientes
 router.get('/clientes/get', getClients); //listo
 router.get('/clientes/:id', getClient);
+router.get('/cliente/:id', getClientEdit);
 router.post('/clientes', postClient); //listo
-router.put('clientes/:id', putClient);
+router.put('/clientes/:id', putClient);
 router.delete('/clientes/:id', deleteClient);
 
 //Router Empresas

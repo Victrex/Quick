@@ -164,6 +164,7 @@ const cwUser = () =>{
 
 
 const chargeOrder = () => {
+    console.log('asdawd');
     localStorage.removeItem('orderKey');
     let totalPrice = document.getElementById('total');
     let keyUser = JSON.parse(localStorage.getItem("keyUser"));
@@ -256,8 +257,115 @@ const postOrder = async (order) => {
         
   }
 
-  
-  
+  const putEditCol = async (id) => {
+    let name = document.getElementById("nameEdit");
+    let date = document.getElementById("dateEdit");
+    let telephone = document.getElementById("telephoneEdit");
+    let address = document.getElementById("addressEdit");
+    let photo = document.getElementById("photoEdit");
+    let gender = document.getElementById("genderEdit");
+    let userName = document.getElementById("userNameEdit");
+    let email = document.getElementById("emailEdit");
+    let password = document.getElementById("passwordEdit");
+    
+    let obj = {
+        name: name.value,
+        date: date.value,
+        telephone: telephone.value,
+        address: address.value,
+        gender: gender.value,
+        userName: userName.value,
+        email: email.value,
+        password: password.value,
+        photo: photo.innerHTML
+    } 
+    console.log(obj);
+        const respuesta = await fetch(('http://localhost:8585/admin/clientes/' + id.id), {
+        method: "put",
+        headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        }).then(respuesta => respuesta.json())
+        .then(data => console.log(data))
+        .then(window.location.reload());
+  }
+
+
+  let ClntToEdit
+  const putEditCliente = async (id) => {
+    const respuesta = await fetch(('http://localhost:8585/admin/cliente/' + id.id), {
+        method: "get",
+    });
+     ClntToEdit = await respuesta.json()
+    console.log(ClntToEdit);
+    let name = document.getElementById("nameEdit");
+    let date = document.getElementById("dateEdit");
+    let telephone = document.getElementById("telephoneEdit");
+    let address = document.getElementById("addressEdit");
+    let photo = document.getElementById("photoEdit");
+    let gender = document.getElementById("genderEdit");
+    let userName = document.getElementById("userNameEdit");
+    let email = document.getElementById("emailEdit");
+    let password = document.getElementById("passwordEdit");
+
+    name.value = ClntToEdit.name;
+    date.value = ClntToEdit.date;
+    telephone.value = ClntToEdit.telephone;
+    address.value = ClntToEdit.address;
+    photo.innerHTML = `${ClntToEdit.photo}`;
+    gender.value = `${ClntToEdit.gender}`;
+    userName.value = ClntToEdit.userName;
+    email.value = ClntToEdit.email;
+    password.value = ClntToEdit.password;
+    document.getElementById('modal-footer-editCol').innerHTML = `
+    <button type="button" class="btn btn_secondary" data-dismiss="modal">Cancelar</button>
+    <button type="button" class="btn btn_primary" id="${id.id}" onclick="putEditCol(this)">Guardar Cambios</button>
+    `
+/*     let name = document.getElementById("nameEdit");
+    let date = document.getElementById("dateEdit");
+    let telephone = document.getElementById("telephone");
+    let address = document.getElementById("addressEdit");
+    let photo = document.getElementById("photo");
+    let gender = document.getElementById("gender");
+    let userName = document.getElementById("userName");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+
+
+    let obj = {
+        name: name.value,
+        date: date.value,
+        telephone: telephone.value,
+        address: address.value,
+        gender: gender.value,
+        userName: userName.value,
+        email: email.value,
+        password: password.value,
+        photo: photo.value
+
+    } 
+    const respuesta = await fetch(('http://localhost:8585/admin/clientes/' + id.id), {
+    method: "get",
+    headers: {
+        'Content-Type': 'application/json'
+        },
+    body: JSON.stringify({
+        name: `${name.value}`,
+        date: `${date.value}`,
+        telephone: `${telephone.value}`,
+        address: `${address.value}`,
+        gender: `${gender.value}`,
+        userName: `${userName}`,
+        email: `${email.value}`,
+        password: `${password.value}`,
+        photo: `${photo.value}`
+    })
+}).then(respuesta => respuesta.json())
+.then(data => console.log(data))
+.then(window.location.reload());
+    */
+}
 
 
 
@@ -290,7 +398,39 @@ const postOrder = async (order) => {
 
 
 
-  const API_URL_CLIENT = 'http://localhost:8585/admin/clientes/get';
+  const cargarCliente = async () => {
+    const respuesta = await fetch(('http://localhost:8585/admin/clientes/get'), {
+        method: "get"
+    });
+    let clientsArray = await respuesta.json();
+    console.log(clientsArray);
+    const loadClientAdmin = () => {
+        const clientesAdmin = document.getElementById('clientAdmin');
+        
+        let i = 1;
+        clientsArray.forEach(e => {
+            clientesAdmin.innerHTML += `
+            <tr>
+            <td>${i}</td>
+            <td><a href="#">${e.name}</a></td>
+            <td>${e.gender}</td>
+            <td>${e.telephone}</td>
+            <td>${e.email}</td>
+            <td>
+                <div class="btncmp">
+                    <button class="btn editbtn" data-toggle="modal" id="${e._id}" onclick="putEditCliente(this)" data-target="#staticBackdrop2">Editar</button>
+                    <input class="btn delbtn btn_large" onclick="deleteClienteAdmin(this)" id="${e._id}" data-bs-toggle="modal-delete" data-bs-target="#modal-delete"value="Eliminar">
+                </div>
+            </td>
+          </tr>
+            
+            `
+            i++;
+        })
+      }
+      loadClientAdmin()
+  }
+ /*  const API_URL_CLIENT = 'http://localhost:8585/admin/clientes/get';
   var clientArray = [];
   const cargarClientes = () => {
     fetch(API_URL_CLIENT)
@@ -325,57 +465,12 @@ const postOrder = async (order) => {
         `
         i++;
     })
-  }
+  } */
 
-  const putEditCliente = async (id) => {
-    let name = document.getElementById("nameEdit");
-    let date = document.getElementById("dateEdit");
-    let telephone = document.getElementById("telephone");
-    let address = document.getElementById("addressEdit");
-    let photo = document.getElementById("photo");
-    let gender = document.getElementById("gender");
-    let userName = document.getElementById("userName");
-    let email = document.getElementById("email");
-    let password = document.getElementById("password");
-
-
-    let obj = {
-        name: name.value,
-        date: date.value,
-        telephone: telephone.value,
-        address: address.value,
-        gender: gender.value,
-        userName: userName.value,
-        email: email.value,
-        password: password.value,
-        photo: photo.value
-
-    }
-    console.log(obj);
-    const respuesta = await fetch(('http://localhost:8585/admin/clientes/' + id.id), {
-    method: "put",
-    headers: {
-        'Content-Type': 'application/json'
-        },
-    body: JSON.stringify({
-        name: `${name.value}`,
-        date: `${date.value}`,
-        telephone: `${telephone.value}`,
-        address: `${address.value}`,
-        gender: `${gender.value}`,
-        userName: `${userName}`,
-        email: `${email.value}`,
-        password: `${password.value}`,
-        photo: `${photo.value}`
-    })
-}).then(respuesta => respuesta.json())
-.then(data => console.log(data))
-.then(window.location.reload());
-    
-}
-const action = (id) => {
+  
+/* const action = (id) => {
     document.getElementById('editButton').id = id;
-}
+} */
 const loadToIDClientes = async (id) => {
     
     const respuesta = await fetch(('http://localhost:8585/admin/clientes/' + id.id), {
@@ -527,10 +622,7 @@ var empresasArray = [];
   })
   }
   const LPT = () => {
-    if (localStorage.getItem("order") == null) {
-            alert("¡La orden ya no está disponible!")
-            window.location.href = "../motor/inicio"        
-    } else{
+    
     let order = JSON.parse(localStorage.getItem("order"));
     let imgOrder = document.getElementById("imgOrder");
     let nameOrder = document.getElementById("nameOrder");
@@ -552,7 +644,7 @@ var empresasArray = [];
     total_price.innerHTML = (order.totalOrder/order.quantity)-70;
     total_cont.innerHTML = order.quantity;
     total.innerHTML = order.totalOrder;
-}
+
 }
 const finishOrder = () => {
     localStorage.removeItem("order")

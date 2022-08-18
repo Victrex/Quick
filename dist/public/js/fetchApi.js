@@ -24,7 +24,7 @@ let productosArray;
                 <div class="cardCorp gridCard">
                 <div class="cardCorp_content">
                     <div class="corpImg">
-                        <img src="ASSETS/brands/${e.photo}" alt="">
+                        <img src="../ASSETS/brands/${e.photo}" alt="">
                     </div>
                     <div class="corpInfo">
                         <h1>${e.companyName}</h1> 
@@ -70,7 +70,7 @@ let productosArray;
                         <hr>
                         <div class="cardPrd">
                             <div class="cardPrd_header">
-                                <img src="${e.photo}" alt="">
+                                <img src="../ASSETS/products/${e.photo}" alt="">
                             </div>
                             <div class="corpInfo">
                                 <h1>${e.productName}</h1>
@@ -108,7 +108,7 @@ const cargarProductsOrder = async () => {
         let price = document.getElementById('price');
         let desp = document.getElementById('desp');
         let img = document.querySelector('.order_img');
-        img.innerHTML = `<img id="${ordenData.photo}" class="img_order_took" src="ASSETS/brands/${ordenData.photo}" alt="">`;
+        img.innerHTML = `<img id="${ordenData.photo}" class="img_order_took" src="../ASSETS/products/${ordenData.photo}" alt="">`;
         document.getElementById('total').innerHTML =  ordenData.price + 70.00 ;
         document.getElementById('total_price').innerHTML =  ordenData.price ; 
         name.innerHTML = ordenData.productName;
@@ -185,7 +185,7 @@ const cargarProductsOrder = async () => {
         method: "get"
     });
         productosArray = await respuesta.json();
-        console.log(productosArray[0]._id);
+        console.log(productosArray._id);
         const getCompanies = async () => {
             const response = await fetch('http://localhost:8585/admin/empresas/get', {
                 method: "get"
@@ -198,6 +198,7 @@ const cargarProductsOrder = async () => {
         getCompanies();
 
         const loadCompaniesToSelect = (comps) => {
+            console.log(comps);
             document.getElementById('list-emp').innerHTML = '<option value="0" selected></option>'
             comps.forEach(e => {
                 console.log(e.companyName);
@@ -277,11 +278,11 @@ const cargarProductsOrder = async () => {
     let data = await respuesta.json();
     let cont = document.getElementById('corps');
     //console.log(data);
-    data.forEach(element => {
+    data.forEach(element => { 
         document.getElementById("corp").innerHTML += `
         <div class="cardCorp gridCard">
                     <div class="card-body">
-                        <h4 class="card-title">${element.productName}</h4>
+                        <h4 class="card-title">${element.nameProduct}</h4>
                         <small>${element.company}</small>
                     </div>
                     <div class="OrderInfo">
@@ -291,10 +292,8 @@ const cargarProductsOrder = async () => {
                             <dd>${element.totalOrder}</dd><br>
                         
                         <form>
-                        <a  href="/motor/pedido-actual">
-                        
                             <input type="button" class="btn btn_secondary gridBtn" id="${element._id}" onclick=" ordTook(this)" value="Tomar Pedido">
-                        </a>   
+  
                         </form>
                 </div>`
     });
@@ -313,7 +312,9 @@ const cargarProductsOrder = async () => {
     let data = await respuesta.json()
     console.log(data);
     localStorage.setItem("order", JSON.stringify(data));
+    
     removeData(id.id)
+    window.location.href = "/motor/pedido-actual"
   }
 
   const removeData = async (id) => {
