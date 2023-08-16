@@ -3,11 +3,8 @@ import mongoose, {connect, Schema} from "mongoose";
 import dotenv from 'dotenv';
 import cors from 'cors';
 import path from "path";
-import adminRoutes from "./routes/admin.routes";
 import clientRoutes from "./routes/clients.routes";
 import methodOverride from 'method-override';
-import motorRoutes from "./routes/motor.routes"
-import axios from 'axios';
 
 
 dotenv.config();
@@ -34,9 +31,7 @@ app.use(methodOverride('_method'))
 
 
 //routes
-app.use('/admin', adminRoutes)
 app.use('/', clientRoutes)
-app.use('/motor', motorRoutes)
 
 //server
 app.listen(port, () =>{
@@ -44,8 +39,8 @@ app.listen(port, () =>{
 });
 
 //database
-async function connectDB() {
+/* async function connectDB() {
     const db = await connect("mongodb+srv://QuickDB:8Xudeey_hA.g8U$@cluster0.gmhxjfx.mongodb.net/?retryWrites=true&w=majority");
     console.log('database is conected to', db.connection.db.databaseName);
 }
-connectDB();
+connectDB(); */

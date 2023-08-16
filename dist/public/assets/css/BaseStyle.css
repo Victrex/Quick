@@ -1,0 +1,116 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+#principal {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#encabezado { 
+    background-color: #F0463A;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+#barra-titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    background-color: #FFFF00;
+    width: 100%;
+    height: 70px;
+    box-sizing: border-box;
+}
+
+#barra-titulo h1 {
+    align-items: center;    
+    text-align: center;
+    color:#F0463A;
+    font-weight: bolder;
+}
+
+#img-esqiuina {
+    width: 50px;
+    height: 50px;
+}
+
+#contenido { 
+    flex: 4;
+    background-color: #F6836B;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#contenido h1 {
+    font-size: 35px;
+    color: white;
+    font-weight: bolder;
+}
+
+#contenido h2 {
+    font-size: 30px;
+    color: white;
+    font-weight: bolder;
+    text-decoration: underline
+    ;
+}
+
+.boton-seleccion {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bolder;
+    background-color: #EAE8E4;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px 10px 5px;
+    margin: 10px;
+}
+
+#contenido a { 
+    color: #F0463A;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+#select-img-comida {
+    width: 100px;
+    height: 100px;
+}
+
+#image {
+    width: 100%;
+    margin-top: 0%;
+    border: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    vertical-align: bottom;
+}
+
+#img-repartidor {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+}
