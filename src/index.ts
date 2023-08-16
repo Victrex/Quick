@@ -44,8 +44,8 @@ app.listen(port, () =>{
 });
 
 //database
-async function connectDB() {
+/* async function connectDB() {
     const db = await connect("mongodb+srv://QuickDB:8Xudeey_hA.g8U$@cluster0.gmhxjfx.mongodb.net/?retryWrites=true&w=majority");
     console.log('database is conected to', db.connection.db.databaseName);
 }
-connectDB();
+connectDB(); */
