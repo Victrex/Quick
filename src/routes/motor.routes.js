@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var motor_controllers_1 = require("../controllers/motor.controllers");
+var router = (0, express_1.Router)();
+router.get('/', motor_controllers_1.landingMotor);
+router.get('/inicio', motor_controllers_1.indexMotor);
+router.get('/recientes', motor_controllers_1.recents);
+router.get('/pedido-actual', motor_controllers_1.actualOrder);
+router.get('/user', motor_controllers_1.motorUser);
+router.get('/estadisticas', motor_controllers_1.staticsMotor);
+router.get('/disponibles', motor_controllers_1.ordersToTake);
+router.get('/login', motor_controllers_1.logMotors);
+exports.default = router;
