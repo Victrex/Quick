@@ -7,4 +7,5 @@ router.get('/signin', clients_controller_1.index);
 router.get('/signup', clients_controller_1.signup);
 router.get('/feedback', clients_controller_1.feedback);
 router.get('/', clients_controller_1.indexClients);
+router.get('/menu', clients_controller_1.menu);
 exports.default = router;

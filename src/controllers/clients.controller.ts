@@ -16,3 +16,7 @@ export const signup = (req:Request, res:Response) => {
 export const indexClients = (req:Request, res:Response) => {
     res.sendFile(path.resolve(__dirname, '../public/IndexPantallaPrinciapl.html'));
 }
+
+export const menu = (req:Request, res:Response) => {
+    res.sendFile(path.resolve(__dirname, '../public/app_clients/menu.html'));
+}
