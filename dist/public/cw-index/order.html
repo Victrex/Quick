@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../ASSETS/LOGO/Logo_white.svg" type="image/x-icon">
+    <title>Pizza Hut</title>
+</head>
+<body class="" id="body" onload="cargarProductsOrder()">
+    <nav class="nav">
+        <div class="logoCont">
+            <a href="#home" ><img class="logo-navbar" src="ASSETS/LOGO/Logo_black.svg" alt=""></a>
+    
+        </div>
+        <div class="topnav" id="myTopnav">
+            
+            <a href="../quick">Inicio</a>
+            <a href="../client/orderlist">Mis Pedidos</a>
+            <a href="../client/user">Mi Cuenta</a>
+            <a href="/">¡Conócenos!</a>
+            
+            <div id="footer_nav" class="footer_Nav active">
+                <a href="/login">Cerrar Sesion</a>
+                <a href="/">Trabaja con Nosotros</a>
+            </div>
+          </div>
+          <a href="javascript:void(0);" id="icon" class="icon" onclick="navCollapse()">
+            <i class="fa fa-bars"></i>
+          </a>
+    </nav>
+
+    <br><br><br>
+
+
+
+                <div class="orderContainer">
+                    <div class="order_img"></div>
+                    <div class="orderContent">
+                        <h1 id="name"></h1>
+                        <span id="price"></span> 
+                        <p id="desp">
+                        </p>
+                        <h2>Cantidad</h2>
+                        <form class="quantity" action="">
+                            <input type="button" id="less" onclick="lessQ()" class="btn btn_primary" value="-">
+                            <div class="col-md-3 mb-4">
+                                <label for="validationServer05"></label>
+                                <input type="text" class="form-control" id="quan_input" value="1" required disabled>    
+                            </div>
+                            <input type="button" id="more" class="btn btn_primary" onclick="moreQ()" value="+">
+                        </form>
+                    </div>
+                    
+                </div>
+                <hr>
+    <br><br><br>
+    <section class="invoice">
+        <h1>Factura del pedido</h1>
+        <table>
+            <tr>
+                <td>Precio Total por los Productos</td> <td>L.</td> <td id="total_price"></td>
+            </tr>
+            <tr>
+                <td>Cantidad de Productos</td> <td>#</td> <td id="total_cont">1</td>
+        
+            </tr>
+            <tr>
+                <td>Coste de Entrega</td> <td>L.</td> <td id="deliver">70.00</td>
+            </tr>
+            <tr>
+                <td>Total a Pagar</td> <td>L.</td> <td id="total"></td>
+            </tr>
+            
+            
+        </table>
+    </section>
+    <br>
+    <br>
+
+    <footer class="submit_order">
+            <input type="button" class="btn btn_primary btn_large" onclick="chargeOrder();" value="Cargar Pedido">
+        
+        
+    </footer>
+    
+
+
+    <script src="../js/fetchApi.js"></script>
+    <script src="../js/controller.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+<script src="https://kit.fontawesome.com/a946ec8424.js" crossorigin="anonymous"></script>
+</body>
+</html>
